@@ -1,0 +1,135 @@
+<!doctype html>
+<html lang="cs">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1, viewport-fit=cover">
+  <meta name="theme-color" content="#10150f">
+  <meta name="description" content="Signál 44 — malá 2D hra o polním spojaři, vytvořená bez knihoven.">
+  <title>Signál 44</title>
+  <link rel="stylesheet" href="style.css">
+</head>
+<body>
+  <main class="game-shell" aria-label="Hra Signál 44">
+    <header class="topbar">
+      <div class="brand" aria-label="Signál 44">
+        <span class="brand-mark" aria-hidden="true">ϟ</span>
+        <div>
+          <strong>SIGNÁL 44</strong>
+          <span>POLNÍ SPOJENÍ</span>
+        </div>
+      </div>
+
+      <div class="mission-line" aria-live="polite">
+        <span class="eyebrow">ÚKOL</span>
+        <strong id="objectiveText">Obnov spojení</strong>
+      </div>
+
+      <div class="top-actions">
+        <button class="icon-button" id="soundButton" type="button" aria-label="Vypnout zvuk" title="Zvuk (M)">
+          <span aria-hidden="true" id="soundIcon">◖</span>
+        </button>
+        <button class="icon-button" id="pauseButton" type="button" aria-label="Pozastavit hru" title="Pauza (P)">
+          <span aria-hidden="true">Ⅱ</span>
+        </button>
+      </div>
+    </header>
+
+    <section class="play-area">
+      <canvas id="gameCanvas" width="960" height="600" aria-label="Herní plocha. Pohybujte se pomocí WASD nebo šipek a akci proveďte klávesou E."></canvas>
+
+      <div class="screen start-screen" id="startScreen">
+        <div class="field-card">
+          <div class="classified">PŘÍSNĚ TAJNÉ // 06:40</div>
+          <div class="title-lockup">
+            <span class="signal-glyph" aria-hidden="true">ϟ</span>
+            <h1>SIGNÁL<br><em>44</em></h1>
+          </div>
+          <p class="briefing">Nepřátelská palba přerušila polní síť. Zprovozni tři vysílačky a dones zakódovaný rozkaz na velitelství.</p>
+          <button class="primary-button" id="startButton" type="button">
+            <span>ZAHÁJIT MISI</span>
+            <kbd>ENTER</kbd>
+          </button>
+          <div class="controls-strip">
+            <div><span class="key-cluster">WASD</span><small>POHYB</small></div>
+            <div><span class="key-cluster">E</span><small>OPRAVIT</small></div>
+            <div><span class="key-cluster">SPACE</span><small>KOTRMELEC</small></div>
+          </div>
+        </div>
+      </div>
+
+      <div class="screen message-screen hidden" id="pauseScreen">
+        <div class="message-card">
+          <span class="eyebrow">VYSÍLÁNÍ POZASTAVENO</span>
+          <h2>Čekáme na signál</h2>
+          <p>Stiskni <strong>P</strong> nebo pokračuj tlačítkem.</p>
+          <button class="primary-button compact" id="resumeButton" type="button">POKRAČOVAT</button>
+        </div>
+      </div>
+
+      <div class="screen message-screen hidden" id="endScreen">
+        <div class="message-card result-card">
+          <span class="result-stamp" id="resultStamp">SPOJENÍ OBNOVENO</span>
+          <h2 id="resultTitle">Rozkaz doručen</h2>
+          <p id="resultText">Velitelství je znovu ve spojení.</p>
+          <div class="result-stats">
+            <div><span>ČAS</span><strong id="finalTime">00:00</strong></div>
+            <div><span>VYSÍLAČKY</span><strong id="finalRadios">3/3</strong></div>
+            <div><span>ZDRAVÍ</span><strong id="finalHealth">100%</strong></div>
+          </div>
+          <button class="primary-button compact" id="restartButton" type="button">NOVÁ MISE</button>
+        </div>
+      </div>
+
+      <div class="status-panel" aria-label="Stav mise">
+        <div class="status-item health-status">
+          <span class="eyebrow">KONDICE</span>
+          <div class="meter"><i id="healthBar"></i></div>
+          <strong id="healthText">100</strong>
+        </div>
+        <div class="status-item signal-status">
+          <span class="eyebrow">SIGNÁL</span>
+          <div class="signal-bars" id="signalBars" aria-hidden="true">
+            <i></i><i></i><i></i>
+          </div>
+          <strong id="radioCount">0/3</strong>
+        </div>
+        <div class="status-item time-status">
+          <span class="eyebrow">ČAS</span>
+          <strong id="timerText">00:00</strong>
+        </div>
+      </div>
+
+      <div class="context-prompt hidden" id="contextPrompt" aria-live="polite">
+        <kbd>E</kbd><span id="contextText">OPRAVIT VYSÍLAČKU</span>
+      </div>
+
+      <div class="radio-progress hidden" id="radioProgress">
+        <span>LADÍM FREKVENCI</span>
+        <div><i id="radioProgressBar"></i></div>
+      </div>
+
+      <div class="touch-controls" aria-label="Dotykové ovládání">
+        <div class="dpad">
+          <button data-key="ArrowUp" class="up" aria-label="Nahoru">▲</button>
+          <button data-key="ArrowLeft" class="left" aria-label="Doleva">◀</button>
+          <button data-key="ArrowDown" class="down" aria-label="Dolů">▼</button>
+          <button data-key="ArrowRight" class="right" aria-label="Doprava">▶</button>
+        </div>
+        <div class="touch-actions">
+          <button data-key="KeyE" class="action-e" aria-label="Opravit nebo doručit">E<small>AKCE</small></button>
+          <button data-key="Space" class="action-roll" aria-label="Kotrmelec">↝<small>ÚHYB</small></button>
+        </div>
+      </div>
+    </section>
+
+    <footer class="footer-line">
+      <span><i class="legend-dot radio-dot"></i> vysílačka</span>
+      <span><i class="legend-dot hq-dot"></i> velitelství</span>
+      <span><i class="legend-cone"></i> dohled hlídky</span>
+      <span class="desktop-hint">WASD / ŠIPKY · E AKCE · MEZERNÍK ÚHYB · P PAUZA</span>
+    </footer>
+  </main>
+
+  <script src="game.js"></script>
+</body>
+</html>
