@@ -67,10 +67,10 @@
   ];
 
   const enemiesTemplate = [
-    { x: 330, y: 235, ax: 285, ay: 215, bx: 455, by: 235, speed: 44 },
-    { x: 630, y: 455, ax: 555, ay: 470, bx: 835, by: 490, speed: 50 },
-    { x: 690, y: 105, ax: 610, ay: 115, bx: 810, by: 120, speed: 42 },
-    { x: 225, y: 93, ax: 180, ay: 80, bx: 320, by: 145, speed: 38 }
+    { x: 330, y: 235, ax: 285, ay: 250, bx: 455, by: 185, speed: 44 },
+    { x: 630, y: 420, ax: 555, ay: 420, bx: 835, by: 420, speed: 50 },
+    { x: 690, y: 105, ax: 565, ay: 135, bx: 810, by: 120, speed: 42 },
+    { x: 225, y: 93, ax: 180, ay: 80, bx: 370, by: 160, speed: 38 }
   ];
   const enemyVision = {
     range: 160,
@@ -118,6 +118,7 @@
         dir,
         angle: Math.atan2(targetY - enemy.y, targetX - enemy.x),
         alert: 0,
+        tracking: false,
         chasing: false,
         lastKnownX: enemy.x,
         lastKnownY: enemy.y,
@@ -325,7 +326,13 @@
       const playerDistance = Math.hypot(player.x - enemy.x, player.y - enemy.y);
       const playerAngle = Math.atan2(player.y - enemy.y, player.x - enemy.x);
       const playerInCone = Math.abs(angleDifference(enemy.angle, playerAngle)) < enemyVision.halfAngle;
-      const seesPlayer = playerDistance < enemyVision.range && playerInCone && !lineBlocked(enemy.x, enemy.y, player.x, player.y);
+      const hasLineOfSight = playerDistance < enemyVision.range && !lineBlocked(enemy.x, enemy.y, player.x, player.y);
+
+      // Vstup do kuželu zamkne pozornost hlídky. Potom hráče sleduje přes celý
+      // zorný rozsah, dokud nezmizí za překážkou nebo neuteče z dosahu.
+      if (!enemy.tracking && hasLineOfSight && playerInCone) enemy.tracking = true;
+      if (enemy.tracking && !hasLineOfSight) enemy.tracking = false;
+      const seesPlayer = enemy.tracking && hasLineOfSight;
 
       if (seesPlayer) {
         enemy.alert = Math.min(1, enemy.alert + dt / enemyVision.noticeTime);
@@ -340,6 +347,7 @@
         beep(620, .07, "square", .018);
       } else if (enemy.chasing && enemy.alert <= 0) {
         enemy.chasing = false;
+        enemy.tracking = false;
       }
 
       let targetX;
@@ -349,6 +357,11 @@
         targetX = enemy.lastKnownX;
         targetY = enemy.lastKnownY;
         speed *= 1.28;
+      } else if (enemy.tracking) {
+        // Během odhalování nepokračuje v obchůzce, pouze drží hráče v kuželu.
+        targetX = player.x;
+        targetY = player.y;
+        speed = 0;
       } else {
         targetX = enemy.dir > 0 ? enemy.bx : enemy.ax;
         targetY = enemy.dir > 0 ? enemy.by : enemy.ay;
@@ -360,7 +373,9 @@
       }
 
       const targetAngle = Math.atan2(targetY - enemy.y, targetX - enemy.x);
-      const turnSpeed = enemy.chasing ? enemyVision.chaseTurnSpeed : enemyVision.patrolTurnSpeed;
+      const turnSpeed = enemy.chasing || enemy.tracking
+        ? enemyVision.chaseTurnSpeed
+        : enemyVision.patrolTurnSpeed;
       enemy.angle = turnTowards(enemy.angle, targetAngle, turnSpeed * dt);
 
       // Hlídka při prudkém obratu zpomalí, takže se neotáčí skokem ani neklouže bokem.
