@@ -1,0 +1,103 @@
+<!doctype html>
+<html lang="cs">
+  <head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <meta
+      name="description"
+      content="Spojař – arkádová 2D hra o vojenském spojaři, který pod palbou pokládá telefonní kabel."
+    />
+    <title>Spojař — Drž linku!</title>
+    <link rel="stylesheet" href="style.css" />
+  </head>
+  <body>
+    <main class="game-shell" aria-labelledby="game-title">
+      <header class="topbar">
+        <div class="identity">
+          <span class="unit-mark" aria-hidden="true">✦</span>
+          <div>
+            <p class="eyebrow">Delinfo uvádí</p>
+            <p class="eyebrow">POLNÍ LINKA / ÚSEK 09</p>
+            <h2 id="game-title" style="inline">SPOJAŘ</h2>
+          </div>
+        </div>
+
+        <div class="status" aria-label="Stav mise">
+          <span class="status-light" aria-hidden="true"></span>
+          <span id="missionStatus">PŘIPRAVEN K VÝBĚHU</span>
+        </div>
+      </header>
+
+      <section class="game-frame" aria-label="Herní plocha">
+        <canvas
+          id="gameCanvas"
+          width="1152"
+          height="648"
+          aria-label="Hra Spojař. Mezerníkem přeskakujte příkopy a překážky."
+        ></canvas>
+
+        <div class="canvas-hud" aria-hidden="true">
+          <div class="meter-panel">
+            <span class="hud-label">POLOŽENO</span>
+            <strong><span id="meters">0000</span> m</strong>
+          </div>
+          <div class="best-panel">
+            <span class="hud-label">REKORD</span>
+            <strong><span id="best">0000</span> m</strong>
+          </div>
+        </div>
+
+        <div class="overlay" id="startOverlay">
+          <div class="briefing-card">
+            <p class="stamp">NALÉHAVÉ</p>
+            <p class="mission-code">ROZKAZ 09—L</p>
+            <h2>Obnovte spojení.</h2>
+            <p class="briefing-copy">
+              Jednotka vpředu je bez linky. Běžte. Pokládejte kabel.
+              Nezastavujte se.
+            </p>
+            <div class="control-hint">
+              <span class="key" aria-hidden="true">MEZERNÍK</span>
+              <span>přeskočit překážku</span>
+            </div>
+            <button class="primary-button" id="startButton" type="button">
+              <span>ZAHÁJIT MISI</span>
+              <span aria-hidden="true">→</span>
+            </button>
+          </div>
+        </div>
+
+        <div class="overlay hidden" id="gameOverOverlay">
+          <div class="briefing-card result-card">
+            <p class="stamp danger">LINKA PŘERUŠENA</p>
+            <p class="mission-code">HLÁŠENÍ Z TERÉNU</p>
+            <h2 id="resultTitle">Mise skončila.</h2>
+            <div class="result-distance">
+              <span>Položený kabel</span>
+              <strong><span id="finalMeters">0</span> m</strong>
+            </div>
+            <p class="new-record hidden" id="newRecord">NOVÝ POLNÍ REKORD</p>
+            <button class="primary-button" id="restartButton" type="button">
+              <span>ZKUSIT ZNOVU</span>
+              <span aria-hidden="true">↻</span>
+            </button>
+          </div>
+        </div>
+
+        <div class="countdown hidden" id="countdown" aria-live="assertive"></div>
+        <div class="flash" id="flash" aria-hidden="true"></div>
+      </section>
+
+      <footer class="controls-bar">
+        <p><span class="dot" aria-hidden="true"></span> Rozkaz: udržet linku za každou cenu</p>
+        <button class="jump-button" id="jumpButton" type="button" aria-label="Skočit">
+          <span class="jump-icon" aria-hidden="true">↑</span>
+          <span>SKOK</span>
+        </button>
+        <p class="desktop-control"><kbd>MEZERNÍK</kbd> SKOK</p>
+      </footer>
+    </main>
+
+    <script src="game.js"></script>
+  </body>
+</html>
