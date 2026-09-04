@@ -76,6 +76,12 @@ button:focus-visible {
 .eyebrow { color: var(--amber); font-size: .68rem; font-weight: 700; letter-spacing: .16em; }
 
 .top-actions { display: flex; justify-content: flex-end; gap: 8px; }
+.topbar-logo {
+  width: 120px;
+  height: auto;
+  align-self: center;
+  object-fit: contain;
+}
 .icon-button {
   width: 38px;
   height: 38px;
@@ -286,6 +292,7 @@ button:focus-visible {
   .brand-mark { width: 32px; height: 32px; }
   .brand strong { font-size: .86rem; }
   .brand div span, .mission-line, .footer-line { display: none; }
+  .topbar-logo { width: 64px; }
   .play-area { border: 0; }
   .touch-controls { position: absolute; z-index: 7; inset: auto 12px 12px; display: flex; justify-content: space-between; pointer-events: none; }
   .touch-controls button { pointer-events: auto; touch-action: none; user-select: none; -webkit-user-select: none; border: 1px solid rgba(216,232,132,.48); color: var(--ink); background: rgba(8,13,8,.72); }
