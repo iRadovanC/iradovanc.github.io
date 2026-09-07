@@ -1,0 +1,89 @@
+<!doctype html>
+<html lang="cs">
+<head>
+  <meta charset="utf-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1, viewport-fit=cover">
+  <meta name="theme-color" content="#101716">
+  <meta name="description" content="Minuta, pohyblivé cíle a nekonečná letka. SIGNAL je malá dronová arkáda bez instalace.">
+  <title>SIGNAL — Dronová arkáda</title>
+  <link rel="icon" href="data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' viewBox='0 0 64 64'%3E%3Crect width='64' height='64' rx='16' fill='%23101716'/%3E%3Cpath d='M37 9 16 35h15l-4 20 22-28H34z' fill='%23d5fb78'/%3E%3C/svg%3E">
+  <link rel="stylesheet" href="styles.css">
+  <script defer src="game.js"></script>
+</head>
+<body>
+  <svg class="icon-library" aria-hidden="true" xmlns="http://www.w3.org/2000/svg">
+    <symbol id="i-signal" viewBox="0 0 24 24"><path d="m14 3-9 11h7l-2 7 9-12h-7z"/></symbol>
+    <symbol id="i-arrow" viewBox="0 0 24 24"><path d="M4 12h15m-6-6 6 6-6 6"/></symbol>
+    <symbol id="i-target" viewBox="0 0 24 24"><circle cx="12" cy="12" r="7"/><circle cx="12" cy="12" r="2"/><path d="M12 2v3m0 14v3M2 12h3m14 0h3"/></symbol>
+    <symbol id="i-clock" viewBox="0 0 24 24"><circle cx="12" cy="13" r="8"/><path d="M12 9v4l3 2M9 2h6m-3 0v3"/></symbol>
+    <symbol id="i-trophy" viewBox="0 0 24 24"><path d="M8 3h8v6a4 4 0 0 1-8 0V3ZM8 5H4v3a4 4 0 0 0 4 4m8-7h4v3a4 4 0 0 1-4 4m-4 1v6m-4 2h8m-6-2h4"/></symbol>
+    <symbol id="i-sound" viewBox="0 0 24 24"><path d="M4 9h4l5-4v14l-5-4H4V9Zm12-1a6 6 0 0 1 0 8m3-11a10 10 0 0 1 0 14"/></symbol>
+    <symbol id="i-muted" viewBox="0 0 24 24"><path d="M4 9h4l5-4v14l-5-4H4V9Zm13 0 5 6m0-6-5 6"/></symbol>
+    <symbol id="i-pause" viewBox="0 0 24 24"><path d="M8 5v14M16 5v14"/></symbol>
+    <symbol id="i-expand" viewBox="0 0 24 24"><path d="M9 3H3v6m12-6h6v6M3 15v6h6m12-6v6h-6"/></symbol>
+    <symbol id="i-drone" viewBox="0 0 24 24"><path d="m6 6 12 12M6 18 18 6"/><rect x="9" y="8" width="6" height="8" rx="2"/><circle cx="5" cy="5" r="3"/><circle cx="19" cy="5" r="3"/><circle cx="5" cy="19" r="3"/><circle cx="19" cy="19" r="3"/></symbol>
+    <symbol id="i-mouse" viewBox="0 0 24 24"><rect x="6" y="2" width="12" height="20" rx="6"/><path d="M12 3v6"/></symbol>
+    <symbol id="i-keyboard" viewBox="0 0 24 24"><rect x="2" y="5" width="20" height="14" rx="2"/><path d="M6 9h1m4 0h1m4 0h1M6 13h1m4 0h1m4 0h1M8 16h8"/></symbol>
+    <symbol id="i-touch" viewBox="0 0 24 24"><path d="M9 13V5a2 2 0 0 1 4 0v6l2-1 5 3v5l-4 4h-5l-6-7a2 2 0 0 1 3-2l1 1"/></symbol>
+  </svg>
+
+  <header class="site-header">
+    <a class="brand" href="./index.html" aria-label="SIGNAL — úvod">
+      <span class="brand-mark"><svg><use href="#i-signal"/></svg></span>
+      <span>SIGNAL<span class="brand-period">.</span></span>
+      <span class="brand-divider"></span><span class="brand-caption">DRONOVÁ ARKÁDA</span>
+    </a>
+    <div class="header-right"><span class="offline-badge"><i></i> Připraveno k letu</span><span class="version">VOL. 001</span></div>
+  </header>
+
+  <main>
+    <section class="intro" aria-labelledby="page-title">
+      <div><div class="eyebrow"><span></span> MALÁ HRA. VELKÉ SOUSTŘEDĚNÍ.</div><h1 id="page-title">Všechno je o <em>načasování.</em></h1><p>Najdi cíl. Srovnej dráhu. A tref ten správný moment.</p></div>
+      <div class="session-stats">
+        <div class="stat"><span class="stat-label"><svg><use href="#i-target"/></svg> ZÁSAHY</span><strong id="score">00</strong></div>
+        <div class="stat time-stat"><span class="stat-label"><svg><use href="#i-clock"/></svg> ZBÝVÁ ČASU</span><strong id="timer">01:00</strong></div>
+        <div class="stat"><span class="stat-label"><svg><use href="#i-trophy"/></svg> TVŮJ REKORD</span><strong id="best">00</strong></div>
+      </div>
+    </section>
+
+    <div class="game-layout">
+      <section class="arena" id="arena" aria-label="Herní plocha">
+        <canvas id="game" tabindex="0" aria-label="Dronová arkáda. Šipky vlevo a vpravo zatáčejí, nahoru zrychluje, dolů zpomaluje. P nebo Escape pozastaví hru.">Pro hraní je potřeba prohlížeč s podporou HTML canvas.</canvas>
+        <div class="arena-top">
+          <div class="arena-meta"><span class="sector"><i></i> Někde za Prostějovem</span><span class="arena-status" id="arena-status">ČEKÁM NA PILOTA</span></div>
+          <div class="round-clock" id="round-clock">
+            <span class="round-clock-label"><svg><use href="#i-clock"/></svg> DO KONCE KOLA</span>
+            <strong id="round-timer" role="timer" aria-label="Čas do konce kola" aria-live="off">01:00</strong>
+            <div class="round-clock-track" aria-hidden="true"><div id="round-progress"></div></div>
+          </div>
+        </div>
+        <div class="arena-bottom"><span><i class="live-dot"></i> <span id="flight-label">LETOVÝ SYSTÉM ONLINE</span></span><div class="arena-actions"><button id="sound-button" class="icon-button" type="button" aria-label="Zapnout zvuk" aria-pressed="false" title="Zapnout zvuk (M)"><svg><use href="#i-muted"/></svg></button><button id="pause-button" class="icon-button" type="button" aria-label="Pozastavit hru" title="Pauza (P / Esc)" disabled><svg><use href="#i-pause"/></svg></button><button id="fullscreen-button" class="icon-button" type="button" aria-label="Celá obrazovka" title="Celá obrazovka"><svg><use href="#i-expand"/></svg></button></div></div>
+
+        <div class="overlay" id="overlay">
+          <div class="start-screen" id="start-screen">
+            <div class="mission-pill"><span></span> TVOJE MINUTA ZAČÍNÁ TADY</div>
+            <h2>Malý dron.<br><span>Velká mise.</span></h2>
+            <p>Máš 60 sekund. Zachyť co nejvíc pohyblivých cílů.<br>Každý průlet je nová šance.</p>
+            <button class="primary-button" id="start-button" type="button">Jdeme létat <svg><use href="#i-arrow"/></svg></button>
+            <div class="start-hint">nebo stiskni <kbd>Enter</kbd></div>
+          </div>
+          <div class="pause-screen" id="pause-screen" hidden><div class="mission-pill">CHVÍLE NA NÁDECH</div><h2>Let pozastaven.</h2><p>Tvůj dron počká. Čas taky.</p><button class="primary-button" id="resume-button" type="button">Pokračovat v letu <svg><use href="#i-arrow"/></svg></button><button class="text-button" id="restart-button" type="button">Začít znovu</button></div>
+          <div class="result-screen" id="result-screen" hidden><div class="mission-pill" id="result-eyebrow">MISE DOKONČENA</div><h2 id="result-title">Dobrý let.</h2><p id="result-copy">Každý průlet se počítá.</p><div class="result-stats"><div><strong id="result-score">0</strong><span>ZÁSAHŮ</span></div><div><strong id="result-accuracy">0 %</strong><span>ÚSPĚŠNOST</span></div><div><strong id="result-streak">0</strong><span>NEJLEPŠÍ SÉRIE</span></div></div><button class="primary-button" id="replay-button" type="button">Ještě jeden let <svg><use href="#i-arrow"/></svg></button><div class="start-hint">nová minuta, nový rekord <kbd>Enter</kbd></div></div>
+        </div>
+        <div class="flight-feedback" id="feedback" aria-live="polite"></div>
+        <div class="mobile-flight-hint" id="mobile-hint">Táhni prstem pro řízení</div>
+      </section>
+
+      <aside class="sidebar">
+        <section class="mission-card"><div class="card-heading"><span>LETOVÝ PLÁN</span><span class="small-tag">01 / 01</span></div><div class="mission-icon"><svg><use href="#i-target"/></svg><span class="orbit-dot"></span></div><h2>Chyť svůj signál.</h2><p>Dron letí pořád vpřed.<br>Ty rozhoduješ, kde se potká s cílem.</p><div class="mission-specs"><div><span>Časový limit</span><strong>60 sekund</strong></div><div><span>Počet dronů</span><strong>Neomezený</strong></div><div><span>Úkol</span><strong>Co nejvíc zásahů</strong></div></div></section>
+        <section class="telemetry-card"><div class="card-heading"><span>TELEMETRIE</span><i class="live-dot"></i></div><div class="drone-info"><span class="drone-icon"><svg><use href="#i-drone"/></svg></span><div><span>AKTIVNÍ DRON</span><strong id="drone-number">DRN–001</strong></div><span class="drone-ready" id="drone-state">READY</span></div><div class="speed-label"><span>Rychlost letu</span><strong><span id="speed">0</span> <small>km/h</small></strong></div><div class="speed-track"><div id="speed-bar"></div></div><div class="flight-stats"><div><span>Minuté cíle</span><strong id="misses">00</strong></div><div><span>Úspěšnost</span><strong id="accuracy">—</strong></div></div></section>
+        <div class="tip"><span>↗</span><p><strong>Malý tip od věže</strong>Miř před cíl, ne přímo na něj. Je totiž pořád v pohybu.</p></div>
+      </aside>
+    </div>
+
+    <section class="controls" aria-label="Ovládání"><div class="controls-title">TVŮJ DRON.<br><strong>TVOJE OVLÁDÁNÍ.</strong></div><div class="control-item"><svg><use href="#i-mouse"/></svg><div><strong>Myš</strong><span>Pohybem řídíš, výškou kurzoru zrychluješ.</span></div></div><div class="control-item"><svg><use href="#i-keyboard"/></svg><div><strong>Šipky <span class="key-arrows">← ↑ ↓ →</span></strong><span>Do stran zatáčíš, nahoru a dolů měníš rychlost.</span></div></div><div class="control-item"><svg><use href="#i-touch"/></svg><div><strong>Dotyk</strong><span>Táhni po ploše. Dron tě následuje.</span></div></div></section>
+    <footer><span>Žádné instalace. Jen ty a další pokus.</span><span>STAY FOCUSED. <svg><use href="#i-signal"/></svg> KEEP FLYING.</span></footer>
+  </main>
+  <div class="sr-only" id="announcer" aria-live="polite"></div>
+</body>
+</html>
