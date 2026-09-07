@@ -1,0 +1,49 @@
+<!doctype html>
+<html lang="cs">
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1, viewport-fit=cover" />
+  <meta name="theme-color" content="#242d26" />
+  <meta name="description" content="Operace Šlendrián." />
+  <title>Operace Šlendrián</title>
+  <link rel="stylesheet" href="styles.css" />
+</head>
+<body>
+  <main class="game-shell" aria-label="Operace Šlendrián">
+    <canvas id="game" aria-label="Vojenský tábor. Miřte myší nebo šipkami, střílejte kliknutím či mezerníkem."></canvas>
+    <div class="vignette" aria-hidden="true"></div>
+    <div class="masthead"><span class="brand-mark">✦</span><span class="masthead-divider"></span><span>POLNÍ VYDÁNÍ</span></div>
+    <div class="sector-label"><i></i> TÁBOR ŠLENDRIÁN <span>49° N · 016° E</span></div>
+    <header class="hud">
+      <section class="score-panel"><span class="eyebrow">ZÁSLUHY O VLAST</span><strong id="score">000000</strong><small>REKORD <b id="highScore">000000</b></small></section>
+      <section class="clock-panel" aria-label="Zbývající čas"><span class="eyebrow">DO PADLA</span><strong id="time">01:00</strong><div class="time-track"><i id="timerProgress"></i></div></section>
+      <section class="combo-panel"><span class="eyebrow">STŘELECKÁ SÉRIE</span><strong id="combo">×1</strong><small>PŘESNOST <b id="accuracy">—</b></small></section>
+    </header>
+    <section id="overlay" class="overlay is-visible" aria-labelledby="overlayTitle">
+      <div class="briefing">
+        <div class="mission-tag"><span>TAJNÉ. SKORO.</span><b>ROZKAZ Č. 008</b></div>
+        <p class="overline">DELINFO PŘEDSTAVUJE</p>
+        <h1 id="overlayTitle">OPERACE<br /><em>ŠLENDRIÁN</em><span class="title-period">.</span></h1>
+        <div class="title-rule"><span></span><b>VELKÁ MISE. MALÁ KOMPETENCE.</b></div>
+        <p id="overlayText" class="lead">Drž pozici. Zachraň čest roty.<br />A hlavně netref kuchaře — oběd už tak visí na vlásku.</p>
+        <div id="missionFacts" class="mission-facts"><span><b>60</b> SEKUND CHAOSU</span><span><b>8</b> RAN V ZÁSOBNÍKU</span><span><b>0</b> KROKŮ ZPĚT</span></div>
+        <div id="result" class="result" hidden><span class="eyebrow">ZÁSLUHY O VLAST</span><strong id="finalScore">0</strong><p id="resultRank"></p><div class="result-stats"><span>ZÁSAHY <b id="resultHits">0</b></span><span>PŘESNOST <b id="resultAccuracy">0 %</b></span><span>MALÉRY <b id="resultMishaps">0</b></span></div><p id="newRecord" hidden>NOVÝ PLUKOVNÍ REKORD!</p></div>
+        <button id="startButton" class="primary-button" type="button"><span id="startButtonLabel">NARUKOVAT</span><b aria-hidden="true">↗</b></button>
+        <p id="startNote" class="start-note">Výcvik nebyl v rozpočtu. To dáš.</p>
+        <div class="controls"><span><kbd>MYŠ</kbd> MIŘ & STŘÍLEJ</span><span><kbd>R</kbd> PŘEBIJ</span><span><kbd>ESC</kbd> PAUZA</span></div>
+        <p class="keyboard-note">Také dotyk nebo šipky / WASD + mezerník.</p>
+      </div>
+      <div class="field-stamp" aria-hidden="true"><span>MINISTERSTVO</span><strong>ONO TO<br />NĚJAK DOPADNE</strong><span>ODBOR IMPROVIZACE</span></div>
+      <div class="field-caption"><i></i><span><b>AKTUÁLNÍ SITUACE</b> Morálka vysoká. Kvalifikace neověřena.</span></div>
+    </section>
+    <section id="pauseOverlay" class="pause-overlay" hidden aria-labelledby="pauseTitle"><div class="pause-card"><span class="eyebrow">TAKTICKÁ PŘESTÁVKA</span><h2 id="pauseTitle">ČAS NA EŠUS.</h2><p>Válka počká. Tentokrát.</p><button id="resumeButton" class="primary-button" type="button">ZPÁTKY NA POZICI <b>↗</b></button><p class="keyboard-note">Pokračuj také klávesou Esc.</p></div></section>
+    <aside id="radio" class="radio" aria-live="polite"><span class="radio-icon" aria-hidden="true">▂▅▃▇▂</span><div><span id="radioSpeaker" class="eyebrow">VELITELSTVÍ · KANÁL 07</span><p id="radioText">Drž pozici. Na pohyb nemáme formulář.</p></div></aside>
+    <div id="eventBanner" class="event-banner" aria-live="polite"></div>
+    <div id="message" class="message" aria-live="polite"></div>
+    <footer class="bottom-hud"><div class="health-panel"><span class="eyebrow">BOJESCHOPNOST</span><div id="armor" class="armor" aria-label="Odolnost 3 ze 3"><i>✚</i><i>✚</i><i>✚</i></div></div><div class="weapon-panel"><span class="eyebrow">VZ. 08 · PŘESVĚDČOVAČ</span><div><strong id="ammoCount">08</strong><span>/ 08</span><button id="reloadButton" type="button" title="Přebít (R)"><kbd>R</kbd> <span id="reloadText">PŘEBÍT</span></button></div><div id="ammo" class="ammo" aria-label="Munice 8 z 8"></div><div class="reload-track"><i id="reloadProgress"></i></div></div></footer>
+    <nav class="utility-controls" aria-label="Nastavení"><button id="soundToggle" type="button" aria-label="Vypnout zvuk" aria-pressed="false" title="Zvuk (M)"><svg viewBox="0 0 24 24" aria-hidden="true"><path d="M3 9v6h4l5 4V5L7 9H3Z"/><path class="sound-waves" d="M16 8a6 6 0 0 1 0 8m3-11a10 10 0 0 1 0 14"/></svg><span>ZVUK ZAP</span></button><button id="pauseButton" type="button" aria-label="Pozastavit hru" title="Pauza (Esc)">Ⅱ</button></nav>
+    <div class="edition-note">Sponzored by Delinfo</div>
+  </main>
+  <script src="audio.js"></script><script src="renderer.js"></script><script src="game.js"></script>
+</body>
+</html>
