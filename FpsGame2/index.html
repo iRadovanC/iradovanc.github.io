@@ -1,0 +1,48 @@
+<!doctype html>
+<html lang="cs">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1, viewport-fit=cover">
+  <meta name="theme-color" content="#101818">
+  <meta name="description" content="Nulový bod: Poslední signál. Braň stanoviště v arkádové FPS pro myš, klávesnici i dotyk. Funguje offline.">
+  <title>Nulový bod — Poslední signál</title>
+  <link rel="stylesheet" href="styles.css">
+</head>
+<body>
+  <main id="shell" class="game-shell" data-mode="menu">
+    <canvas id="game" aria-label="Bojiště. Míření myší nebo šipkami, střelba mezerníkem." tabindex="-1"></canvas>
+    <div class="vignette" aria-hidden="true"></div><div id="damage" aria-hidden="true"></div>
+    <header class="topbar">
+      <a class="brand" href="#" id="brand" aria-label="Nulový bod – pozastavit hru"><span class="brand-mark">N<span>Ø</span></span><span>NULOVÝ BOD<small>POSLEDNÍ SIGNÁL</small></span></a>
+      <div class="top-actions"><span class="offline"><i></i> STANOVIŠTĚ 07</span>
+        <button id="pauseButton" class="icon-button in-game" aria-label="Pozastavit hru" title="Pauza (Esc)">Ⅱ</button>
+        <button id="soundButton" class="icon-button" aria-label="Vypnout zvuk" aria-pressed="false" title="Zvuk (M)"><svg viewBox="0 0 24 24" aria-hidden="true"><path d="M4 9v6h4l5 4V5L8 9H4m12-1c3 2 3 6 0 8m3-11c5 4 5 10 0 14"/></svg></button>
+        <button id="settingsButton" class="icon-button" aria-label="Nastavení" title="Nastavení"><svg viewBox="0 0 24 24" aria-hidden="true"><path d="M5 4v16M12 4v16M19 4v16M2 8h6m1 8h6m1-9h6"/></svg></button>
+      </div>
+    </header>
+    <section class="hud in-game" aria-label="Stav mise">
+      <div class="score-panel"><span class="eyebrow">SKÓRE</span><strong id="score">000000</strong><span class="record">REKORD <b id="highScore">000000</b></span></div>
+      <div class="mission-panel"><div><span id="wave">VLNA 01 / 05</span><strong id="time">01:30</strong></div><div class="mission-track"><i id="timeBar"></i></div><span id="waveName">PRVNÍ KONTAKT</span></div>
+      <div class="combo-panel"><strong id="multiplier">×1</strong><div><span class="eyebrow">NÁSOBIČ</span><span id="streak">0 zásahů v sérii</span></div><div class="combo-track"><i id="comboBar"></i></div></div>
+    </section>
+    <div id="banner" class="banner" role="status"><span id="bannerLabel"></span><strong id="bannerTitle"></strong></div>
+    <div id="combatHint" class="combat-hint in-game">Drž spoušť pro dávku. Červený ukazatel značí blížící se útok.</div>
+    <div id="reloadIndicator" class="reload-indicator" hidden><div><span id="reloadLabel">PŘEBÍJENÍ</span><b>R / KLEPNI</b></div><div class="reload-track"><span class="perfect-zone"></span><i id="reloadProgress"></i></div><small id="reloadHelp">Stiskni znovu v barevném pásmu pro rychlé přebití.</small></div>
+    <footer class="combat-footer in-game">
+      <div class="vitals"><span class="eyebrow">ODOLNOST</span><div class="health-value"><span class="plus">+</span><strong id="health">100</strong><span>/ 100</span></div><div class="health-track"><i id="healthBar"></i></div></div>
+      <div class="abilities"><button id="focusButton" class="ability" aria-label="Zapnout soustředění (Q)" aria-pressed="false"><kbd>Q</kbd><span>SOUSTŘEDĚNÍ<small id="focusValue">100 %</small></span><i id="focusBar"></i></button><button id="grenadeButton" class="ability" aria-label="Hodit granát do zaměřovače (G)"><kbd>G</kbd><span>GRANÁT<small id="grenades">2 KUSY</small></span></button></div>
+      <button id="reloadButton" class="weapon-panel" aria-label="Přebít zbraň (R)"><span class="eyebrow">AR–07 <span>AUTO</span></span><span class="ammo-numbers"><strong id="ammo">24</strong><span>/ 24</span></span><span id="weaponStatus"><kbd>R</kbd> PŘEBÍT · NEOMEZENÁ ZÁSOBA</span></button>
+    </footer>
+    <section id="menu" class="screen menu-screen" aria-labelledby="menuTitle">
+      <div class="menu-content"><div class="chapter"><span>OPERACE 001</span><i></i> POSLEDNÍ SIGNÁL</div><h1 id="menuTitle">NULOVÝ<br><em>BOD<span>.</span></em></h1><p class="intro">Jedno stanoviště. Pět vln.<br>Udrž signál dalších <strong>90 sekund.</strong></p><button id="startButton" class="primary-button"><span>ZAHÁJIT OPERACI</span><span aria-hidden="true">↗</span></button><div class="menu-record"><span>OSOBNÍ REKORD</span><strong id="menuRecord">000000</strong></div></div>
+      <aside class="briefing"><span class="eyebrow">ROZKAZ PRO OBRÁNCE</span><h2>Drž pozici.<br>Počítej každý zásah.</h2><p>Eliminuj útočníky dřív, než vystřelí. Zásahy hlavy a nepřerušené série přinášejí více bodů.</p><div class="briefing-rules"><div><b>01</b><span>MÍŘENÍ <small>Myš / dotyk / šipky nebo WASD</small></span></div><div><b>02</b><span>PALBA <small>Drž kliknutí nebo mezerník</small></span></div><div><b>03</b><span>TAKTIKA <small>R přebití · G granát · Q zpomalení</small></span></div></div><span class="briefing-note">Pohyb není možný. Stanoviště je tvoje poslední linie.</span></aside>
+      <div class="menu-bottom"><span>SEKTOR 07 <i>/</i> OBRANA VYSÍLAČE</span><span>MYŠ · KLÁVESNICE · DOTYK</span></div>
+    </section>
+    <section id="pauseScreen" class="screen modal-screen" hidden aria-labelledby="pauseTitle"><div class="modal-card"><span class="eyebrow">OPERACE POZASTAVENA</span><h2 id="pauseTitle">Vydechni si.</h2><p>Čas i bojiště čekají na tebe.</p><button id="resumeButton" class="primary-button">POKRAČOVAT <span>→</span></button><button id="restartButton" class="text-button">Zahájit nové kolo</button></div></section>
+    <section id="resultsScreen" class="screen modal-screen" hidden aria-labelledby="resultTitle"><div class="modal-card result-card"><span id="resultTag" class="eyebrow">VÝSLEDEK OPERACE</span><h2 id="resultTitle">Signál udržen.</h2><div class="result-score"><span>CELKOVÉ SKÓRE</span><strong id="finalScore">000000</strong><b id="recordBadge" hidden>NOVÝ OSOBNÍ REKORD</b></div><div class="result-stats"><div><strong id="resultKills">0</strong><span>ELIMINACE</span></div><div><strong id="resultAccuracy">0 %</strong><span>PŘESNOST</span></div><div><strong id="resultHeads">0</strong><span>ZÁSAHY HLAVY</span></div><div><strong id="resultStreak">0</strong><span>NEJLEPŠÍ SÉRIE</span></div></div><p id="resultSummary"></p><button id="playAgainButton" class="primary-button">DALŠÍ OPERACE <span>↗</span></button><button id="menuButton" class="text-button">Zpět na úvod</button></div></section>
+    <section id="settingsScreen" class="screen modal-screen" hidden aria-labelledby="settingsTitle"><div class="modal-card settings-card"><span class="eyebrow">NASTAVENÍ</span><h2 id="settingsTitle">Podle tebe.</h2><label class="setting" for="volume">Hlasitost <output id="volumeValue">65 %</output></label><input id="volume" type="range" min="0" max="100" value="65"><label class="setting checkbox"><span>Atmosféra a hudební podkres</span><input id="ambience" type="checkbox" checked></label><label class="setting checkbox"><span>Otřesy a výrazné efekty</span><input id="effects" type="checkbox" checked></label><p class="setting-note">Esc nebo P pozastaví hru. Přepnutí na jiné okno ji pozastaví automaticky.</p><p id="storageNotice" class="storage-notice" hidden>Prohlížeč nepovolil ukládání. Rekord a nastavení zůstanou jen do zavření hry.</p><button id="closeSettingsButton" class="primary-button">HOTOVO <span>✓</span></button></div></section>
+    <div id="announcement" class="sr-only" aria-live="polite"></div>
+  </main>
+  <script src="game-core.js"></script><script src="audio.js"></script><script src="renderer.js"></script><script src="game.js"></script>
+</body>
+</html>
