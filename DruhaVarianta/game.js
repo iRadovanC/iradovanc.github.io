@@ -197,7 +197,7 @@
   }
 
   async function startCountdown() {
-    if (state.mode === "countdown" || state.mode === "running") return;
+    if (state.mode === "countdown" || state.mode === "running" || state.mode === "ending") return;
     initAudio();
     if (audioContext?.state === "suspended") await audioContext.resume();
     resetGame();
@@ -243,7 +243,7 @@
 
   function endGame(reason) {
     if (state.mode !== "running") return;
-    state.mode = "over";
+    state.mode = "ending";
     soldier.fallen = true;
     soldier.vy = -170;
     const rounded = Math.floor(state.distance);
@@ -261,7 +261,9 @@
     tone(120, 0.45, "sawtooth", 0.05);
     gameOverOverlayTimer = window.setTimeout(() => {
       gameOverOverlayTimer = null;
-      if (state.mode === "over") gameOverOverlay.classList.remove("hidden");
+      if (state.mode !== "ending") return;
+      state.mode = "over";
+      gameOverOverlay.classList.remove("hidden");
     }, 700);
   }
 
@@ -325,7 +327,7 @@
         state.explosionTimer = random(1.8, 3.4);
       }
       updateHud();
-    } else if (state.mode === "over") {
+    } else if (state.mode === "ending" || state.mode === "over") {
       soldier.runPhase += dt * 4;
       soldier.vy += GRAVITY * dt;
       soldier.y = Math.min(GROUND_Y + 30, soldier.y + soldier.vy * dt);
