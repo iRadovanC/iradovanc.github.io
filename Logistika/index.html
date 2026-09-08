@@ -1,0 +1,59 @@
+<!doctype html>
+<html lang="cs">
+<head>
+  <meta charset="utf-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1, viewport-fit=cover">
+  <meta name="theme-color" content="#283b2c">
+  <meta name="description" content="Kurýr 84 — arkádová jízda pod palbou. Doruč brašnu a dojeď co nejdál.">
+  <title>KURÝR 84 — Zvláštní zásilka</title>
+  <link rel="icon" href="data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' viewBox='0 0 40 40'%3E%3Crect width='40' height='40' rx='7' fill='%23293c2e'/%3E%3Cpath d='m10 29 10-19 10 19M15 22h10' stroke='%23f3f1e9' stroke-width='3' fill='none'/%3E%3C/svg%3E">
+  <link rel="stylesheet" href="style.css">
+</head>
+<body>
+  <header class="topbar">
+    <a class="brand" href="./" aria-label="Kurýr 84, úvod">
+      <span class="brand-mark" aria-hidden="true"><svg viewBox="0 0 36 36"><path d="m18 3 12 7v16l-12 7-12-7V10Z"/><path d="m11 22 7-13 7 13M14 18h8M18 23v5"/></svg></span>
+      <span>KURÝR<span class="brand-year">84</span><small>ODDĚLENÍ ZVLÁŠTNÍ PŘEPRAVY</small></span>
+    </a>
+    <div class="header-status"><span class="status-dot"></span> SPOJENÍ NAVÁZÁNO <span class="header-divider">/</span> <span>SEKTOR 07</span></div>
+    <button class="sound-button" id="soundButton" type="button" aria-pressed="false" title="Zapnout zvuk (M)"><svg viewBox="0 0 24 24" aria-hidden="true"><path d="M11 5 6 9H3v6h3l5 4V5Zm5 4 5 6m0-6-5 6"/></svg><span>ZVUK VYPNUTÝ</span></button>
+  </header>
+
+  <main>
+    <section class="intro" aria-labelledby="pageTitle">
+      <div><div class="eyebrow"><span class="orange-line"></span> ARKÁDOVÁ OPERACE / JEDEN KURÝR. ŽÁDNÝ DOPROVOD.</div><h1 id="pageTitle">Zvláštní zásilka<span>.</span></h1></div>
+      <p>Cesta je jediná možnost.<br>Dojeď dál, než čekají.</p>
+    </section>
+
+    <div class="game-layout">
+      <section class="game-panel" aria-label="Herní plocha">
+        <div class="game-toolbar"><div><span class="status-dot" id="runDot"></span><span id="runLabel">PŘIPRAVEN K VÝJEZDU</span></div><span class="map-label">LESNÍ ÚSEK <span>07—B</span></span><button id="pauseButton" class="pause-button" type="button" disabled aria-label="Pozastavit hru" title="Pauza (P / Escape)">Ⅱ</button></div>
+        <div class="canvas-wrap" id="canvasWrap">
+          <canvas id="game" tabindex="0" aria-label="Kurýr 84. Ovládej auto šipkami, myší nebo tažením prstu. Vyhýbej se palbě a drž se cesty.">Pro hraní je potřeba prohlížeč s podporou HTML Canvas.</canvas>
+          <div class="hud" aria-hidden="true"><div class="distance-block"><span class="hud-label">VZDÁLENOST</span><div><strong id="distance">0000</strong><span>m</span></div></div><div class="armor-block"><div><span class="hud-label">PANCÍŘ</span><strong id="armorValue">100<span>%</span></strong></div><div class="armor-track"><span id="armorBar"></span></div></div></div>
+          <div class="warning" id="warning" role="status"></div>
+          <div class="canvas-coordinate" aria-hidden="true">N 50° 04′ <span>•</span> E 14° 26′</div>
+          <div class="canvas-speed" aria-hidden="true"><strong id="speed">00</strong><span>KM/H</span></div>
+          <div class="overlay" id="overlay">
+            <div class="start-card" id="startCard"><div class="card-kicker" id="overlayKicker"><span></span> ZÁSILKA PŘIPRAVENA</div><h2 id="overlayTitle">Brašna musí projet.</h2><p id="overlayText">Udrž se na cestě. Vyhýbej se palbě.<br>A hlavně nezastavuj.</p><div class="result-stats" id="resultStats" hidden><div><span>UJETO</span><strong id="resultDistance">0 m</strong></div><div><span>OSOBNÍ REKORD</span><strong id="resultBest">0 m</strong></div></div><button class="start-button" id="startButton" type="button"><span id="startButtonText">VYRAZIT NA CESTU</span><span aria-hidden="true">↗</span></button><div class="start-hint" id="startHint">NEBO STISKNI MEZERNÍK</div></div>
+          </div>
+          <div class="damage-vignette" id="damageVignette"></div>
+        </div>
+        <div class="game-footer"><span><i></i> <span id="footerStatus">ČEKÁME NA TVŮJ ROZKAZ</span></span><span>REŽIM: <strong>PŘEŽÍT</strong></span></div>
+      </section>
+
+      <aside class="sidebar">
+        <section class="mission-card"><div class="section-label">01 / ZADÁNÍ MISE <span>↗</span></div><div class="briefcase" aria-hidden="true"><svg viewBox="0 0 180 110"><ellipse cx="90" cy="94" rx="61" ry="7" fill="#243729" opacity=".12"/><path d="M70 32v-9q0-7 7-7h26q7 0 7 7v9" fill="none" stroke="#573d2a" stroke-width="8"/><path d="m35 35 108-6 7 58-109 7Z" fill="#684b33"/><path d="m30 31 111-5 3 59-110 7Z" fill="#926b46" stroke="#493b2b" stroke-width="2"/><path d="m30 32 111-5 1 23-110 7Z" fill="#a67e53" stroke="#493b2b" stroke-width="2"/><path d="m46 31 3 58m75-61 3 57" stroke="#604830" stroke-width="7"/><path d="m44 49 10-1 1 12-10 1Zm76-4 10-1 1 12-10 1Z" fill="#d1b773" stroke="#574b32" stroke-width="2"/><path d="m36 65 3 19 18-1" fill="none" stroke="#ba9568" stroke-width="2"/><path d="m77 65 23-1 1 12-23 1Z" fill="#d8c69e"/><path d="m82 68 12-1m-11 5 7-1" stroke="#7e7258" stroke-width="1.5"/></svg><span class="stamp">PŘÍSNĚ TAJNÉ</span></div><h2>Doručit. Za každou cenu.</h2><p>V brašně je něco, co nepřítel nechce pustit dál. Ty se neptej. Ty řiď.</p><div class="mission-rule"><span>↗</span><span>Každý metr se počítá.<br><strong>Jak daleko se dostaneš?</strong></span></div></section>
+        <section class="record-card"><div><div class="section-label">OSOBNÍ REKORD</div><div class="record-number"><strong id="bestDistance">0</strong><span>m</span></div></div><svg viewBox="0 0 40 46" aria-hidden="true"><path d="M11 6h18v12c0 13-18 13-18 0V6ZM11 9H5v6c0 6 7 8 9 8M29 9h6v6c0 6-7 8-9 8M20 28v9m-9 4h18M14 37h12"/></svg></section>
+        <blockquote><span class="quote-mark">“</span><p>Rozkaz zněl jasně:<br><strong>Muž s koženou brašnou nesmí projet.</strong></p><footer>NEPŘÍTEL <span>—</span> ZACHYCENO NA VYSÍLAČCE</footer></blockquote>
+        <div class="field-note"><span>✳</span><p><strong>RADA Z TERÉNU</strong><br><span id="fieldTip">Červený kruh? Nečekej, co se stane. Změň směr.</span></p></div>
+      </aside>
+    </div>
+
+    <section class="controls" aria-label="Ovládání a tipy"><div class="control-item"><span class="control-icon keys" aria-hidden="true">↑<br>← ↓ →</span><div><h3>DRŽ SMĚR</h3><p>Šipky / WASD, myš nebo dotyk</p></div></div><div class="control-item"><svg class="control-icon" viewBox="0 0 36 36" aria-hidden="true"><circle cx="18" cy="18" r="10"/><path d="M18 3v8m0 14v8M3 18h8m14 0h8"/><circle cx="18" cy="18" r="3"/></svg><div><h3>ČTI TERÉN</h3><p>Mimo cestu ztrácíš rychlost i pancíř</p></div></div><div class="control-item"><svg class="control-icon" viewBox="0 0 36 36" aria-hidden="true"><path d="M8 8h20v22H8zM13 8V4h10v4M18 13v12m-6-6h12"/></svg><div><h3>VYDRŽ DÉLE</h3><p>Sbírej opravné sady a vyhni se zásahům</p></div></div></section>
+    <footer class="page-footer"><span>KURÝR 84 <span>/</span> MALÁ HRA. VELKÝ ROZKAZ.</span><span>BEZ DOPROVODU. BEZ ZÁRUKY.</span></footer>
+    <p class="sr-only" id="announcement" aria-live="polite"></p>
+  </main>
+  <script src="game.js"></script>
+</body>
+</html>
