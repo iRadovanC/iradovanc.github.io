@@ -73,6 +73,7 @@
   let particles = [];
   let embers = [];
   let audioContext = null;
+  let gameOverOverlayTimer = null;
 
   function formatMeters(value) {
     return String(Math.max(0, Math.floor(value))).padStart(4, "0");
@@ -202,6 +203,10 @@
     resetGame();
     state.mode = "countdown";
     startOverlay.classList.add("hidden");
+    if (gameOverOverlayTimer !== null) {
+      window.clearTimeout(gameOverOverlayTimer);
+      gameOverOverlayTimer = null;
+    }
     gameOverOverlay.classList.add("hidden");
     countdownEl.classList.remove("hidden", "go");
     missionStatusEl.textContent = "ODPOČET — ČEKEJTE";
@@ -254,7 +259,10 @@
       reason === "pit" ? "Příkop byl příliš široký." : "Překážka zastavila běh.";
     missionStatusEl.textContent = "SPOJENÍ PŘERUŠENO";
     tone(120, 0.45, "sawtooth", 0.05);
-    window.setTimeout(() => gameOverOverlay.classList.remove("hidden"), 700);
+    gameOverOverlayTimer = window.setTimeout(() => {
+      gameOverOverlayTimer = null;
+      if (state.mode === "over") gameOverOverlay.classList.remove("hidden");
+    }, 700);
   }
 
   function spawnExplosion() {
