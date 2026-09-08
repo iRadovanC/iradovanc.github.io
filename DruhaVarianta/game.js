@@ -264,7 +264,7 @@
       if (state.mode !== "ending") return;
       state.mode = "over";
       gameOverOverlay.classList.remove("hidden");
-    }, 700);
+    }, 1600);
   }
 
   function spawnExplosion() {
