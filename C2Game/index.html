@@ -1,0 +1,47 @@
+<!doctype html>
+<html lang="cs">
+<head>
+  <meta charset="utf-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1">
+  <meta name="theme-color" content="#151a18">
+  <link rel="icon" href="data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' viewBox='0 0 64 64'%3E%3Crect width='64' height='64' fill='%23171c1a'/%3E%3Cpath d='M15 13h8v38h-8zm13 0h8v38h-8zm13 0h8v38h-8z' fill='%23dfbd6a'/%3E%3C/svg%3E">
+  <title>C2 Dolphin — Operace Železný úsvit</title>
+  <link rel="stylesheet" href="style.css">
+</head>
+<body>
+  <div id="app">
+    <header class="topbar">
+      <a class="brand" href="./" aria-label="Iron Front"><span class="brand-mark">C2</span><span>DOLPHIN<span class="brand-light">system</span><small>POZEMNÍ SÍLY AČR</small></span></a>
+      <div class="mission-heading"><span class="eyebrow force-heading"><i class="czech-flag" aria-label="Česká republika"></i>AČR / MISE 01</span><strong>Železný úsvit <span class="live-dot"></span></strong></div>
+      <div class="resources">
+        <div class="resource"><span class="resource-icon">◈</span><div><small>BILANCE</small><strong id="credits">3 200</strong></div><span class="resource-sub" id="income">+ těžba</span></div>
+        <div class="resource power"><span class="resource-icon">ϟ</span><div><small>ENERGIE</small><strong id="power">45 / 150</strong></div><div class="power-bars" aria-hidden="true"><i></i><i></i><i></i><i></i><i></i></div></div>
+        <div class="resource army"><span class="resource-icon">♟</span><div><small>JEDNOTKY</small><strong id="population">7 <em>/ 60</em></strong></div></div>
+      </div>
+      <div class="top-actions"><button id="sound" class="icon-button" title="Zapnout zvuk" aria-label="Zapnout zvuk">♪<span class="sound-off">×</span></button><button id="help" class="icon-button" title="Ovládání" aria-label="Ovládání">?</button><button id="pause" class="icon-button" title="Pozastavit (Esc)" aria-label="Pozastavit">Ⅱ</button></div>
+    </header>
+    <main class="battle-layout">
+      <section id="battlefield" aria-label="Bojiště">
+        <canvas id="game" tabindex="0" aria-label="Herní mapa. Levým tlačítkem vybírejte, pravým vydávejte rozkazy."></canvas>
+        <div class="map-top"><div class="sector-label"><span class="live-dot"></span> NĚKDE NA VÝCHODĚ</div><div class="map-weather">☀ <span>24°C</span><span class="muted">VÍTR SV · 6 KM/H</span></div></div>
+        <div class="objectives"><div class="eyebrow"><span class="tiny-square"></span> OPERAČNÍ CÍLE <button id="briefing-button" title="Zobrazit zadání mise" aria-label="Zadání mise">↗</button></div><div><span class="objective-ring"></span>Zničte nepřátelské velitelství</div><div class="secondary"><span class="objective-ring"></span>Udržte vlastní velitelství v provozu</div></div>
+        <div id="map-tip" class="map-tip"><span>⌖</span> <span id="tip-text">Vyberte jednotky a vydejte rozkaz pravým tlačítkem.</span></div>
+        <div id="notifications" aria-live="polite"></div>
+        <div class="map-coordinates"><span id="coordinates">X 0460 · Y 1050</span><span>TERÉNNÍ SATELIT / ONLINE</span></div>
+        <div class="map-controls"><button id="home" title="Základna (mezerník)" aria-label="Zaměřit základnu">⌂</button><span></span><button id="zoom-out" title="Oddálit" aria-label="Oddálit">−</button><output id="zoom-label">75%</output><button id="zoom-in" title="Přiblížit" aria-label="Přiblížit">+</button></div>
+        <div id="placement-banner" hidden>UMÍSTĚTE BUDOVU <span>Levý klik · potvrdit &nbsp; Esc · zrušit</span></div>
+      </section>
+      <aside class="sidebar">
+        <section class="radar-panel"><div class="panel-heading"><span>TAKTICKÁ MAPA</span><span class="signal"><i></i><i></i><i></i><i></i></span></div><div class="radar-frame"><canvas id="minimap" width="280" height="174" aria-label="Minimapa. Kliknutím přesunete kameru."></canvas><span class="radar-corner tl"></span><span class="radar-corner br"></span><span class="radar-north">N ↑</span></div><div class="radar-legend"><span><i class="friendly"></i>AČR</span><span><i class="hostile"></i>NEZNÁMÉ SÍLY</span><span><i class="ore"></i>SUROVINY</span></div></section>
+        <section class="production-panel"><div class="panel-heading"><span>VELITELSKÉ CENTRUM</span><span class="online-label">ONLINE</span></div><div class="tabs" role="tablist" aria-label="Výroba"><button class="active" id="tab-buildings" role="tab" aria-selected="true" data-tab="buildings">▦ <span>BUDOVY</span></button><button id="tab-units" role="tab" aria-selected="false" data-tab="units">♟ <span>JEDNOTKY</span></button></div><div id="build-grid" class="build-grid"></div><div id="build-description" class="build-description">Rozšiřte základnu a připravte se k útoku.</div><div class="queue-heading"><span>VÝROBNÍ FRONTA</span><span id="queue-count">00</span></div><div id="queue" class="queue"><div class="queue-empty"><span>＋</span>Čekám na vaše rozkazy</div></div></section>
+        <section class="command-log"><div class="panel-heading"><span>RÁDIOVÉ SPOJENÍ</span><span class="live-dot"></span></div><div class="radio-message"><div class="radio-avatar">⌁</div><div><span class="eyebrow">VELITELSTVÍ <span id="radio-time">00:00</span></span><p id="radio-text">Předmostí zajištěno. Čekáme na rozkazy, veliteli.</p></div></div></section>
+        <div class="side-footer"><span class="live-dot"></span> SPOJENÍ ZABEZPEČENO <span>CH. 04</span></div>
+      </aside>
+    </main>
+    <footer class="bottom-panel"><section class="selection-info"><canvas id="selection-art" width="132" height="104"></canvas><div><span class="eyebrow" id="selection-type">ARMÁDA ČESKÉ REPUBLIKY</span><strong id="selection-name">Úderná skupina</strong><span id="selection-detail">Vyberte jednotku nebo budovu</span><div class="selection-health"><i id="selection-health"></i></div></div></section><section class="selected-units"><div class="panel-heading"><span id="selection-count">VÝBĚR JEDNOTEK</span><span id="selection-extra">SHIFT + KLIK · PŘIDAT</span></div><div id="unit-roster"></div></section><section class="orders"><div class="panel-heading"><span>ROZKAZY</span><span id="order-mode">PŘIPRAVEN</span></div><div class="order-buttons"><button id="attack" title="Útok za přesunu (A)"><b>⌖</b><span>ÚTOK</span><kbd>A</kbd></button><button id="stop" title="Zastavit (S)"><b>◼</b><span>STÁT</span><kbd>S</kbd></button><button id="repair" title="Opravit vybranou budovu (R)"><b>⚒</b><span>OPRAVIT</span><kbd>R</kbd></button><button id="select-army" title="Vybrat armádu (F2)"><b>⚑</b><span>ARMÁDA</span><kbd>F2</kbd></button></div></section></footer>
+    <div class="statusbar"><span><i class="live-dot"></i> <span id="game-status">OPERACE PROBÍHÁ</span></span><span class="control-hint">LMB výběr <b>·</b> RMB rozkaz <b>·</b> šipky pohyb mapy <b>·</b> kolečko zoom</span><div><button id="speed" title="Rychlost hry">1×</button><time id="time">00:00</time><span class="status-divider">|</span><span>IRON FRONT <span class="muted">v1.1</span></span></div></div>
+  </div>
+  <div id="modal" class="modal-backdrop" hidden><section class="modal" role="dialog" aria-modal="true" aria-labelledby="modal-title"><div class="modal-topline"><span>AČR / OPERAČNÍ VELITELSTVÍ</span><span>CZ — 01</span></div><div id="modal-content"></div><div id="modal-buttons" class="modal-buttons"></div></section></div>
+  <script src="game.js"></script>
+</body>
+</html>
