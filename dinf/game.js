@@ -6,11 +6,12 @@ const OfficeSim = (() => {
   const CURRENT_APP = 'ZPR';
   const ZBYSEK_LINES = [
     'Už to máš hotový?',
-    'I já rychleji spím než ty programuješ.',
+    'Budeš dneska i programovat nebo jen mlít pantem.',
     `Tak co, ${CURRENT_APP} už běží?`,
     'Máro, tohle mělo být na pět minut.',
-    'Peter se ptal, jestli už je to skoro.',
+    'Cabi se ptal, jestli by mohl vidět to skoro.',
     'Kdyby ses zasekl, zkus víc panikařit.',
+    'Dlouho jsi nenadával na Webexu, není ti nic?.',
   ];
   const ROOMS = {
     code: { name: 'Tvoje kancelář', icon: 'code', key: '1', marker: [315, 298], node: 'desk', description: 'Dva monitory, sedm kontextů a jeden skutečný úkol.', actions: ['code', 'refactor'] },
@@ -37,14 +38,14 @@ const OfficeSim = (() => {
     refactor: { title:'Refaktorovat', icon:'code', duration:12, hint:'+10 % kódu · −2 bugy · −7 energie', busy:'Přejmenováváš final_final na final_v2.', quote:'Teď je to architektonicky krásné.', effect:g=>{g.code+=10;g.bugs-=2;g.energy-=7;g.stress-=4;g.log('Refaktor hotový. Proměnné se konečně nestydí za jména.');} },
     coffee: { title:'Dvojité espresso', icon:'coffee', duration:4, hint:'+34 energie · +26 močák · +6 stres', busy:'Probíhá aktualizace kofeinu…', quote:'Java. Konečně ta dobrá.', effect:g=>{g.energy+=34;g.bladder+=26;g.stress+=6;g.coffees++;g.log('Espresso nainstalováno. Močák požaduje restart.');} },
     water: { title:'Sklenice vody', icon:'water', duration:3, hint:'+48 hydratace · +18 močák', busy:'Hydratuješ biologický hardware.', quote:'HTTP 200: voda teče.', effect:g=>{g.water+=48;g.bladder+=18;g.log('Hydratace doplněna. Kytka ti závidí.');} },
-    snack: { title:'Tajná sušenka', icon:'snack', duration:5, hint:'+18 energie · −7 stres · −5 hydratace', busy:'Vyjednáváš s poslední sušenkou.', quote:'To není oběd. To je workaround.', effect:g=>{g.energy+=18;g.stress-=7;g.water-=5;g.log('Sušenka snědena. Incident se neeskaluje.');} },
+    snack: { title:'Tajná sušenka co tu zapomněl Libor', icon:'snack', duration:5, hint:'+18 energie · −7 stres · −5 hydratace', busy:'Vyjednáváš s poslední sušenkou.', quote:'To není oběd. To je workaround. Proč vidím 12 prstů', effect:g=>{g.energy+=18;g.stress-=7;g.water-=5;g.log('Sušenka snědena. Incident se neeskaluje.');} },
     wc: { title:'Provést flush()', icon:'toilet', duration:5, hint:'Vyprázdní močák · −10 stres', busy:'Uvolňuješ operační paměť.', quote:'Garbage collection v praxi.', effect:g=>{g.bladder=0;g.stress-=10;g.log('flush() úspěšný. Žádný memory leak.');} },
-    rest: { title:'Osm sekund bez Slacku', icon:'sofa', duration:8, hint:'−30 stres · +12 energie', busy:'Díváš se do prázdna. Profesionálně.', quote:'Momentálně jsem v režimu zen.', effect:g=>{g.stress-=30;g.energy+=12;g.log('Duše obnovena ze zálohy.');} },
+    rest: { title:'Osm sekund bez urážení se na Webexu', icon:'sofa', duration:8, hint:'−30 stres · +12 energie', busy:'Díváš se do prázdna. Profesionálně.', quote:'Momentálně jsem v režimu zen.', effect:g=>{g.stress-=30;g.energy+=12;g.log('Duše obnovena ze zálohy.');} },
     pair: { title:'Poprosit kolegu o pomoc', icon:'team', duration:11, hint:'+14 % kódu · −2 bugy · −6 stres', busy:'Kolega se ptá, proč je všechno globální.', quote:'A zkoušel jsi to zapnout?', effect:g=>{g.code+=14;g.bugs-=2;g.stress-=6;g.energy-=4;g.log('Kolega našel chybu. Byl to tvůj komentář „TODO“.');} },
     test: { title:'Otestovat a opravit', icon:'bug', duration:10, hint:'−6 bugů · −5 energie · +4 stres', busy:'Testuješ i to, na co nikdo neklikne.', quote:'A když kliknu dvakrát?', effect:g=>{g.bugs-=6;g.energy-=5;g.stress+=4;g.log('QA odlovilo až šest bugů. Žádní nebyli zraněni.');} },
     report: { title:'Říct Peterovi „jsme skoro hotoví“', icon:'briefcase', duration:7, hint:'+12 důvěra · +8 stres · cooldown 60 herních minut', busy:'Překládáš technický dluh do optimismu.', quote:'Všechno jde podle roadmapy.', effect:g=>{g.reputation+=12;g.stress+=8;g.reportAfter=g.time+60;g.log('Peter je spokojený. S realitou se zatím nepotkal.');} },
     meeting: { title:'Připojit se k meetingu', icon:'meeting', duration:10, hint:'+9 důvěra · +12 stres · −5 energie', busy:'Říkáš „souhlasím“ ve správných intervalech.', quote:'Slyšíme se? Vidíte můj screen?', effect:(g,a)=>{const m=g.meetings.find(m=>m.id===a.meetingId);if(m){m.status='done';g.reputation+=9;g.stress+=12;g.energy-=5;g.attended++;g.log('Meeting skončil. Závěr: potřebujeme další meeting.');}} },
-    deploy: { title:'Nasadit do produkce', icon:'rocket', duration:4, hint:'Vyžaduje 100 % kódu a nejvýš 2 bugy', busy:'Držíš palce. CI/CD dělá to ostatní.', quote:'Pátek je ideální den na deploy.', effect:g=>{if(g.code>=100&&g.bugs<=2){g.shipped=true;g.finish(true,'Release je venku. A ty taky.');}else{g.log('CI zastavilo nasazení: během buildu přibyly bugy.',true);g.notify('BUILD NEPROŠEL','Oprav nové bugy v QA a zkus nasazení znovu.');}} },
+    deploy: { title:'Nasadit do produkce', icon:'rocket', duration:4, hint:'Vyžaduje 100 % kódu a nejvýš 2 bugy', busy:'Držíš palce. CI/CD a.k.a Miloš se Sazym dělá to ostatní.', quote:'Pátek je ideální den na deploy.', effect:g=>{if(g.code>=100&&g.bugs<=2){g.shipped=true;g.finish(true,'Release je venku. A ty taky.');}else{g.log('CI zastavilo nasazení: během buildu přibyly bugy.',true);g.notify('BUILD NEPROŠEL','Oprav nové bugy v QA a zkus nasazení znovu.');}} },
   };
   function shortestPath(start,end){
     const dist=Object.fromEntries(Object.keys(NODES).map(k=>[k,Infinity])),prev={},todo=new Set(Object.keys(NODES));dist[start]=0;
@@ -132,10 +133,10 @@ const OfficeSim = (() => {
     }
     randomEvent(){
       const events=[
-        ['SLACK: @HERE','„Máš minutku?“ Ztrácíš jen nervy. +5 stres.',()=>{this.stress+=5;}],
+        ['WEBEX: @Cabi','„Máš minutku?“ Ztrácíš jen nervy. +5 stres.',()=>{this.stress+=5;}],
         ['NAŠEL SE BUG','QA zadalo do jména emoji. +2 bugy.',()=>{this.bugs+=2;}],
         ['MALÉ VÍTĚZSTVÍ','Kolega vyřešil tvoje TODO. +6 % kódu.',()=>{this.code+=6;}],
-        ['POZDRAV OD KLIENTA','„Vypadá to dobře!“ +6 důvěra, −5 stres.',()=>{this.reputation+=6;this.stress-=5;}],
+        ['POZDRAV Z LIPNÍKA','„Spadlo to, když jsme to upustili!“ -6 důvěra, +5 stres.',()=>{this.reputation-=6;this.stress+=5;}],
         ['POŽADAVEK NA POSLEDNÍ CHVÍLI','„A umělo by to i AI?“ +6 stres.',()=>{this.stress+=6;}],
       ];
       const event=events[(this.eventIndex+Math.floor(this.random()*2))%events.length];this.eventIndex++;event[2]();this.notify(event[0],event[1]);this.log(event[1]);
@@ -172,6 +173,7 @@ if(typeof document!=='undefined')(() => {
   document.querySelectorAll('[data-icon]').forEach(e=>e.innerHTML=icon(e.dataset.icon));
   let game=new Game(),seenRevision=-1,seenArrival=0,openOnArrival=false,zoom=1,sound=false,audioCtx=null,last=0,lastHud=0,shownResult=false,speechLast='',zbysekSpeechLast='',toastUntil=0,timeJumpTimer=null;
   const canvas=$('world'),ctx=canvas.getContext('2d'),reducedMotion=matchMedia('(prefers-reduced-motion: reduce)').matches;
+  const maraFace=new Image();maraFace.decoding='async';maraFace.src='assets/mara-face.png';
   const markers=$('room-markers');
   for(const [id,room] of Object.entries(ROOMS)){const b=document.createElement('button');b.className='room-marker';b.dataset.room=id;b.style.left=`${room.marker[0]/1536*100}%`;b.style.top=`${room.marker[1]/1024*100}%`;b.innerHTML=`${icon(room.icon)}<span class="name">${room.name}</span><span class="key">${room.key}</span>`;b.title=`${room.key} · ${room.name}`;b.setAttribute('aria-label',`Jít: ${room.name}`);b.addEventListener('click',()=>travel(id));markers.append(b);}
   function beep(freq=440,duration=.08){if(!sound)return;try{audioCtx ||= new (window.AudioContext||window.webkitAudioContext)();if(audioCtx.state==='suspended')audioCtx.resume();const osc=audioCtx.createOscillator(),gain=audioCtx.createGain();osc.type='sine';osc.frequency.value=freq;gain.gain.setValueAtTime(.035,audioCtx.currentTime);gain.gain.exponentialRampToValueAtTime(.001,audioCtx.currentTime+duration);osc.connect(gain);gain.connect(audioCtx.destination);osc.start();osc.stop(audioCtx.currentTime+duration);}catch{/* Audio is optional. */}}
@@ -241,9 +243,9 @@ if(typeof document!=='undefined')(() => {
     ctx.strokeStyle='#3c4b4e';ctx.lineWidth=7;ctx.lineCap='round';ctx.beginPath();ctx.moveTo(-5,-20);ctx.lineTo(-6+step,-3);ctx.moveTo(6,-20);ctx.lineTo(7-step,-3);ctx.stroke();roundRect(-11+step,-4,10,5,2,'#faf3de');roundRect(3-step,-4,10,5,2,'#faf3de');
     ctx.fillStyle=shirt;ctx.beginPath();ctx.moveTo(-11,-43);ctx.quadraticCurveTo(0,-48,11,-43);ctx.lineTo(12,-22);ctx.quadraticCurveTo(0,-17,-12,-22);ctx.closePath();ctx.fill();
     ctx.strokeStyle=shirt;ctx.lineWidth=7;ctx.beginPath();ctx.moveTo(-10,-40);ctx.lineTo(-15-step*.6,-28);ctx.moveTo(10,-40);ctx.lineTo(15+step*.6,-28);ctx.stroke();ctx.fillStyle='#eac1a0';for(const dx of [-15-step*.6,15+step*.6]){ctx.beginPath();ctx.arc(dx,-25,3.2,0,Math.PI*2);ctx.fill();}
-    roundRect(-3,-49,7,8,2,'#dab28d');ctx.fillStyle='#eac19d';ctx.beginPath();ctx.ellipse(facing*1.5,-56,10,12,0,0,Math.PI*2);ctx.fill();
-    ctx.fillStyle='#51473d';ctx.beginPath();ctx.ellipse(-1,-62,11,8,-.15,Math.PI,Math.PI*2);ctx.lineTo(10,-56);ctx.lineTo(7,-62);ctx.lineTo(-4,-62);ctx.lineTo(-9,-53);ctx.closePath();ctx.fill();
-    ctx.strokeStyle='#3d4941';ctx.lineWidth=1.6;ctx.beginPath();ctx.roundRect(-7+facing*2,-58,6,5,1);ctx.roundRect(1+facing*2,-58,6,5,1);ctx.moveTo(-1+facing*2,-56);ctx.lineTo(1+facing*2,-56);ctx.stroke();
+    roundRect(-3,-49,7,8,2,'#dab28d');
+    if(lead&&maraFace.complete&&maraFace.naturalWidth)ctx.drawImage(maraFace,-30,-96,60,60);
+    else{ctx.fillStyle='#eac19d';ctx.beginPath();ctx.ellipse(facing*1.5,-56,10,12,0,0,Math.PI*2);ctx.fill();ctx.fillStyle='#51473d';ctx.beginPath();ctx.ellipse(-1,-62,11,8,-.15,Math.PI,Math.PI*2);ctx.lineTo(10,-56);ctx.lineTo(7,-62);ctx.lineTo(-4,-62);ctx.lineTo(-9,-53);ctx.closePath();ctx.fill();ctx.strokeStyle='#3d4941';ctx.lineWidth=1.6;ctx.beginPath();ctx.roundRect(-7+facing*2,-58,6,5,1);ctx.roundRect(1+facing*2,-58,6,5,1);ctx.moveTo(-1+facing*2,-56);ctx.lineTo(1+facing*2,-56);ctx.stroke();}
     if(lead){ctx.fillStyle='#ecd9bb';ctx.fillRect(-1,-41,2,15);roundRect(-4,-31,7,8,1,'#f5efd8');ctx.fillStyle='#6e8d6a';ctx.fillRect(-2,-29,3,2);}
     ctx.restore();
   }
@@ -258,7 +260,7 @@ if(typeof document!=='undefined')(() => {
     const actors=[...npcs.map(n=>({...n,lead:false})),{x:game.actor.x,y:game.actor.y,c:'#ce714c',s:.96,lead:true}].sort((a,b)=>a.y-b.y);
     for(const a of actors){drawPerson(a.x,a.y,a.c,a.s,a.zbysek&&z.path.length&&!game.paused&&!dialogOpen()?t*.012:0,a.lead?game.actor.facing:a.facing??-1,a.lead);if(a.label)drawNameTag(a.x+(a.label==='Peter'?46:0),a.y+(a.label==='Peter'?34:0),a.label,a.zbysek?'#496b79':'#665f7d');}
     const {x,y}=game.actor;ctx.strokeStyle='#d28655';ctx.lineWidth=2.4;ctx.beginPath();ctx.ellipse(x,y+3,22+pulse*10,10+pulse*4,0,0,Math.PI*2);ctx.stroke();
-    ctx.fillStyle='#ce6947';ctx.beginPath();ctx.moveTo(x-5,y-79);ctx.lineTo(x+5,y-79);ctx.lineTo(x,y-72);ctx.fill();
+    ctx.fillStyle='#ce6947';ctx.beginPath();ctx.moveTo(x-6,y-109);ctx.lineTo(x+6,y-109);ctx.lineTo(x,y-101);ctx.fill();
     if(game.action){const progress=game.action.elapsed/game.action.duration;ctx.fillStyle='#faf7e9';ctx.beginPath();ctx.arc(x+22,y-62,11,0,Math.PI*2);ctx.fill();ctx.strokeStyle='#d9e2cd';ctx.lineWidth=3;ctx.beginPath();ctx.arc(x+22,y-62,8,0,Math.PI*2);ctx.stroke();ctx.strokeStyle='#6f8b60';ctx.beginPath();ctx.arc(x+22,y-62,8,-Math.PI/2,progress*Math.PI*2-Math.PI/2);ctx.stroke();}
     const speech=$('speech');if(game.speech&&game.time<game.speechUntil){if(speechLast!==game.speech){speech.textContent=game.speech;speechLast=game.speech;}speech.hidden=false;speech.style.left=`${x/1536*100}%`;speech.style.top=`${(y-91)/1024*100}%`;}else speech.hidden=true;
     const zSpeech=$('zbysek-speech');if(z.speech&&game.time<z.speechUntil){if(zbysekSpeechLast!==z.speech){zSpeech.querySelector('span').textContent=z.speech;zbysekSpeechLast=z.speech;}zSpeech.hidden=false;zSpeech.style.left=`${z.x/1536*100}%`;zSpeech.style.top=`${(z.y-96)/1024*100}%`;}else zSpeech.hidden=true;

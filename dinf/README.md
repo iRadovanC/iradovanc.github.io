@@ -46,6 +46,7 @@ Tlačítka v pravém dolním rohu mapy přibližují zobrazení a přepínají p
 - `style.css` — responzivní styl pro desktop i mobil.
 - `game.js` — samostatný herní model, navigace, Canvas postavy a obsluha rozhraní. Aktuálně vyvíjená aplikace je nastavena jedinou konstantou `CURRENT_APP`.
 - `assets/office.png` — izometrické prostředí vytvořené vestavěným Imagegen.
+- `assets/mara-face.png` — transparentní fotografický výřez obličeje hlavního programátora.
 - `assets/PROMPT.md` — finální prompt použitý pro generování prostředí.
 - `tests/game.test.js` — ověření průchodnosti místností, akcí, pauzy, meetingů, potřeb, nasazení a vítězného průchodu celou hrou.
 
