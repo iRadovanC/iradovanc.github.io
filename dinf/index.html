@@ -1,0 +1,65 @@
+<!doctype html>
+<html lang="cs">
+<head>
+  <meta charset="utf-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1">
+  <meta name="theme-color" content="#f5f3ec">
+  <title>Ještě jeden meeting — simulátor tech leada</title>
+  <link rel="stylesheet" href="style.css">
+</head>
+<body>
+  <div class="app">
+    <header class="topbar">
+      <a class="brand" href="./" aria-label="Ještě jeden meeting, začátek"><span class="brand-icon">&gt;_</span><span>almost<span class="brand-dot">.</span>done<small>SOFTWARE & JINÉ NEDODĚLKY</small></span></a>
+      <div class="edition"><span class="live-dot"></span> KANCELÁŘSKÝ SIMULÁTOR <span class="edition-sep">/</span> PÁTEČNÍ EDICE</div>
+      <div class="header-actions"><button class="focus-button" id="focus-button" title="Přizpůsobit hru výšce okna" aria-pressed="false">⛶ <span>Herní režim</span></button><button class="icon-button" id="sound-button" title="Zapnout zvuk" aria-label="Zapnout zvuk">♪<span class="sound-slash"></span></button><button class="help-button" id="help-button"><span>?</span> Jak přežít</button></div>
+    </header>
+
+    <main>
+      <section class="intro"><div><div class="eyebrow">MALÁ HRA O VELKÝCH PRIORITÁCH</div><h1>Ještě jeden <em>meeting.</em></h1><p>Jsi tech lead. Kód se sám nenapíše. A močák se sám nevyprázdní.</p></div><div class="day-chip"><span class="calendar-icon">17</span><div>PÁTEK<small>Den nasazení. Samozřejmě.</small></div></div></section>
+
+      <div class="game-layout">
+        <div class="play-column">
+          <section class="vitals" aria-label="Tvoje potřeby">
+            <div class="vital" data-stat="energy"><div class="vital-top"><span><i data-icon="energy"></i> Energie</span><strong id="energy-value">86<span>%</span></strong></div><div class="meter"><div id="energy-bar"></div></div><small id="energy-note">Ještě věříš v čistý kód.</small></div>
+            <div class="vital" data-stat="water"><div class="vital-top"><span><i data-icon="water"></i> Hydratace</span><strong id="water-value">74<span>%</span></strong></div><div class="meter"><div id="water-bar"></div></div><small id="water-note">Káva není vodní režim.</small></div>
+            <div class="vital" data-stat="bladder"><div class="vital-top"><span><i data-icon="toilet"></i> Močový měchýř</span><strong id="bladder-value">24<span>%</span></strong></div><div class="meter"><div id="bladder-bar"></div></div><small id="bladder-note">Zatím žádný incident.</small></div>
+            <div class="vital" data-stat="stress"><div class="vital-top"><span><i data-icon="stress"></i> Stres</span><strong id="stress-value">18<span>%</span></strong></div><div class="meter"><div id="stress-bar"></div></div><small id="stress-note">Produkce podezřele mlčí.</small></div>
+          </section>
+
+          <section class="office-card" aria-label="Herní kancelář">
+            <div class="office-toolbar"><div><span class="floor-icon">◇</span><strong>PATRO 01</strong><span class="toolbar-divider"></span>Vývoj & lehká panika</div><span class="online"><span class="live-dot"></span> TÝM JE ONLINE</span></div>
+            <div class="scene-viewport" id="scene-viewport">
+              <div class="scene" id="scene"><img src="assets/office.png" alt="Izometrická kancelář se zasedačkou, pracovnou, ředitelnou, kuchyňkou, toaletou, kolegy a QA laboratoří" draggable="false"><canvas id="world" width="1536" height="1024" aria-label="Pohyb Máry a Zbyška po kanceláři"></canvas><div id="room-markers"></div><div id="speech" class="speech" hidden></div><div id="zbysek-speech" class="speech npc-speech" hidden><strong>ZBYŠEK</strong><span></span></div></div>
+              <div class="scene-caption"><span class="mini-person"></span> <strong>Mára (ty)</strong> · hlavní programátor</div>
+              <div class="map-tools"><button id="labels-button" title="Zobrazit nebo skrýt popisky" aria-label="Zobrazit nebo skrýt popisky" aria-pressed="true">⌖</button><button id="zoom-out" title="Oddálit" aria-label="Oddálit">−</button><span id="zoom-value">100%</span><button id="zoom-in" title="Přiblížit" aria-label="Přiblížit">+</button></div>
+              <div id="event-toast" class="event-toast" role="status" hidden></div>
+            </div>
+            <div class="action-strip"><div class="location-icon" id="location-icon" data-icon="code"></div><div class="action-text"><span id="location-label">Tvoje kancelář</span><strong id="action-label">Páteční release na tebe čeká.</strong><div class="action-track" id="action-track" hidden><div id="action-progress"></div></div></div><button class="primary compact" id="context-button">Začít směnu <span>↗</span></button><button id="cancel-button" class="cancel-button" aria-label="Zrušit činnost" title="Zrušit činnost" hidden>×</button></div>
+          </section>
+          <div class="bottom-controls"><span><kbd>1</kbd>–<kbd>8</kbd> místnosti <span class="control-dot">·</span> <kbd>E</kbd> akce <span class="control-dot">·</span> <kbd>mezerník</kbd> pauza</span><span>Klikni na místnost. Zachraň pátek. <span class="arrow-small">↗</span></span></div>
+        </div>
+
+        <aside class="sidebar">
+          <section class="shift-card" id="shift-card"><div class="section-heading"><span>TVÁ SMĚNA</span><span id="state-badge">PŘIPRAVEN?</span></div><div class="clock-row"><strong id="game-clock">09<span>:</span>00</strong><span id="time-jump-badge" class="time-jump-badge" role="status" hidden>+0 MIN</span><button class="pause-button" id="pause-button" aria-label="Spustit směnu" title="Spustit směnu">▶</button></div><div class="day-track"><div id="day-progress"></div></div><div class="day-hours"><span>09:00 · velké plány</span><span>17:00 · svoboda</span></div><div class="reputation"><span><i data-icon="star"></i> Důvěra vedení</span><strong id="reputation-value">80 <span>/ 100</span></strong></div></section>
+
+          <section class="release-card"><div class="section-heading"><span>PÁTEČNÍ MISE</span><span class="version">v1.0.asi</span></div><h2>Dostat to do produkce.</h2><p>A ideálně tam nic nezapálit.</p><div class="release-heading"><span>Hotový kód</span><strong id="code-value">0 <span>/ 100 %</span></strong></div><div class="release-meter"><div id="code-bar"></div></div><div class="release-meta"><span><i data-icon="bug"></i><strong id="bug-count">6</strong> otevřených bugů</span><span class="deadline">do 17:00</span></div><div class="mission-tip" id="mission-tip">Napiš kód → otestuj v QA → nasaď.<br>Co by se mohlo pokazit?</div></section>
+
+          <section class="agenda-card"><div class="section-heading"><span>TOHLE MOHL BÝT E-MAIL</span><i data-icon="calendar"></i></div><div id="agenda"></div></section>
+
+          <section class="activity-card"><div class="section-heading"><span>KANCELÁŘSKÝ ŠUM</span><span class="feed-dot"></span></div><div id="activity-log" role="log" aria-live="polite"></div></section>
+        </aside>
+      </div>
+      <footer><span>Všechny postavy jsou smyšlené. Ty meetingy bohužel ne.</span><span>BUILT WITH COFFEE <span>☕</span> & VANILLA JS</span></footer>
+    </main>
+  </div>
+
+  <dialog id="welcome-dialog" class="game-dialog"><button class="dialog-close" data-close="welcome-dialog" aria-label="Zavřít pravidla">×</button><div class="dialog-eyebrow">VÍTEJ V ALMOST.DONE</div><span class="dialog-art">&gt;_<span>☕</span></span><h2>Velká moc.<br><em>Malý močový měchýř.</em></h2><p>Jsi Mára, hlavní programátor. Do 17:00 musíš dostat release do produkce. Máš přibližně 5 minut. A pozvánku na tři „rychlé“ meetingy.</p><div class="rules-grid"><div><i data-icon="code"></i><strong>Dodělej release</strong><span>Piš kód u svého stolu. V QA sniž bugy na 2 nebo méně a klikni na Nasadit.</span></div><div><i data-icon="coffee"></i><strong>Spravuj lidský hardware</strong><span>Káva dodá energii, voda hydrataci. Obojí se časem ozve. WC je důležitější než KPI.</span></div><div><i data-icon="calendar"></i><strong>Přežij porady</strong><span>Přijď do označené místnosti včas a spusť meeting. Absence stojí důvěru vedení.</span></div><div><i data-icon="stress"></i><strong>Neshoř jako produkce</strong><span>Na pohovce si odpočiň. Nulová energie, nulová hydratace, plný močák či stres mají následky.</span></div></div><label class="game-option"><input type="checkbox" id="time-skip-option" checked><span><strong>Rychlé činnosti</strong><small>Po výběru se činnost odsimuluje a herní hodiny přeskočí o potřebný čas.</small></span></label><div class="welcome-tip"><strong>Klikni na místnost → dojdi tam → vyber činnost.</strong><br>Hra se při přepnutí do jiného okna sama pozastaví.</div><button id="start-button" class="primary">Jdu zachránit pátek <span>→</span></button><small class="dialog-foot">Žádné instalace. Žádné závislosti. Jen ty a technický dluh.</small></dialog>
+
+  <dialog id="room-dialog" class="room-dialog"><button class="dialog-close" data-close="room-dialog" aria-label="Zavřít nabídku">×</button><div class="dialog-eyebrow" id="room-kicker">TVŮJ DALŠÍ KROK</div><h2 id="room-title"></h2><p id="room-description"></p><div id="room-actions"></div><small class="room-hint" id="room-hint">Činnost posune herní hodiny. Aspoň něco dnes poběží rychle.</small></dialog>
+
+  <dialog id="result-dialog" class="game-dialog result-dialog"><div class="dialog-eyebrow" id="result-eyebrow">KONEC SMĚNY</div><div class="result-symbol" id="result-symbol">✓</div><h2 id="result-title"></h2><p id="result-description"></p><div class="result-stats" id="result-stats"></div><div class="best-score" id="best-score"></div><button id="restart-button" class="primary">Ještě jeden pátek <span>↻</span></button></dialog>
+
+  <script src="game.js"></script>
+</body>
+</html>
