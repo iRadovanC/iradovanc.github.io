@@ -1,0 +1,147 @@
+<!doctype html>
+<html lang="cs">
+<head>
+  <meta charset="utf-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1, viewport-fit=cover">
+  <meta name="theme-color" content="#f4f2e9">
+  <title>Skřítek Bugísek — C2 demo na hraně</title>
+  <link rel="stylesheet" href="style.css">
+  <link rel="stylesheet" href="presentation.css">
+  <script src="engine.js" defer></script>
+  <script src="map-renderer.js" defer></script>
+  <link rel="stylesheet" href="c2.css">
+  <link rel="stylesheet" href="layout.css">
+  <link rel="stylesheet" href="portrait.css">
+  <script src="c2-presentation.js" defer></script>
+  <script src="game.js" defer></script>
+</head>
+<body>
+  <svg class="icon-library" xmlns="http://www.w3.org/2000/svg" aria-hidden="true"><defs>
+    <symbol id="i-pin" viewBox="0 0 24 24"><path d="M20 10c0 6-8 12-8 12S4 16 4 10a8 8 0 1 1 16 0Z"/><circle cx="12" cy="10" r="2.5"/></symbol>
+    <symbol id="i-bug" viewBox="0 0 24 24"><rect x="7" y="7" width="10" height="14" rx="5"/><path d="M9 7V5a3 3 0 0 1 6 0v2M12 8v13M3 9l4 2M21 9l-4 2M3 16h4m10 0h4M5 22l3-3m8 0 3 3"/></symbol>
+    <symbol id="i-tablet" viewBox="0 0 24 24"><rect x="3" y="5" width="18" height="14" rx="2"/><path d="M18 11v2"/></symbol>
+    <symbol id="i-people" viewBox="0 0 24 24"><circle cx="9" cy="8" r="3"/><path d="M3 21v-3a6 6 0 0 1 12 0v3M17 5a3 3 0 0 1 0 6m1 3a5 5 0 0 1 3 4v3"/></symbol>
+    <symbol id="i-sound" viewBox="0 0 24 24"><path d="m11 4-6 5H2v6h3l6 5ZM15 8a6 6 0 0 1 0 8m3-11a10 10 0 0 1 0 14"/></symbol>
+    <symbol id="i-mute" viewBox="0 0 24 24"><path d="m11 4-6 5H2v6h3l6 5Zm5 5 6 6m0-6-6 6"/></symbol>
+    <symbol id="i-expand" viewBox="0 0 24 24"><path d="M9 3H3v6m12-6h6v6M3 15v6h6m12-6v6h-6"/></symbol>
+    <symbol id="i-arrow" viewBox="0 0 24 24"><path d="M4 12h16m-6-6 6 6-6 6"/></symbol>
+    <symbol id="i-play" viewBox="0 0 24 24"><path d="m8 4 12 8-12 8Z"/></symbol>
+    <symbol id="i-pause" viewBox="0 0 24 24"><path d="M8 5v14M16 5v14"/></symbol>
+    <symbol id="i-reset" viewBox="0 0 24 24"><path d="M3 10a9 9 0 1 1 1 7M3 4v6h6"/></symbol>
+    <symbol id="i-target" viewBox="0 0 24 24"><circle cx="12" cy="12" r="7"/><circle cx="12" cy="12" r="2"/><path d="M12 1v4m0 14v4M1 12h4m14 0h4"/></symbol>
+    <symbol id="i-unit" viewBox="0 0 24 24"><path d="M3 6h18v13H3ZM3 6l18 13M3 19 21 6"/></symbol>
+    <symbol id="i-check" viewBox="0 0 24 24"><path d="m5 12 4 4L20 5"/></symbol>
+    <symbol id="i-bolt" viewBox="0 0 24 24"><path d="m13 2-9 12h7l-1 8 10-13h-8Z"/></symbol>
+    <symbol id="i-alert" viewBox="0 0 24 24"><path d="M10 4 2 18a2 2 0 0 0 2 3h16a2 2 0 0 0 2-3L14 4a2 2 0 0 0-4 0Z"/><path d="M12 9v5m0 3v1"/></symbol>
+    <symbol id="i-layers" viewBox="0 0 24 24"><path d="m12 3 10 6-10 6L2 9Zm-9 11 9 5 9-5M3 18l9 5 9-5"/></symbol>
+    <symbol id="i-close" viewBox="0 0 24 24"><path d="m6 6 12 12M6 18 18 6"/></symbol>
+    <symbol id="i-draw" viewBox="0 0 24 24"><path d="m16 3 5 5-12 12-6 1 1-6ZM13 6l5 5M4 15l5 5"/></symbol>
+    <symbol id="i-ruler" viewBox="0 0 24 24"><path d="m3 16 13-13 5 5L8 21ZM8 11l2 2m2-6 2 2m2-6 2 2M4 15l2 2"/></symbol>
+    <symbol id="i-map" viewBox="0 0 24 24"><path d="m2 5 6-2 8 3 6-2v15l-6 2-8-3-6 2Zm6-2v15m8-12v15"/></symbol>
+    <symbol id="i-chat" viewBox="0 0 24 24"><path d="M21 11a9 8 0 0 1-9 8H7l-5 3 1-7a8 8 0 0 1 0-8 9 8 0 0 1 18 4Z"/><path d="M7 10h10M7 14h6"/></symbol>
+  </defs></svg>
+
+  <div class="app-shell">
+    <header class="site-header">
+      <a class="brand" href="./" aria-label="Skřítek Bugísek, domů">
+        <span class="brand-mark"><svg><use href="#i-bug"/></svg></span>
+        <span><strong>Skřítek Bugísek<span class="brand-dot">.</span></strong><small>PREZENTACE NA VLASTNÍ NEBEZPEČÍ</small></span>
+      </a>
+      <div class="header-center"><span class="live-dot"></span> VŠECHNO JE <s>V POŘÁDKU</s> V PROVOZU</div>
+      <div class="header-actions"><button class="text-button" id="help-button">Jak přežít <span>?</span></button><button class="icon-button" id="sound-button" aria-label="Zapnout zvuk" title="Zapnout zvuk"><svg><use href="#i-mute"/></svg></button></div>
+    </header>
+
+    <main>
+      <section class="intro-row">
+        <div><div class="eyebrow">AČR UŽ ČEKÁ. ZÁLOHA JE DOMA.</div><h1>„Tohle jsme měli <em>otestované.“</em></h1><p>Prezentuj. Improvizuj. Restartuj tak, aby si toho nikdo nevšiml.</p></div>
+        <div class="shift-badge"><span class="shift-badge-icon">01</span><div><small>ŽIVÉ DEMO</small><strong>90 sekund do potlesku.</strong><span>4 ukázky · důvěra nad nulou</span></div></div>
+      </section>
+
+      <section class="game-layout" aria-label="Prezentace C2 systému pro AČR">
+        <aside class="dashboard">
+          <section class="shift-card">
+            <div class="section-heading"><span><span class="live-dot"></span> ŽIVÁ PREZENTACE</span><button id="pause-button" class="icon-button small" aria-label="Pozastavit hru" disabled><svg><use href="#i-pause"/></svg></button></div>
+            <div class="timer-row"><strong id="time-value">01:30</strong><span id="shift-state">PŘIPRAVEN?</span></div>
+            <div class="shift-progress"><i id="time-progress"></i></div>
+            <div class="score-row"><div><small>SKÓRE</small><strong id="score-value">0<span> bodů</span></strong></div><div><small>REKORD</small><strong id="best-value">0<span> bodů</span></strong></div></div>
+          </section>
+
+          <section class="mission-card" id="mission-card">
+            <div class="section-heading"><span><svg><use href="#i-pin"/></svg> AKTUÁLNÍ ÚKOL</span><span class="mission-count" id="mission-count">01</span></div>
+            <h2 id="mission-title">Kde je četa ALFA?</h2>
+            <p id="mission-description">Najdi jednotku <strong>ALFA 03</strong> a zapni její sledování v terénu.</p>
+            <div class="mission-steps"><div id="step-one"><span>1</span>Vyber jednotku na mapě</div><div id="step-two"><span>2</span>Zapni sledování</div></div>
+            <button class="primary-button" id="start-button">Spustit prezentaci <svg><use href="#i-arrow"/></svg></button>
+            <div class="mission-reward"><svg><use href="#i-bolt"/></svg><span id="mission-reward">+100 bodů</span><span id="demo-count">0 / 4 ukázky</span></div>
+          </section>
+
+          <section class="stability-card">
+            <div class="section-heading"><span>STABILITA APLIKACE</span><svg id="stability-icon"><use href="#i-bolt"/></svg></div>
+            <div class="stability-number"><strong id="stability-value">82<span>%</span></strong><span class="status-pill" id="stability-label">Podezřele dobrá</span></div>
+            <div class="stability-meter" role="progressbar" aria-label="Stabilita aplikace" aria-valuemin="0" aria-valuemax="100" aria-valuenow="82"><i id="stability-fill"></i></div>
+            <p id="stability-caption">Drží pohromadě. Zatím. Asi.</p>
+            <button class="repair-button" id="repair-button" disabled><svg><use href="#i-check"/></svg> Uklidnit server <span id="repair-stock">2×</span></button>
+            <div class="trust-heading"><span>DŮVĚRA ZÁKAZNÍKŮ</span><strong id="trust-value">76 %</strong></div><div class="trust-meter" role="progressbar" aria-label="Důvěra zákazníků" aria-valuemin="0" aria-valuemax="100" aria-valuenow="76"><i id="trust-fill"></i></div>
+            <div class="bug-counter"><span id="bug-count">0 / 3 nevyřešené bugy</span><span id="rescue-count">0 zachráněných situací</span></div>
+          </section>
+          <div class="version-note"><span></span> v0.0.1 „tentokrát už finální“</div>
+        </aside>
+
+        <div class="play-column">
+          <div class="view-toolbar"><div class="mode-switch auto-modes" aria-label="Automatický pohled hry"><span class="active" id="tablet-mode"><svg><use href="#i-tablet"/></svg> Živé demo</span><span class="mode-arrow">→</span><span id="room-mode"><svg><use href="#i-people"/></svg> Zachraň reputaci</span></div><span class="auto-label">REŽII MÁ NA STAROST BUGÍSEK</span><button class="icon-button" id="fullscreen-button" aria-label="Celá obrazovka" title="Celá obrazovka"><svg><use href="#i-expand"/></svg></button></div>
+
+          <div class="stage" id="stage">
+            <div class="stage-grid"></div><div class="desk-note">NEKLEPAT.<br><span>JE TO PRODUKCE.</span><i>– IT oddělení ♡</i></div><div class="desk-ring"></div>
+            <div class="world" id="world" aria-hidden="true">
+              <div class="iso-floor"></div><div class="floor-label">VELITELSKÉ STANOVIŠTĚ / PROSTOR PRO VÝMLUVY</div>
+              <div class="office-prop plant"><i></i><i></i><i></i><b></b></div><div class="office-prop boxes"><i></i><i></i></div>
+              <div class="character char-manager" data-person="manager"><div class="speech">A tohle už jsme zaplatili?</div><div class="sprite sprite-manager"></div><span>VELITEL · AČR</span></div>
+              <div class="character char-dispatcher" data-person="dispatcher"><div class="speech">Kde je naše četa?</div><div class="sprite sprite-dispatcher"></div><span>OPERÁTORKA C2 · AČR</span></div>
+              <div class="character char-technician" data-person="technician"><div class="speech">Tohle si vyfotím do auditu.</div><div class="sprite sprite-technician"></div><span>SPOJAŘ · AČR</span></div>
+              <div class="presenter" id="presenter"><div class="pm-sprite" id="presenter-sprite"></div><div class="sweat-drop drop-one"></div><div class="sweat-drop drop-two"></div><div class="presenter-speech" id="presenter-speech" hidden></div><span>TY · PROJEKTOVÝ MANAŽER</span></div>
+              <div class="room-caption"><span class="live-dot"></span><span id="audience-status">Všichni se dívají na tvoje ruce.</span></div>
+            </div>
+            <div class="pm-bubble" id="pm-bubble" hidden><div class="pm-bubble-avatar"><div class="pm-sprite"></div></div><div><small>PM · <span id="pm-bubble-mood">potí se profesionálně</span></small><p id="pm-bubble-text"></p></div><span class="sweat-symbol">◒</span></div>
+
+            <div class="tablet" id="tablet">
+              <div class="tablet-camera"></div>
+              <div class="tablet-screen">
+                <div class="tablet-status"><span>09:41 <svg><use href="#i-pin"/></svg></span><span><b>•••</b> Wi-Fi <i class="battery"></i></span></div>
+                <div class="map-header"><div class="map-brand"><span><svg><use href="#i-pin"/></svg></span><strong>C2<span>Terén</span></strong><small>AČR · CVIČNÉ DEMO</small></div><div class="connection" id="connection"><span class="live-dot"></span><span>99,9 % optimismu</span></div><span class="build-label">build: pátek_16:59</span></div>
+                <div class="map-viewport" id="map-viewport">
+                  <div class="map-world" id="map-world"><canvas id="city-map" width="1500" height="1000" aria-label="Terénní mapa fiktivního cvičného prostoru Bugovice"></canvas><svg id="route-layer" viewBox="0 0 1500 1000" preserveAspectRatio="none" aria-hidden="true"><path id="tracked-route" d=""/></svg><svg id="marker-leaders" aria-hidden="true"></svg><div id="vehicle-markers"></div></div>
+                  <div class="map-chip"><span class="live-dot"></span><span id="vehicle-count">6 jednotek · APP-6</span></div>
+                  <div class="map-tools"><button id="zoom-in" class="map-icon" aria-label="Přiblížit mapu">+</button><button id="zoom-out" class="map-icon" aria-label="Oddálit mapu">−</button><span></span><button id="center-button" class="map-icon" aria-label="Vycentrovat mapu" title="Vycentrovat mapu"><svg><use href="#i-target"/></svg></button><button id="sync-button" class="map-icon" aria-label="Obnovit GPS" title="Obnovit GPS. GPS si to nepřeje."><svg><use href="#i-reset"/></svg></button><button id="layers-button" class="map-icon" aria-label="Přepnout dopravní vrstvu" aria-pressed="false" title="Dopravní vrstva"><svg><use href="#i-layers"/></svg></button></div>
+                  <svg class="plugin-drawing" id="plugin-drawing" viewBox="0 0 1000 600" preserveAspectRatio="none" aria-hidden="true"></svg><div class="plugin-map-effect" id="plugin-map-effect" aria-hidden="true"></div><div class="drawing-hint" id="drawing-hint" hidden></div>
+                  <div class="map-scale"><span></span>200 m</div><div class="map-attribution">© BugMap • CVIČNÝ PROSTOR · APP-6</div>
+                  <div class="map-toast" id="map-toast" role="status" aria-live="polite"></div>
+                  <div class="incident-banner" id="incident-banner" hidden><span class="incident-icon"><svg><use href="#i-alert"/></svg></span><div><strong id="incident-title"></strong><p id="incident-hint"></p></div><b id="incident-time">8</b></div>
+                  <div class="map-selected" id="map-selected" hidden><span class="selected-icon"><svg><use href="#i-unit"/></svg></span><div><strong id="selected-name">ALFA 03</strong><small id="selected-detail">32 km/h · před 2 sekundami</small></div><button id="track-button"><svg><use href="#i-target"/></svg><span>Sledovat</span></button><button id="deselect-button" aria-label="Zavřít detail jednotky"><svg><use href="#i-close"/></svg></button></div>
+                  <div class="bug-dialog" id="bug-dialog" hidden><svg><use href="#i-bug"/></svg><strong>Máte příliš málo problémů.</strong><p>Nainstalovat aktualizaci „Oprava opravy oprav“?</p><button id="dismiss-update">Raději pokračovat bez aktualizace</button><button id="install-update">Jasně, co se může stát?</button></div>
+                </div>
+                <div class="fleet-bar" id="fleet-bar" aria-label="Jednotky AČR"></div>
+                <div class="tablet-footer"><span><i class="live-dot"></i><span id="map-status">Jednotky v terénu. Skoro v reálném čase.</span></span><span id="map-clock">Poslední pád: před chvílí</span></div>
+                  <nav class="plugin-rail" aria-label="Pluginy aplikace"><span>PLUGINY</span><button data-plugin="draw" aria-label="Plugin Kreslení" aria-pressed="false"><svg><use href="#i-draw"/></svg><small>Kreslení</small></button><button data-plugin="measure" aria-label="Plugin Měření" aria-pressed="false"><svg><use href="#i-ruler"/></svg><small>Měření</small></button><button data-plugin="layers" aria-label="Plugin Vrstvy" aria-pressed="false"><svg><use href="#i-layers"/></svg><small>Vrstvy</small></button><button data-plugin="maps" aria-label="Plugin Mapy" aria-pressed="false"><svg><use href="#i-map"/></svg><small>Mapy</small></button><button data-plugin="fleet" aria-label="Plugin Jednotky" aria-pressed="false"><svg><use href="#i-unit"/></svg><small>Jednotky</small></button><i>✓ ověřeno<br>autorem</i></nav>
+                  <div class="plugin-panel" id="plugin-panel" hidden><div class="plugin-panel-heading"><strong id="plugin-title"></strong><button id="plugin-close" aria-label="Zavřít plugin"><svg><use href="#i-close"/></svg></button></div><div id="plugin-content"></div></div>
+                <div class="blue-screen" id="blue-screen" hidden role="alert"><div class="bsod-face">:(</div><h2>Prezentace narazila<br>na realitu.</h2><p>Shromažďujeme výmluvy.<br>Potom se budeme tvářit, že se nic nestalo.</p><strong>0 % odpovědnosti převzato</strong><code>STOP CODE: DEMO_EFFECT_EXCEPTION<br>Co selhalo: sebevedomi_pm.sys</code><small>Automaticky přepínáme na člověka, který to slíbil.</small></div>
+              </div>
+              <div class="tablet-home"></div>
+            </div>
+            <div class="stage-sticker"><svg><use href="#i-bug"/></svg> CERTIFIED<br><strong>BUG FRIENDLY</strong></div>
+            <div class="floating-score" id="floating-score"></div>
+          </div>
+          <section class="rescue-panel" id="rescue-panel" hidden aria-label="Záchrana prezentace"><div class="customer-question"><span id="customer-role">ZÁKAZNÍK</span><strong id="customer-question"></strong><b><span id="room-time">24</span> s</b></div><div class="excuse-options" id="excuse-options"></div><p class="customer-reply" id="customer-reply" role="status" aria-live="polite">Odpověz na otázku. Získej čas. Schovej prst na restartu.</p><div class="restart-controls"><button id="reboot-button"><svg><use href="#i-reset"/></svg><span>Nenápadně restartovat</span></button><div class="reboot-progress"><div><span>RESTART APLIKACE</span><b id="reboot-value">0 %</b></div><div class="reboot-meter"><i id="reboot-fill"></i></div></div><div class="suspicion-progress"><div><span>PODEZŘENÍ</span><b id="suspicion-value">15 %</b></div><div class="suspicion-meter"><i id="suspicion-fill"></i></div></div></div><p class="restart-hint" id="restart-hint">Nejdřív je zaujmi odpovědí. Když sledují tvoje ruce, restartování je nápadné.</p></section>
+
+          <div class="bugisek-card"><div class="goblin-portrait"><div class="pm-avatar" id="goblin-portrait" data-expression="smile" aria-hidden="true"><div class="pm-avatar-body"></div><div class="pm-avatar-head"></div><i class="pm-avatar-sweat"></i></div></div><div class="bugisek-quote"><div><strong>Projektový manažer</strong><span>KOŠILE SUCHÁ ZATÍM NA 12 %</span></div><p id="goblin-quote">„Prosím vás, to není chyba. To je prostor pro další spolupráci.“</p></div><div class="bugisek-tag"><span class="live-dot"></span> USMÍVÁ SE NA DLUH</div></div>
+        </div>
+      </section>
+
+      <footer class="page-footer"><span><svg><use href="#i-bug"/></svg> Vyvinuto s láskou. Otestováno před zákazníkem.</span><div><span><kbd>mezerník</kbd> pauza</span><span>Pohled se přepíná automaticky.</span><button id="motion-button" aria-pressed="false">Omezit animace</button></div></footer>
+    </main>
+  </div>
+
+  <dialog id="help-dialog" class="dialog"><button class="dialog-close icon-button" data-close="help-dialog" aria-label="Zavřít návod"><svg><use href="#i-close"/></svg></button><span class="dialog-kicker">KRIZOVÁ KOMUNIKACE PRO ZAČÁTEČNÍKY</span><h2>Zákazníci už čekají.</h2><p>Přežij <strong>90 sekund prezentace</strong>, splň <strong>alespoň 4 ukázky včetně jednoho pluginu</strong> a udrž důvěru zákazníků nad nulou. Aplikace musí na konci zase běžet.</p><ol class="help-list"><li><span>01</span><div><strong>Tablet: ukaž funkce a kroť bugy.</strong><p>Plň zadání vlevo. Mapa se ovládá na levém okraji tabletu, pět pluginů je vpravo. Kreslení a měření potřebují dva klepy na mapu. Každý plugin něco pokazí — oprav to jeho záchranným tlačítkem.</p></div></li><li><span>02</span><div><strong>Modrá smrt? Teď mluvíš ty.</strong><p>Při pádu nebo třech nevyřešených buzích se pohled automaticky přepne na PM a zákazníky. Vyber odpověď, která řeší jejich otázku. Vtipná výmluva nemusí být přesvědčivá výmluva.</p></div></li><li><span>03</span><div><strong>Restartuj, když se nedívají.</strong><p>Dobrá odpověď odvede pozornost na pár sekund. Tehdy spusť nenápadný restart. Stejným tlačítkem ho můžeš přerušit. Pokud tě přistihnou, ztratíš důvěru i část postupu. Na záchranu máš 24 sekund.</p></div></li></ol><p class="help-footnote">Po restartu se automaticky vrátíš k tabletu. Návod i pauza zastavují čas. Zvuk je volitelný. Tlačítko experimentálního 3D v Mapách umí spolehlivě předvést modrou smrt.</p><button class="primary-button" data-close="help-dialog">Tak to nějak odprezentujeme. <svg><use href="#i-arrow"/></svg></button></dialog>
+  <dialog id="pause-dialog" class="dialog compact-dialog"><span class="dialog-kicker">TECHNICKÁ PŘESTÁVKA</span><h2>Server si dává kafe.</h2><p>Čas stojí. Bugísek bohužel přemýšlí dál.</p><button class="primary-button" id="resume-button">Zpátky do chaosu <svg><use href="#i-play"/></svg></button></dialog>
+  <dialog id="result-dialog" class="dialog result-dialog"><div class="result-art"><div class="pm-sprite" id="result-goblin"></div></div><span class="dialog-kicker" id="result-kicker">VÝBĚROVÉ ŘÍZENÍ SE PRÁVĚ RESTARTOVALO</span><h2 id="result-title">Tak my se vám ozveme.</h2><p id="result-copy"></p><div class="result-stats"><div><strong id="result-score">0</strong><span>BODŮ</span></div><div><strong id="result-tasks">0</strong><span>UKÁZEK</span></div><div><strong id="result-survived">0×</strong><span>ZACHRÁNĚNO</span></div></div><div class="result-rank" id="result-rank"></div><button class="primary-button" id="restart-button">Další zákazník, stejný build <svg><use href="#i-reset"/></svg></button><button class="text-button result-back" id="result-back">Zpátky k přípravě</button></dialog>
+</body>
+</html>
