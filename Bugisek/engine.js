@@ -75,7 +75,7 @@
     addBug(reason){this.bugs++;this.changeTrust(-3);if(this.bugs>=3&&this.phase==='tablet'&&this.status==='playing')this.enterRoom(reason,false);}
     crash(reason='Prezentační klient si lehl. Doslova.'){
       if(this.phase!=='tablet'||this.status!=='playing')return;
-      this.phase='bsod';this.stability=0;this.bsodRemaining=2.3;this.crashes++;this.failureReason=reason;this.incident=null;this.changeTrust(-12);this.emit('bsod',{reason});
+      this.phase='bsod';this.stability=0;this.bsodRemaining=3.3;this.crashes++;this.failureReason=reason;this.incident=null;this.changeTrust(-12);this.emit('bsod',{reason});
     }
     enterRoom(reason,crashed){
       if(this.status!=='playing')return;
