@@ -15,7 +15,7 @@
     good:['Vidíte? Přesně takhle to funguje. Prosím, nikdo to nezakřikněte.','Tuhle část nám vývojáři dovolili ukazovat bez dozoru.','Tohle si prosím zapamatujte pro závěrečné hodnocení.','Až se vás někdo zeptá, ano, fungovalo to.'],
     bad:['To je zajímavé. To nám na screenshotu nikdy nedělalo.','Tohle tlačítko je pro pokročilé. Pokročilé v odcházení.','Prosím vás, nefotit. Ty chyby jsou zatím obchodní tajemství.','V pátek to fungovalo. Který pátek, to bych musel zjistit.'],
     fixed:['A vidíte, samoobslužná obnova. Jen jsem jí musel trochu obsloužit.','Tímto jsme otestovali i krizový scénář. Úplně záměrně.','Aplikace je zpátky. Moje tepová frekvence zatím ne.'],
-    idle:['To, že se potím, nemá s aplikací nic společného. Je tu agilní klima.','Samozřejmě to umí i offline. Online zatím ladíme.','Fakt moc beta znamená, že máte přednostní přístup k překvapením.','Kdyby něco blikalo, je to interaktivita. Kdyby všechno zhaslo, úspornost.']
+    idle:['To, že se potím, nemá s aplikací nic společného. Je tu agilní klima.','Samozřejmě to umí i offline. Online zatím ladíme.','Beta verze znamená, že máte přednostní přístup k překvapením.','Kdyby něco blikalo, je to interaktivita. Kdyby všechno zhaslo, úspornost.']
   };
   const customerLines={happy:['To už vypadá použitelně.','Naše četa! A není to husa!','Dobře. Tohle si odškrtnu.'],sad:['V rozpočtu mám kolonku „proč“.','Tohle mám vysvětlovat jednotkám?','Tenhle log si schovám.'],angry:['Smlouva má taky tlačítko Zrušit.','Chci jednotky. Ne divadelní soubor.','Tohle není bug. To je celý ekosystém.'],panic:['Neříkejte mi, že je to ostrá verze.','Já to věděla. Já to říkala.','Modrá. Klasika. Aspoň držíte standard.']};
   const pick=a=>a[Math.floor(Math.random()*a.length)];
@@ -25,7 +25,7 @@
     const button=document.createElement('button');button.className='fleet-item';button.dataset.short=v.short;button.style.setProperty('--vehicle-color',v.color);button.setAttribute('aria-label',`Vybrat ${v.name} ze seznamu`);button.innerHTML=`${unitSymbol(v)}<span>${v.name}</span>`;button.addEventListener('click',()=>select(v.id));$('fleet-bar').append(button);fleet[v.id]=button;
   });}
   function select(id){if(game.status==='ready'){game.selected=id;render(true);}else act('select',id);beep('tap');}
-  function act(action,value){if(game.status==='ready'){toast('Nejdřív spusť prezentaci. Zákazníci ještě hledají Wi-Fi.');return;}game.act(action,value);handleEvents();render(true);}
+  function act(action,value){if(game.status==='ready'){toast('Nejdřív spusť prezentaci. Zákazníci ještě hledají odvahu.');return;}game.act(action,value);handleEvents();render(true);}
   function start(){['result-dialog','pause-dialog'].forEach(id=>{if($(id).open)$(id).close();});game.reset();lastPhase='';lastPluginKey='';lastQuestion=-1;nextQuip=7;reactionSerial=0;clearTimeout(reactionTimer);document.querySelectorAll('.character').forEach(el=>{el.dataset.reaction='neutral';el.classList.remove('happy','sad','angry','panic','speaking');});tool=null;points=[];zoom=1;updateZoom();clearEffects();game.start();$('stage').classList.remove('finished');handleEvents();render(true);initAudio();beep('start');}
   function pause(){if(game.status==='playing'){game.pause();$('pause-dialog').showModal();}else if(game.status==='paused'&&$('pause-dialog').open){$('pause-dialog').close();game.resume();}render(true);}
   // Informational jokes should stay readable; short warnings still make room for the next action.

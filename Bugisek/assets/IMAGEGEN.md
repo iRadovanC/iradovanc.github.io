@@ -2,7 +2,9 @@
 
 ## Krizová scéna: průhledné výřezy a vrstvený PM
 
-Aktuální vykreslení vojáků používá `assets/soldiers-cutout.png` (971 × 1620, RGBA) a tělo PM používá `assets/pm-cutout.png` (1536 × 1024, RGBA). Oba soubory vytvořil vestavěný `image_gen.imagegen` z původních atlasů, následně byly beze změny pixelů zkopírovány do projektu. Původní soubory zůstávají zachované.
+Aktuální vykreslení vojáků používá `assets/soldiers-cutout.png` (971 × 1620, RGBA) a tělo PM používá vyčištěnou variantu `assets/pm-cutout-clean.png` (1536 × 1024, RGBA). Zdrojové atlasy vytvořil vestavěný `image_gen.imagegen`; původní soubory zůstávají zachované.
+
+Generované PNG soubory PM obsahovaly mimo siluety množství velmi slabě průhledných pixelů původního pozadí. Produkční varianty `pm-cutout-clean.png`, `pm-photo-head-clean.png` a `pm-photo-expressions-clean.png` proto zachovávají původní RGB pixely a souřadnice, ale normalizují pouze alfa kanál: zbytky pozadí jsou plně průhledné, vnitřek postav plně neprůhledný a úzký přechod na hranách zůstává vyhlazený. Tím nevzniká obdélníkový závoj ani odlišná textura v místě, kde CSS odřezává původní kreslenou hlavu.
 
 Postavy se už nevykreslují s `mix-blend-mode: multiply`. SVG filtr normalizuje alfa kanál: prázdné pozadí zůstává průhledné, vnitřek postav je plně neprůhledný a hrany zůstávají vyhlazené. Atlas vojáků má nepravidelné rozestupy, proto `soldierSprite` v `c2-presentation.js` používá hranice řad 0, 324, 644, 950, 1264 a 1620 px a explicitní SVG ořez každé řady. Osmiprocentní vnitřní okraj chrání vlasy, ruce a boty před oříznutím. Explicitní ořez brání i zobrazení bot sousední řady v prázdném okraji.
 
@@ -22,8 +24,8 @@ Ověřeno všech 15 póz vojáků a všech 6 póz PM, včetně ruky nad obličej
 
 Zdroj: fotografie `1658392827731.jpg` dodaná uživatelem. Použit vestavěný `image_gen.imagegen`, nikoli CLI/API fallback. Výsledná PNG byla zkopírována do projektu bez změny pixelů. Ověřen RGBA formát a nulová alfa v pozadí. Barevné hodnoty ve zcela průhledných pixelech atlasu se ve hře nezobrazují.
 
-- `assets/pm-photo-head.png`: 1254 × 1254, samostatná hlava s původním úsměvem; bez košile a pozadí.
-- `assets/pm-photo-expressions.png`: 1536 × 1024, šest odvozených fotografických výrazů v atlasu 3 × 2: úsměv, nervozita, úlek, rozpaky, podezíravý pohled, úleva/smích. Jde o generované varianty výrazu, nikoli o další skutečné fotografie.
+- `assets/pm-photo-head-clean.png`: 1254 × 1254, produkční samostatná hlava s původním úsměvem; bez košile, pozadí a zbytkového alfa závoje.
+- `assets/pm-photo-expressions-clean.png`: 1536 × 1024, produkční atlas šesti výrazů 3 × 2 s vyčištěnou alfou. Jde o generované varianty výrazu, nikoli o další skutečné fotografie.
 
 CSS skládá hlavu na první pózu původního těla. Původní kreslená hlava těla je odříznuta pomocí `clip-path`; průhledná fotografická hlava se pohybuje samostatně. Nahrazen je pouze avatar ve spodní liště. Výrazy spouštějí chyby, opravy a průběžné hlášky; pohyby zastaví pauza i omezení animací. Následují použité prompty.
 

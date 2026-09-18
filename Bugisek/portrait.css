@@ -3,8 +3,8 @@
 .bugisek-card .goblin-portrait{mix-blend-mode:normal;display:grid;place-items:center;align-self:center;min-width:90px}
 .pm-avatar{position:relative;width:110px;height:110px;flex-shrink:0}
 .pm-avatar-body{position:absolute;left:5%;top:8%;width:90%;height:90%;background:url('assets/pm-poses.png') 0 0/300% 200% no-repeat;mix-blend-mode:multiply;clip-path:polygon(0 0,32% 0,32% 30%,59% 30%,59% 0,100% 0,100% 100%,0 100%)}
-.pm-avatar-head{position:absolute;left:25%;top:0;width:42%;height:42%;background:url('assets/pm-photo-expressions.png') 0 0/300% 200% no-repeat;transform-origin:50% 88%;animation:pm-photo-nod 4s ease-in-out infinite}
-.pm-avatar[data-expression=smile] .pm-avatar-head{background-image:url('assets/pm-photo-head.png');background-size:100% 100%}
+.pm-avatar-head{position:absolute;left:25%;top:0;width:42%;height:42%;background:url('assets/pm-photo-expressions-clean.png') 0 0/300% 200% no-repeat;transform-origin:50% 88%;animation:pm-photo-nod 4s ease-in-out infinite}
+.pm-avatar[data-expression=smile] .pm-avatar-head{background-image:url('assets/pm-photo-head-clean.png');background-size:100% 100%}
 .pm-avatar[data-expression=nervous] .pm-avatar-head{background-position:50% 0;animation:pm-photo-worry 1.7s ease-in-out infinite}
 .pm-avatar[data-expression=shocked] .pm-avatar-head{background-position:100% 0;animation:pm-photo-gasp 1s ease-in-out 2}
 .pm-avatar[data-expression=embarrassed] .pm-avatar-head{background-position:0 100%;animation:pm-photo-no 2.4s ease-in-out infinite}
@@ -32,45 +32,65 @@
 .soldier-cutout{display:block;width:100%;height:100%;stroke:none;filter:url(#opaque-sprite)}
 .stage.room .character .sprite{overflow:visible}
 .stage.room .character>span{top:-3px}
+.stage.room .character .sprite{width:205px;height:182px}
 .stage.room .speech{z-index:10;width:210px;max-width:210px;min-width:0;bottom:calc(100% + 2px)}
-.stage.room .char-manager{top:70px}
-.stage.room .char-dispatcher{top:95px}
-.stage.room .char-technician{top:85px}
+.stage.room .char-manager{left:calc(50% - 300px);top:70px}
+.stage.room .char-dispatcher{left:max(1%,calc(50% - 460px));top:95px}
+.stage.room .char-technician{right:max(1%,calc(50% - 420px));top:85px}
 
-.presenter .room-avatar{width:100%;height:100%;position:relative;--body-x:0%;--body-y:0%}
-.room-avatar .pm-avatar-body,.room-avatar .pm-avatar-hand{inset:0;width:100%;height:100%;background-image:url('assets/pm-cutout.png');background-size:300% 200%;background-position:var(--body-x) var(--body-y);mix-blend-mode:normal;filter:url(#opaque-sprite)}
-.room-avatar .pm-avatar-body{z-index:1;clip-path:polygon(0 0,32% 0,32% 31%,59% 31%,59% 0,100% 0,100% 100%,0 100%)}
-.room-avatar .pm-avatar-head{z-index:2;width:34%;height:34%;left:28%;top:0;filter:url(#opaque-sprite)}
+.stage.room .floor-label{left:41%;bottom:15%;transform:rotate(-14deg) skewX(18deg);transform-origin:left center}
+
+/* Pull the rescue cast into one readable group. Enlarging the artwork closes
+   the visual gaps without moving speech-bubble anchors toward the edges. */
+.stage.room .presenter{left:calc(50% - 115px);width:230px;height:232px}
+
+.room-avatar{--body-x:0%;--body-y:0%;--head-hole-x:45.5%;--head-hole-y:14%;--head-hole-rx:16%;--head-hole-ry:20%}
+.presenter .room-avatar{width:100%;height:100%;position:relative}
+.room-avatar .pm-avatar-body,.room-avatar .pm-avatar-hand{inset:0;width:100%;height:100%;background-image:url('assets/pm-cutout-clean.png');background-size:300% 200%;background-position:var(--body-x) var(--body-y);mix-blend-mode:normal;filter:none}
+/* The old polygon removed the original illustrated head with a square notch.
+   A feathered oval follows the head silhouette instead, so no rectangular
+   piece of the scene can show through around the photographic face. */
+.room-avatar .pm-avatar-body{z-index:1;clip-path:none;-webkit-mask-image:radial-gradient(ellipse var(--head-hole-rx) var(--head-hole-ry) at var(--head-hole-x) var(--head-hole-y),transparent 0 93%,#000 100%);mask-image:radial-gradient(ellipse var(--head-hole-rx) var(--head-hole-ry) at var(--head-hole-x) var(--head-hole-y),transparent 0 93%,#000 100%)}
+.room-avatar .pm-avatar-head{z-index:2;width:34%;height:34%;left:28%;top:0;filter:none}
 .room-avatar .pm-avatar-hand{position:absolute;z-index:3;display:none;pointer-events:none}
 .room-avatar .pm-avatar-sweat{z-index:4;left:57%;top:14%}
-.room-avatar[data-pose=sweat]{--body-x:50%}
-.room-avatar[data-pose=facepalm]{--body-x:100%}
+.room-avatar[data-pose=sweat]{--body-x:50%;--head-hole-x:50%;--head-hole-y:14%}
+.room-avatar[data-pose=facepalm]{--body-x:100%;--head-hole-x:50%;--head-hole-y:15%}
 .room-avatar[data-pose=explain]{--body-y:100%}
-.room-avatar[data-pose=restart]{--body-x:50%;--body-y:100%}
-.room-avatar[data-pose=relieved]{--body-x:100%;--body-y:100%}
-.room-avatar[data-pose=sweat] .pm-avatar-body{clip-path:polygon(0 0,38% 0,38% 29%,62% 29%,62% 0,100% 0,100% 100%,0 100%)}
+.room-avatar[data-pose=restart]{--body-x:50%;--body-y:100%;--head-hole-x:47%;--head-hole-y:14%;--head-hole-rx:15%;--head-hole-ry:19%}
+.room-avatar[data-pose=relieved]{--body-x:100%;--body-y:100%;--head-hole-x:50%;--head-hole-y:14%}
 .room-avatar[data-pose=sweat] .pm-avatar-head{left:33%;top:0}
 .room-avatar[data-pose=sweat] .pm-avatar-hand{display:block;clip-path:polygon(44% 31%,59% 28%,61% 38%,66% 41%,65% 47%,57% 47%,53% 49%,39% 48%,33% 43%,35% 37%,39% 35%,43% 36%)}
-.room-avatar[data-pose=facepalm] .pm-avatar-body{clip-path:polygon(0 0,37% 0,37% 33%,63% 33%,63% 0,100% 0,100% 100%,0 100%)}
 .room-avatar[data-pose=facepalm] .pm-avatar-head{left:32%;top:2%;animation:none;transform:rotate(7deg)}
 /* Cut the actual original fingers/palm/forearm from the same atlas cell,
    preserving exact coordinates; this layer sits above both body and face. */
 .room-avatar[data-pose=facepalm] .pm-avatar-hand{display:block;clip-path:polygon(52% 5%,58% 8%,61% 14%,64% 19%,70% 21%,73% 25%,73% 28%,68% 31%,63% 28%,59% 21%,57% 17%,52% 15%,49% 13%,51% 10%,49% 8%)}
 .room-avatar[data-pose=explain] .pm-avatar-head{left:28%;top:0}
-.room-avatar[data-pose=restart] .pm-avatar-body{clip-path:polygon(0 0,35% 0,35% 27%,59% 27%,59% 0,100% 0,100% 100%,0 100%)}
-.room-avatar[data-pose=restart] .pm-avatar-head{left:28%;top:0;transform:rotate(-9deg);animation:none}
-.room-avatar[data-pose=relieved] .pm-avatar-body{clip-path:polygon(0 0,37% 0,37% 29%,63% 29%,63% 0,100% 0,100% 100%,0 100%)}
+.room-avatar[data-pose=restart] .pm-avatar-head{left:32%;top:1%;transform:rotate(-4deg);animation:none}
 .room-avatar[data-pose=relieved] .pm-avatar-head{left:33%;top:0}
+.result-art{mix-blend-mode:normal}
+.result-art .room-avatar{position:absolute;top:-2px;left:0;width:200px;height:200px}
 @media(min-width:721px) and (max-height:800px){
   .stage.room{min-height:275px}
   .stage.room .char-manager{top:80px}.stage.room .char-dispatcher{top:100px}.stage.room .char-technician{top:94px}
 }
 @media(max-width:1100px){
+  .stage.room .character .sprite{width:180px;height:160px}
+  .stage.room .char-manager{left:calc(50% - 245px)}
+  .stage.room .char-dispatcher{left:max(0%,calc(50% - 390px))}
+  .stage.room .char-technician{right:max(0%,calc(50% - 340px))}
+  .stage.room .presenter{left:calc(50% - 105px);width:210px;height:212px;scale:1}
   .stage.room .char-dispatcher .speech{left:8px;transform:rotate(-2deg)}
   .stage.room .char-technician .speech{left:auto;right:8px;transform:rotate(2deg)}
 }
 @media(max-width:720px){
   .stage.room{min-height:340px;height:340px}
+  .stage.room .character .sprite{width:160px;height:142px}
+  .stage.room .char-manager{left:18%}
+  .stage.room .char-dispatcher{left:0}
+  .stage.room .char-technician{right:0}
+  .stage.room .presenter{left:calc(50% - 102px);width:205px;height:207px}
+  .stage.room .floor-label{left:30%;bottom:14%;font-size:6px;transform:rotate(-14deg) skewX(16deg)}
   .stage.room .char-manager{top:67px}.stage.room .char-dispatcher{top:111px}.stage.room .char-technician{top:100px}
   .stage.room .speech{max-width:128px}
 }
