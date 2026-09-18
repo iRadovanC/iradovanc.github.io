@@ -38,15 +38,17 @@ Rekord a preference zvuku se ukládají pouze v `localStorage`. Při nedostupné
 - `c2-presentation.js`: SVG symboly, rozestupy značek a kombinace reakcí.
 - `c2.css`: vojenské postavy, symboly a celovýškový panel pluginů.
 - `layout.css`: větší písmo a rozložení podle dostupné šířky a výšky okna; na desktopu displej tabletu 16:10 a zvětšený spodní panel PM. Úsporné rámy a záhlaví pro notebooky, posouvání obsahu na úzkých obrazovkách.
-- `portrait.css`: fotografická hlava PM ve spodní liště, šest výrazů a jemné pohyby podle herních událostí. Pauza pohyb zastaví; omezení animací ponechá statické výrazy.
-- `assets/pm-photo-head.png`, `assets/pm-photo-expressions.png`: průhledný výřez hlavy z dodané fotografie a atlas šesti odvozených výrazů (3 × 2). Používají se jen ve spodní liště PM.
+- `portrait.css`: fotografická hlava PM ve spodní liště i při záchraně reputace, šest výrazů a jemné pohyby podle herních událostí. V krizové scéně se mění také tělo; původní ruka při facepalmu překrývá obličej samostatnou horní vrstvou. Pauza pohyb zastaví; omezení animací ponechá statické výrazy.
+- `assets/pm-photo-head.png`, `assets/pm-photo-expressions.png`: průhledný výřez hlavy z dodané fotografie a atlas šesti odvozených výrazů (3 × 2).
+- `assets/pm-cutout.png`: průhledný atlas původních těl PM. Ruka a předloktí pro překrytí tváře se ořezávají ze stejného políčka, aby přesně navazovaly.
+- `assets/soldiers-cutout.png`: neprůhledné postavy vojáků na průhledném pozadí. Jednotlivé pózy používají vlastní ořez a vnitřní okraj; atlas se už neprolíná s podlahou.
 - `game.js`: interakce, vykreslování stavu, sprite animace a syntetizovaný zvuk přes Web Audio.
-- `assets/soldiers-poses.png`: tři vojáci AČR v pěti pózách; operátorka má dlouhé rovné vlasy. Každá postava má facepalm, úděs a zhroucení. Reakce se kombinují a animují s rozdílným časováním.
+- `assets/soldiers-poses.png`: původní atlas tří vojáků AČR v pěti pózách, zachovaný jako zdroj pro průhlednou verzi. Reakce se kombinují a animují s rozdílným časováním.
 - `assets/characters-white.png`: původní archivní atlas, použitý jako stylová reference.
 - `assets/pm-poses.png`: PM v košili v šesti pózách, vygenerovaný imagegenem.
 - `assets/desk-texture.png`: vygenerovaná textura stolu a izometrické podlahy.
 
-Přesné prompty a způsob použití grafiky jsou v [assets/IMAGEGEN.md](assets/IMAGEGEN.md). Sprite archy mají bílé pozadí a skládají se do scény pomocí CSS `mix-blend-mode: multiply`.
+Přesné prompty a způsob použití grafiky jsou v [assets/IMAGEGEN.md](assets/IMAGEGEN.md). Krizová scéna používá PNG se skutečným průhledným pozadím a normální skládání barev. Alfa uvnitř postav je normalizována na plnou neprůhlednost; jemné okraje výřezů zůstávají vyhlazené.
 
 ## Ověření
 

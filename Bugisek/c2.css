@@ -29,7 +29,7 @@
 .fleet-item{flex-direction:column;gap:0;padding:2px;min-width:0}.fleet-item .app6-symbol{width:31px;height:27px}.fleet-item:before{display:none}.fleet-item span{font-size:6px;overflow:hidden;text-overflow:ellipsis;max-width:100%}
 .plugin-open .fleet-item span{font-size:0}.plugin-open .fleet-item:before{display:block;font-size:6px;content:attr(data-short)}
 .plugin-fleet button{gap:5px}.plugin-fleet .app6-symbol{width:28px;height:25px}.plugin-fleet small{margin-left:auto}.selected-icon .app6-symbol{width:32px;height:28px}
-.character .sprite,.stage.room .character .sprite{background-image:url('assets/soldiers-poses.png');background-size:300% 500%;background-position:var(--soldier-column,0%) var(--soldier-row,0%);height:auto;aspect-ratio:1}
+.character .sprite,.stage.room .character .sprite{background:none;height:auto;aspect-ratio:1}
 .char-manager{--soldier-column:0%}.char-dispatcher{--soldier-column:50%}.char-technician{--soldier-column:100%}
 .character[data-reaction=neutral]{--soldier-row:0%}.character[data-reaction=approval]{--soldier-row:25%}.character[data-reaction=facepalm]{--soldier-row:50%}.character[data-reaction=shock]{--soldier-row:75%}.character[data-reaction=despair]{--soldier-row:100%}
 .character.happy,.character.sad,.character.angry,.character.panic{animation:none}

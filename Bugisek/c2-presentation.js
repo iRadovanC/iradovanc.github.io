@@ -13,6 +13,15 @@
     return `<svg class="app6-symbol" viewBox="0 0 64 56" aria-hidden="true"><g fill="none" stroke="currentColor" stroke-width="2.6" stroke-linejoin="miter"><g fill="currentColor" stroke="none"><circle cx="25" cy="7" r="2"/><circle cx="32" cy="7" r="2"/><circle cx="39" cy="7" r="2"/></g><path fill="#a8d8ef" d="M8 16h48v32H8z"/>${SYMBOLS[unit.symbol]||SYMBOLS.infantry}</g></svg>`;
   }
   const COMIC_POSES=['facepalm','shock','despair'];
+  // The source atlas has uneven row spacing. Crop at the actual transparent
+  // gaps, then add an 8% inset so hair and raised hands cannot hit a viewport edge.
+  function soldierSprite(person,reaction='neutral'){
+    const column={manager:0,dispatcher:1,technician:2}[person]??0;
+    const row=Math.max(0,['neutral','approval','facepalm','shock','despair'].indexOf(reaction));
+    const boundaries=[0,324,644,950,1264,1620],width=971/3;
+    const x=column*width,y=boundaries[row],height=boundaries[row+1]-y,clip=`soldier-${person}-${row}`;
+    return `<svg class="soldier-cutout" viewBox="0 0 100 100" aria-hidden="true"><svg x="8" y="8" width="84" height="84" viewBox="${x} ${y} ${width} ${height}" preserveAspectRatio="xMidYMax meet" overflow="hidden"><defs><clipPath id="${clip}"><rect x="${x}" y="${y}" width="${width}" height="${height}"/></clipPath></defs><image href="assets/soldiers-cutout.png" width="971" height="1620" clip-path="url(#${clip})"/></svg></svg>`;
+  }
   // Rotate the combination without repeating a pose for the same soldier.
   function reactionPoses(emotion,serial){
     const offset=((serial%3)+3)%3;
@@ -39,7 +48,7 @@
     if(placed.length!==points.length){const available=[...grid];placed=desired.map(p=>{const best=nearest(available,p).shift();return best||p;});}
     return placed;
   }
-  const api={symbol,reactionPoses,COMIC_POSES,layoutMarkers};
+  const api={symbol,reactionPoses,COMIC_POSES,layoutMarkers,soldierSprite};
   if(typeof module!=='undefined'&&module.exports)module.exports=api;
   root.C2Presentation=api;
 })(typeof window!=='undefined'?window:globalThis);

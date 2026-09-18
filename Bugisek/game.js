@@ -2,7 +2,7 @@
   'use strict';
   const {Game,VEHICLES,PLUGINS}=window.Bugisek;
   const {routes,routeLengths}=window.BugMap;
-  const {symbol:unitSymbol,reactionPoses,layoutMarkers}=window.C2Presentation;
+  const {symbol:unitSymbol,reactionPoses,layoutMarkers,soldierSprite}=window.C2Presentation;
   let reactionSerial=0,mapHovered=false;
   const $=id=>document.getElementById(id), game=new Game();
   const icon=name=>`<svg aria-hidden="true"><use href="#i-${name}"/></svg>`;
@@ -35,13 +35,13 @@
     if(game.phase!=='tablet')return;clearTimeout(bubbleTimer);$('pm-bubble').hidden=false;$('pm-bubble-text').textContent=`„${text}“`;$('pm-bubble-mood').textContent=mood;
     bubbleTimer=setTimeout(()=>$('pm-bubble').hidden=true,6800);
   }
-  function setPortrait(expression){$('goblin-portrait').dataset.expression=expression;}
+  function setPortrait(expression){document.querySelectorAll('.pm-avatar').forEach(el=>el.dataset.expression=expression);}
   function idleQuip(){
     setPortrait(game.bugs?'nervous':['smile','sneaky','embarrassed'][Math.floor(game.elapsed/14)%3]);
     pmSay(pick(quips.idle));
   }
   function setPose(pose){
-    document.querySelectorAll('.pm-sprite').forEach(el=>el.dataset.pose=pose);
+    document.querySelectorAll('.pm-sprite,.room-avatar').forEach(el=>el.dataset.pose=pose);
     setPortrait({present:'smile',sweat:'nervous',facepalm:'shocked',explain:'embarrassed',restart:'sneaky',relieved:'relieved'}[pose]||'smile');
   }
   function react(emotion){
@@ -95,7 +95,11 @@
   }
   function render(force=false){
     const seconds=Math.ceil(game.remaining),m=game.mission,room=game.phase==='room';
-    $('goblin-portrait').classList.toggle('portrait-paused',game.status!=='playing');
+    document.querySelectorAll('.pm-avatar').forEach(el=>el.classList.toggle('portrait-paused',game.status!=='playing'));
+    document.querySelectorAll('.character').forEach(el=>{
+      const sprite=el.querySelector('.sprite'),reaction=el.dataset.reaction||'neutral';
+      if(sprite.dataset.renderedReaction!==reaction){sprite.innerHTML=soldierSprite(el.dataset.person,reaction);sprite.dataset.renderedReaction=reaction;}
+    });
     $('time-value').textContent=`${String(Math.floor(seconds/60)).padStart(2,'0')}:${String(seconds%60).padStart(2,'0')}`;$('time-progress').style.width=`${game.remaining/90*100}%`;
     $('shift-state').textContent=game.status==='playing'?{tablet:'ŽIVÉ DEMO',bsod:'MODRÁ SMRT',room:'IMPROVIZUJ'}[game.phase]:{ready:'PŘIPRAVEN?',paused:'PAUZA',won:'POTLESK',lost:'TRAPAS'}[game.status];
     $('score-value').innerHTML=`${game.score.toLocaleString('cs-CZ')}<span> bodů</span>`;$('best-value').innerHTML=`${best.toLocaleString('cs-CZ')}<span> bodů</span>`;
@@ -170,7 +174,7 @@
   }
   function updateMapEffects(){const el=$('plugin-map-effect');el.classList.toggle('office-map',!!game.pluginBugs.maps);el.classList.toggle('goose-map',!!game.pluginBugs.layers);el.innerHTML=game.pluginBugs.maps?'<span class="office-label">KUCHYŇKA</span><span class="office-desk">☕<small>Nabíjecí stanice pro PM</small></span><span class="office-wc">WC / krizové porady</span>':game.pluginBugs.layers?'<span class="goose g1">🪿</span><span class="goose g2">🪿</span><span class="goose g3">🪿</span><span class="goose g4">🪿</span><b>VRSTVA: HUSY V REÁLNÉM ČASE</b>':'';}
   function clearPluginEffect(id){if(id==='draw'||id==='measure')$('plugin-drawing').innerHTML='';updateMapEffects();lastPluginKey='';}
-  function clearEffects(){setPortrait('smile');$('plugin-drawing').innerHTML='';$('plugin-map-effect').className='plugin-map-effect';$('plugin-map-effect').innerHTML='';$('drawing-hint').hidden=true;$('pm-bubble').hidden=true;}
+  function clearEffects(){setPose('present');$('plugin-drawing').innerHTML='';$('plugin-map-effect').className='plugin-map-effect';$('plugin-map-effect').innerHTML='';$('drawing-hint').hidden=true;$('pm-bubble').hidden=true;}
   function updateVehicles(){
     const offsets=[.2,.27,.55,.42,.25,.08],w=$('map-viewport').clientWidth,h=$('map-viewport').clientHeight;
     if(!w||!h)return;

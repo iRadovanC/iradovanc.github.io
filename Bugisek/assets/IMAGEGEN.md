@@ -1,5 +1,23 @@
 # Grafika vygenerovaná imagegenem
 
+## Krizová scéna: průhledné výřezy a vrstvený PM
+
+Aktuální vykreslení vojáků používá `assets/soldiers-cutout.png` (971 × 1620, RGBA) a tělo PM používá `assets/pm-cutout.png` (1536 × 1024, RGBA). Oba soubory vytvořil vestavěný `image_gen.imagegen` z původních atlasů, následně byly beze změny pixelů zkopírovány do projektu. Původní soubory zůstávají zachované.
+
+Postavy se už nevykreslují s `mix-blend-mode: multiply`. SVG filtr normalizuje alfa kanál: prázdné pozadí zůstává průhledné, vnitřek postav je plně neprůhledný a hrany zůstávají vyhlazené. Atlas vojáků má nepravidelné rozestupy, proto `soldierSprite` v `c2-presentation.js` používá hranice řad 0, 324, 644, 950, 1264 a 1620 px a explicitní SVG ořez každé řady. Osmiprocentní vnitřní okraj chrání vlasy, ruce a boty před oříznutím. Explicitní ořez brání i zobrazení bot sousední řady v prázdném okraji.
+
+Manažer v režimu Zachraň reputaci používá původních šest póz těla, existující fotografický atlas mimiky a samostatnou horní vrstvu. Vrstva ruky při facepalmu je přesný CSS polygonový výřez z téhož políčka `pm-cutout.png`, nikoli nově překreslená ruka. Překrývá tělo i fotografickou hlavu; při kontaktu ruky s čelem je pohyb hlavy vypnutý. Obdobně se v nervózní póze před tváří vykreslují ruce s tabletem. Spodní lišta si ponechává pevné tělo a sdílí výraz s krizovou scénou. Pauza i omezení animací platí pro oba avatary.
+
+Ověřeno všech 15 póz vojáků a všech 6 póz PM, včetně ruky nad obličejem; šest zákaznických otázek na 1920 × 940, 1366 × 640, 1280 × 600, 1024 × 668, 768 × 1024 a 390 × 844 bez oříznutí mluvící bubliny. Vojáci mají `opacity: 1` a normální skládání barev. Použité prompty:
+
+### Vojáci — transparentní atlas
+
+> Edit target: the supplied game sprite atlas of three Czech soldiers in five poses. Use case background-extraction and precise-object-edit. Produce a production RGBA PNG with a strict THREE columns by FIVE rows of equal SQUARE cells, portrait overall aspect ratio 3:5. Keep all fifteen original characters, outfits, faces, props, identities and emotions: columns commander/male with moustache, adult female with long straight hair, male signals specialist with glasses; rows neutral, approval, facepalm, shock, despair. Fix spacing: every COMPLETE character including all hair, raised hands and boots must be strictly inside its own cell, centered horizontally, feet on same baseline 90% down each cell, with at least 7% cell height EMPTY transparent margin above the highest hair/hand and 7% below boots. No sprite may overlap a cell boundary. Preserve each original pose, no missing or additional people. Remove the white background completely using genuine alpha transparency. All skin, faces, hair, fabric, boots, glasses frames and hands must be solid OPAQUE, no translucent characters, no floor showing through them. Alpha zero outside silhouettes, antialias only the narrow silhouette edges. No floor shadows, no glow, no grid lines, no captions. Preserve source appearance faithfully, do not change outfits or face expressions. The goal is clean opaque cutouts with consistent safe grid geometry for CSS animation.
+
+### PM — transparentní těla
+
+> Use case background-extraction. Edit target is this 1536x1024 THREE-column TWO-row project-manager sprite atlas. Keep its exact canvas dimensions, all six original characters, pose coordinates, size, clothing, heads, hands, tablet and shoes UNCHANGED. Only remove the entire white background and all floor/contact shadows, producing actual RGBA transparency (alpha zero outside silhouettes). Inside each person, all skin, shirt fabric, pants, tablet and hair must be fully opaque, alpha 255. Preserve white highlights in the clothing, do not make highlights transparent. Retain the raised hand and forearm on the forehead of the top-right facepalm pose exactly at its original location. No redesign, no new poses, no movement/recentering, no added margins, no text, no checkerboard pixels. This is an exact-coordinate cutout atlas for layering a replacement face beneath the existing hand.
+
 ## Fotografická tvář PM ve spodní liště
 
 Zdroj: fotografie `1658392827731.jpg` dodaná uživatelem. Použit vestavěný `image_gen.imagegen`, nikoli CLI/API fallback. Výsledná PNG byla zkopírována do projektu bez změny pixelů. Ověřen RGBA formát a nulová alfa v pozadí. Barevné hodnoty ve zcela průhledných pixelech atlasu se ve hře nezobrazují.
