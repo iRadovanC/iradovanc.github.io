@@ -1,0 +1,64 @@
+<!doctype html>
+<html lang="cs">
+  <head>
+    <meta charset="utf-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1">
+    <meta name="description" content="Oficiální místo, kde se neděje vůbec nic. Můžete si to osobně ověřit.">
+    <meta name="theme-color" content="#f2ee46">
+    <title>Nic k vidění</title>
+    <link rel="icon" type="image/svg+xml" href="data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' viewBox='0 0 64 64'%3E%3Crect width='64' height='64' rx='14' fill='%23f2ee46'/%3E%3Ccircle cx='32' cy='32' r='19' fill='none' stroke='%23141016' stroke-width='7'/%3E%3Cpath d='M19 45 45 19' stroke='%23ef3e2f' stroke-width='8'/%3E%3C/svg%3E">
+    <link rel="stylesheet" href="styles.css">
+  </head>
+  <body>
+    <div class="ambient ambient-one" aria-hidden="true"></div>
+    <div class="ambient ambient-two" aria-hidden="true"></div>
+
+    <main class="page-shell">
+      <section class="notice" aria-labelledby="main-title">
+        <div class="notice-bar">
+          <span class="eyebrow"><span class="status-dot" aria-hidden="true"></span> ÚŘAD PRO EVIDENCI NIČEHO</span>
+          <button class="quiet-toggle" id="quiet-toggle" type="button" aria-pressed="false">
+            <span aria-hidden="true">◐</span> ztlumit nic
+          </button>
+        </div>
+
+        <div class="notice-body">
+          <p class="case-number">PŘÍPAD: NEEXISTUJE</p>
+          <h1 id="main-title">Rozejděte se,<br><span>není tu nic k vidění!</span></h1>
+          <p class="lead">Místo bylo důkladně prohledáno profesionálem. Nenašel vůbec nic. A to se opravdu snažil.</p>
+
+          <div class="inspection" aria-live="polite">
+            <div class="gauge-row">
+              <span>Množství nalezeného obsahu</span>
+              <strong id="gauge-value">0 %</strong>
+            </div>
+            <div class="gauge" aria-hidden="true"><div id="gauge-fill"></div></div>
+          </div>
+
+          <div class="actions">
+            <button class="primary-button" id="inspect-button" type="button">
+              <span>Zkontrolovat ještě jednou</span>
+              <span aria-hidden="true">→</span>
+            </button>
+            <button class="secondary-button" id="found-button" type="button">Já něco vidím</button>
+          </div>
+
+          <p class="result" id="result" role="status">Výsledek poslední kontroly: podezřele prázdno.</p>
+        </div>
+
+        <div class="notice-footer">
+          <span id="counter">PROVEDENÉ KONTROLY: 01</span>
+          <span class="stamp">NIC POTVRZENO</span>
+        </div>
+      </section>
+
+      <aside class="fine-print" aria-label="Doplňující informace">
+        <span>Prosíme, nedotýkejte se ničeho.</span>
+        <button id="tiny-button" type="button">stížnosti a pochvaly</button>
+      </aside>
+    </main>
+
+    <div class="toast" id="toast" role="status" aria-live="polite"></div>
+    <script src="script.js"></script>
+  </body>
+</html>
