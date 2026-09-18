@@ -4,7 +4,7 @@
   <meta charset="utf-8">
   <meta name="viewport" content="width=device-width, initial-scale=1, viewport-fit=cover">
   <meta name="theme-color" content="#f4f2e9">
-  <title>Skřítek Bugísek — C2 demo na hraně</title>
+  <title>Vzkazky z Lipníka — C2 demo na hraně</title>
   <link rel="stylesheet" href="style.css">
   <link rel="stylesheet" href="presentation.css">
   <script src="engine.js" defer></script>
@@ -44,9 +44,9 @@
 
   <div class="app-shell">
     <header class="site-header">
-      <a class="brand" href="./" aria-label="Skřítek Bugísek, domů">
+      <a class="brand" href="./" aria-label="Vzkazky z Lipníku, domů">
         <span class="brand-mark"><svg><use href="#i-bug"/></svg></span>
-        <span><strong>Skřítek Bugísek<span class="brand-dot">.</span></strong><small>PREZENTACE NA VLASTNÍ NEBEZPEČÍ</small></span>
+        <span><strong>Vzkazky z Lipníku<span class="brand-dot">.</span></strong><small>PREZENTACE NA VLASTNÍ NEBEZPEČÍ</small></span>
       </a>
       <div class="header-center"><span class="live-dot"></span> VŠECHNO JE <s>V POŘÁDKU</s> V PROVOZU</div>
       <div class="header-actions"><button class="text-button" id="help-button">Jak přežít <span>?</span></button><button class="icon-button" id="sound-button" aria-label="Zapnout zvuk" title="Zapnout zvuk"><svg><use href="#i-mute"/></svg></button></div>
@@ -98,7 +98,7 @@
               <div class="office-prop plant"><i></i><i></i><i></i><b></b></div><div class="office-prop boxes"><i></i><i></i></div>
               <div class="character char-manager" data-person="manager"><div class="speech">A tohle už jsme zaplatili?</div><div class="sprite sprite-manager"></div><span>VELITEL · AČR</span></div>
               <div class="character char-dispatcher" data-person="dispatcher"><div class="speech">Kde je naše četa?</div><div class="sprite sprite-dispatcher"></div><span>OPERÁTORKA C2 · AČR</span></div>
-              <div class="character char-technician" data-person="technician"><div class="speech">Tohle si vyfotím do auditu.</div><div class="sprite sprite-technician"></div><span>SPOJAŘ · AČR</span></div>
+              <div class="character char-technician" data-person="technician"><div class="speech">Tohle si vyfotím do auditu.</div><div class="sprite sprite-technician"></div><span>RENÉ ŠVANDA · AČR</span></div>
               <div class="presenter" id="presenter"><div class="pm-avatar room-avatar" id="presenter-sprite" data-pose="present" data-expression="smile" aria-hidden="true"><div class="pm-avatar-body"></div><div class="pm-avatar-head"></div><div class="pm-avatar-hand"></div><i class="pm-avatar-sweat"></i></div><div class="presenter-speech" id="presenter-speech" hidden></div><span>TY · PROJEKTOVÝ MANAŽER</span></div>
               <div class="room-caption"><span class="live-dot"></span><span id="audience-status">Všichni se dívají na tvoje ruce.</span></div>
             </div>
@@ -108,7 +108,7 @@
               <div class="tablet-camera"></div>
               <div class="tablet-screen">
                 <div class="tablet-status"><span>09:41 <svg><use href="#i-pin"/></svg></span><span><b>•••</b> Wi-Fi <i class="battery"></i></span></div>
-                <div class="map-header"><div class="map-brand"><span><svg><use href="#i-pin"/></svg></span><strong>C2<span>Terén</span></strong><small>AČR · CVIČNÉ DEMO</small></div><div class="connection" id="connection"><span class="live-dot"></span><span>99,9 % optimismu</span></div><span class="build-label">build: pátek_16:59</span></div>
+                <div class="map-header"><div class="map-brand"><span><svg><use href="#i-pin"/></svg></span><strong>C2<span>Samec</span></strong><small>AČR · CVIČNÉ DEMO</small></div><div class="connection" id="connection"><span class="live-dot"></span><span>99,9 % optimismu</span></div><span class="build-label">build: pátek_16:59</span></div>
                 <div class="map-viewport" id="map-viewport">
                   <div class="map-world" id="map-world"><canvas id="city-map" width="1500" height="1000" aria-label="Terénní mapa fiktivního cvičného prostoru Bugovice"></canvas><svg id="route-layer" viewBox="0 0 1500 1000" preserveAspectRatio="none" aria-hidden="true"><path id="tracked-route" d=""/></svg><svg id="marker-leaders" aria-hidden="true"></svg><div id="vehicle-markers"></div></div>
                   <div class="map-chip"><span class="live-dot"></span><span id="vehicle-count">6 jednotek · APP-6</span></div>
@@ -142,7 +142,7 @@
   </div>
 
   <dialog id="help-dialog" class="dialog"><button class="dialog-close icon-button" data-close="help-dialog" aria-label="Zavřít návod"><svg><use href="#i-close"/></svg></button><span class="dialog-kicker">KRIZOVÁ KOMUNIKACE PRO ZAČÁTEČNÍKY</span><h2>Zákazníci už čekají.</h2><p>Přežij <strong>90 sekund prezentace</strong>, splň <strong>alespoň 4 ukázky včetně jednoho pluginu</strong> a udrž důvěru zákazníků nad nulou. Aplikace musí na konci zase běžet.</p><ol class="help-list"><li><span>01</span><div><strong>Tablet: ukaž funkce a kroť bugy.</strong><p>Plň zadání vlevo. Mapa se ovládá na levém okraji tabletu, pět pluginů je vpravo. Kreslení a měření potřebují dva klepy na mapu. Každý plugin něco pokazí — oprav to jeho záchranným tlačítkem.</p></div></li><li><span>02</span><div><strong>Modrá smrt? Teď mluvíš ty.</strong><p>Při pádu nebo třech nevyřešených buzích se pohled automaticky přepne na PM a zákazníky. Vyber odpověď, která řeší jejich otázku. Vtipná výmluva nemusí být přesvědčivá výmluva.</p></div></li><li><span>03</span><div><strong>Restartuj, když se nedívají.</strong><p>Dobrá odpověď odvede pozornost na pár sekund. Tehdy spusť nenápadný restart. Stejným tlačítkem ho můžeš přerušit. Pokud tě přistihnou, ztratíš důvěru i část postupu. Na záchranu máš 24 sekund.</p></div></li></ol><p class="help-footnote">Po restartu se automaticky vrátíš k tabletu. Návod i pauza zastavují čas. Zvuk je volitelný. Tlačítko experimentálního 3D v Mapách umí spolehlivě předvést modrou smrt.</p><button class="primary-button" data-close="help-dialog">Tak to nějak odprezentujeme. <svg><use href="#i-arrow"/></svg></button></dialog>
-  <dialog id="pause-dialog" class="dialog compact-dialog"><span class="dialog-kicker">TECHNICKÁ PŘESTÁVKA</span><h2>Server si dává kafe.</h2><p>Čas stojí. Bugísek bohužel přemýšlí dál.</p><button class="primary-button" id="resume-button">Zpátky do chaosu <svg><use href="#i-play"/></svg></button></dialog>
+  <dialog id="pause-dialog" class="dialog compact-dialog"><span class="dialog-kicker">TECHNICKÁ PŘESTÁVKA</span><h2>Server si dává kafe.</h2><p>Čas stojí. Cabmaster bohužel přemýšlí dál.</p><button class="primary-button" id="resume-button">Zpátky do chaosu <svg><use href="#i-play"/></svg></button></dialog>
   <dialog id="result-dialog" class="dialog result-dialog"><div class="result-art"><div class="pm-sprite" id="result-goblin"></div></div><span class="dialog-kicker" id="result-kicker">VÝBĚROVÉ ŘÍZENÍ SE PRÁVĚ RESTARTOVALO</span><h2 id="result-title">Tak my se vám ozveme.</h2><p id="result-copy"></p><div class="result-stats"><div><strong id="result-score">0</strong><span>BODŮ</span></div><div><strong id="result-tasks">0</strong><span>UKÁZEK</span></div><div><strong id="result-survived">0×</strong><span>ZACHRÁNĚNO</span></div></div><div class="result-rank" id="result-rank"></div><button class="primary-button" id="restart-button">Další zákazník, stejný build <svg><use href="#i-reset"/></svg></button><button class="text-button result-back" id="result-back">Zpátky k přípravě</button></dialog>
 </body>
 </html>
