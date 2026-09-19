@@ -22,7 +22,7 @@
   const PLUGINS = {
     draw:{name:'Kreslení',action:'Nakreslit trasu',fix:'Vzít kresbu zpět',bug:'Trasa překreslila sama sebe na klubko špaget.',pm:'To je optimalizace trasy pro řidiče, kteří nemají kam spěchat.'},
     measure:{name:'Měření',action:'Změřit vzdálenost',fix:'Vrátit jednotky na metry',bug:'Měření převádí metry na banány. Kurz je plovoucí.',pm:'Podporujeme i nestandardní jednotky. Tohle chtěl… někdo určitě.'},
-    layers:{name:'Vrstvy',action:'Zobrazit vrstvu jednotek',fix:'Obnovit pouze jednotky',bug:'Vrstva jednotek ukazuje výskyt rozzuřených hus.',pm:'To je prediktivní dopravní model. Husy mají přednost.'},
+    layers:{name:'Vrstvy',action:'Zobrazit vrstvu jednotek',fix:'Obnovit pouze jednotky',bug:'Vrstva jednotek ukazuje výskyt rozzuřených delfínů.',pm:'To je easter egg od programátorů. Delfíni mají přednost.'},
     maps:{name:'Mapy',action:'Použít terénní mapu',fix:'Vrátit cvičný prostor',bug:'Terénní mapa je teď plán kanceláře. Četa parkuje v kuchyňce.',pm:'Plynulý přechod do indoor navigace. Ano, ta lednice je georeferencovaná.'},
     fleet:{name:'Jednotky',action:'Aktualizovat seznam',fix:'Použít ověřené jednotky',bug:'Sestava obsahuje služební ponorku, židli a ředitelovo ego.',pm:'To jsou virtuální vozidla. Velmi virtuální. Tohle tam minule nebylo.'}
   };
@@ -34,28 +34,28 @@
     {id:'traffic',title:'Dopravní vrstva začala halucinovat.',hint:'Vypni dopravu tlačítkem vrstev vlevo.',solution:'layers',duration:7,penalty:20}
   ];
   const QUESTIONS = [
-    {who:'manager',role:'VELITEL · AČR',text:'„A ten restart je taky v ceně, nebo má vlastní licenci?“',answers:[
+    {who:'manager',role:'René Švanda · VELITEL AČR',text:'„A ten restart je taky v ceně, nebo má vlastní licenci?“',answers:[
       {text:'„V ceně. Žádný příplatek. Mezitím si projdeme rozsah dodávky.“',good:true,reply:'Tak mi ukažte ten rozpočet. A žádné překvapení.'},
       {text:'„To je prémiový balíček Dynamická dostupnost.“',good:false,reply:'Za dostupnost už snad platíme?!'},
       {text:'„Cenu vám řekne kolega. Ten, co právě utekl.“',good:false,reply:'Mám mu rovnou zrušit objednávku?'}]},
-    {who:'technician',role:'SPOJAŘ · AČR',text:'„To je modrá smrt? Proč mi tvrdíte, že je to dashboard?“',answers:[
+    {who:'technician',role:'Emil Podržkabel · SPOJAŘ AČR',text:'„To je modrá smrt? Proč mi tvrdíte, že je to dashboard?“',answers:[
       {text:'„To je tmavý režim. Jen hodně modrý.“',good:false,reply:'Na tom dashboardu je napsáno KERNEL_PANIC.'},
       {text:'„Spadl prezentační klient. Data ověřím po obnovení. Ukážu vám architekturu?“',good:true,reply:'Dobře. Nakreslete mi, kde končí klient a začíná server.'},
       {text:'„To způsobuje vaše aura. Máte zapnutý Bluetooth?“',good:false,reply:'Bluetooth nemůže za vaše rozhodnutí.'}]},
-    {who:'dispatcher',role:'OPERÁTORKA C2 · AČR',text:'„A co mezitím dělají naše jednotky v terénu?“',answers:[
+    {who:'dispatcher',role:'Jana Rýdlová · OPERÁTORKA C2',text:'„A co mezitím dělají naše jednotky v terénu?“',answers:[
       {text:'„Meditují. Je to součást digitální transformace.“',good:false,reply:'Meditaci nemáme ve smlouvě.'},
       {text:'„Všichni stojí. Až na toho v rybníce.“',good:false,reply:'PROSÍM COŽE?!'},
       {text:'„Jízdy běží dál. Obnovuji zobrazení. Popíšete mi váš ranní provoz?“',good:true,reply:'V šest vyráží první směna. Potřebujeme hlavně přehled.'}]},
-    {who:'manager',role:'VELITEL · AČR',text:'„Stihnete zprovoznit ukázku, než skončí tahle schůzka?“',answers:[
+    {who:'manager',role:'René Švanda · VELITEL AČR',text:'„Stihnete zprovoznit ukázku, než skončí tahle schůzka?“',answers:[
       {text:'„Počítáme s tím v dalším sprintu. Nebo v dalším životě.“',good:false,reply:'Můj kalendář další život nepodporuje.'},
       {text:'„Potřebuji pár sekund na obnovení. Projdeme zatím priority nasazení.“',good:true,reply:'Priorita jedna: aby to fungovalo. Dvojku si napište sám.'},
       {text:'„Schůzka nemusí skončit. Objednám pizzu na neurčito.“',good:false,reply:'Pizzu si dám. Smlouvu ne.'}]},
-    {who:'technician',role:'SPOJAŘ · AČR',text:'„Proč ta aplikace měří trasu v banánech?“',answers:[
+    {who:'technician',role:'Emil Podržkabel · SPOJAŘ AČR',text:'„Proč ta aplikace měří trasu v banánech?“',answers:[
       {text:'„Chyba formátování jednotek. Vrátím metry. Jakou přesnost potřebujete?“',good:true,reply:'Na metry. Překvapivě. A chci export bez ovoce.'},
       {text:'„Je to ekologická stopa převedená na svačinu.“',good:false,reply:'Na tomhle projektu bude ekologický hlavně papír po výpovědi.'},
       {text:'„Banán je metr, který se rozhodl nebýt rovný.“',good:false,reply:'Metrologický ústav vám právě zablokoval číslo.'}]},
-    {who:'dispatcher',role:'OPERÁTORKA C2 · AČR',text:'„Já chci prostě vědět, kde mám četu. Žádné husy.“',answers:[
-      {text:'„Husy létají. To je autobus budoucnosti.“',good:false,reply:'A vy jste dodavatel minulosti.'},
+    {who:'dispatcher',role:'Jana Rýdlová · OPERÁTORKA C2',text:'„Já chci prostě vědět, kde mám četu. Žádné delfíny.“',answers:[
+      {text:'„Programátoři tam schovali easter egg. Delfíni se jen nedrželi souřadnic.“',good:false,reply:'Tak jim vyřiďte, že chci jednotky, ne akvárium.'},
       {text:'„Autobus se skryl, protože má sociální úzkost.“',good:false,reply:'Tu teď mám já.'},
       {text:'„Souhlas. Vracím ověřenou flotilu. Které linky jsou pro vás klíčové?“',good:true,reply:'Dvanáctka a sedmička. A ideálně obě na správné souřadnici.'}]}
   ];

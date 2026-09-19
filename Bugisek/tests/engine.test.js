@@ -1,12 +1,13 @@
 'use strict';
 const {test}=require('node:test');
 const assert=require('node:assert/strict');
-const {Game,PLUGINS,INCIDENTS}=require('../engine.js');
+const {Game,PLUGINS,INCIDENTS,QUESTIONS}=require('../engine.js');
 const advance=(g,seconds)=>{for(let i=0;i<Math.round(seconds*10);i++)g.tick(.1);};
 const fresh=()=>{const g=new Game(()=>.5);g.start();return g;};
 
 test('Ready state is inert and a successful vehicle demo advances to a plugin task',()=>{const g=new Game();g.act('select','van');assert.equal(g.selected,null);g.start();g.act('select','van');g.act('track');assert.equal(g.completed,1);assert.equal(g.mission.plugin,'measure');assert.equal(g.score,100);});
 test('Each plugin really creates a bug and can be corrected only once',()=>{for(const id of Object.keys(PLUGINS)){const g=fresh();g.act('plugin-use',id);assert.equal(g.pluginBugs[id],true);assert.equal(g.bugs,1);g.act('plugin-fix',id);assert.equal(g.pluginBugs[id],undefined);assert.equal(g.bugs,0);const score=g.score;g.act('plugin-fix',id);assert.equal(g.score,score);}});
+test('Layers use dolphins and the renamed customers keep the programmer easter egg',()=>{assert.match(PLUGINS.layers.bug,/delfín/i);assert.doesNotMatch(PLUGINS.layers.bug,/hus/i);assert.deepEqual(new Set(QUESTIONS.map(q=>q.role)),new Set(['René Švanda · VELITEL AČR','Jana Rýdlová · OPERÁTORKA C2','Emil Podržkabel · SPOJAŘ AČR']));const dolphinQuestion=QUESTIONS.find(q=>/delfín/i.test(q.text));assert.ok(dolphinQuestion);assert.ok(dolphinQuestion.answers.some(a=>!a.good&&/programátoři/i.test(a.text)&&/easter egg/i.test(a.text)));});
 test('Plugin mission requires both demonstration and corrective action',()=>{const g=fresh();g.act('select','van');g.act('track');advance(g,2);g.act('plugin-fix','measure');assert.equal(g.completed,1);g.act('plugin-use','measure');g.act('plugin-fix','measure');assert.equal(g.completed,2);assert.equal(g.pluginDemos,1);});
 test('Three unresolved bugs automatically open the customer scene without losing',()=>{const g=fresh();g.act('plugin-use','layers');g.act('plugin-use','maps');g.act('plugin-use','fleet');assert.equal(g.phase,'room');assert.equal(g.status,'playing');assert.ok(g.room.question);});
 test('A fatal crash displays blue death then automatically switches to the PM',()=>{const g=fresh();g.act('install');assert.equal(g.phase,'bsod');assert.equal(g.stability,0);assert.equal(g.status,'playing');advance(g,3.4);assert.equal(g.phase,'room');assert.equal(g.crashes,1);});

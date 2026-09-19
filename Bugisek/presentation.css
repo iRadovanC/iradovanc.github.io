@@ -39,3 +39,11 @@
   .blue-screen code{font-size:10px}
   .blue-screen>small{font-size:9px;line-height:1.55}
 }
+
+/* The Layers failure releases dolphins over the map. Keep this separate from
+   the legacy prop styles so the effect remains readable at every breakpoint. */
+.dolphin{position:absolute;font-size:39px;filter:drop-shadow(2px 5px 2px #303d2630);animation:dolphin-swim 1.6s ease-in-out infinite}
+.d1{left:27%;top:15%;rotate:-15deg}.d2{left:57%;top:48%;animation-delay:-.5s}.d3{left:72%;top:24%;rotate:14deg;animation-delay:-1s}.d4{left:15%;top:69%;animation-delay:-.7s}
+.dolphin-map>b{position:absolute;bottom:15%;left:30%;background:#f8f5e0d9;color:#9a8a5b;padding:8px;font-size:9px;letter-spacing:1px;border-radius:4px}
+@keyframes dolphin-swim{0%,100%{translate:0 0}50%{translate:7px -5px}}
+@media(max-width:720px){.dolphin{font-size:30px}.dolphin-map>b{font-size:6px;left:20%}}

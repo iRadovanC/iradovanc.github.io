@@ -19,7 +19,7 @@ Hra pak běží na `http://localhost:4173`. Server poslouchá i na lokální sí
 - Přežij 90 sekund prezentace, dokonči alespoň čtyři ukázky včetně jednoho pluginu a udrž důvěru zákazníků nad nulou.
 - Jednotky s APP-6 symboly vybereš na mapě, ve spodní liště nebo v pluginu Jednotky. Modré rámečky rozlišují pěší, tankovou, dělostřeleckou, průzkumnou, ženijní a spojovací četu.
 - Panel pluginu zabírá celou výšku displeje a mapa mu uvolňuje místo. Překrývající se symboly se rozestoupí; tenká spojnice ukazuje jejich skutečnou polohu. Najetí kurzoru na mapu zastaví pohyb pro pohodlný výběr. Kliknutí na symbol zavře panel a otevře detail jednotky.
-- Kreslení a Měření používají dva klepy na mapu. Kreslení kreslí špagety, Měření vrací banány. Vrstvy vypustí husy, Mapy zobrazí kancelář a seznam jednotek obsahuje nepojízdné kolegy z inventáře.
+- Kreslení a Měření používají dva klepy na mapu. Kreslení kreslí špagety, Měření vrací banány. Vrstvy vypustí delfíny, Mapy zobrazí kancelář a seznam jednotek obsahuje nepojízdné kolegy z inventáře.
 - Pluginové chyby napravují záchranná tlačítka v jejich panelech. Náhodné poruchy mají vlastní instrukce a časový limit. Rychlé klikání snižuje stabilitu.
 - Tři nevyřešené bugy automaticky přepnou pohled na velitelské stanoviště. Nulová stabilita nebo experimentální 3D nejprve vyvolají modrou smrt. Ruční přepínání pohledů ve hře není.
 - Na velitelském stanovišti odpověz na konkrétní otázku zákazníka. Dobrá odpověď získá 5,8 sekundy krytí. Spusť restart, dokud se zákazníci věnují hovoru. Tlačítkem ho lze opět přerušit. Nápadné restartování zvyšuje podezření; odhalení ubere důvěru a část postupu.

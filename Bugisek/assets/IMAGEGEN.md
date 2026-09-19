@@ -1,5 +1,22 @@
 # Grafika vygenerovaná imagegenem
 
+## Učebna v režimu Zachraň reputaci
+
+Taktická tabule je ve scéně posunutá blíž ke středu a tvoří pozadí za postavami. Vpravo stojí rádio jako samostatná vrstva na novém izometrickém učitelském stolku; oddělené vrstvy zachovávají přesnou podobu rádia a umožňují nezávislé responzivní umístění.
+
+- `assets/harryk-personal-radio-isometric.png` — věrná úprava původního rádia, pouze s větším a čitelnějším nápisem `HARRYK`.
+- `assets/classroom-table-isometric.png` — prázdný izometrický stolek s průhledným pozadím.
+
+Oba soubory vznikly vestavěným `image_gen.imagegen`. Původní rádio zůstává v projektu beze změny. Použité prompty:
+
+### Rádio HARRYK
+
+> Use case: text-localization / precise-object-edit. Asset type: production transparent PNG prop for an existing isometric 3D game. Input image: edit target — the supplied military personal radio with wired hand microphone. Primary request: change ONLY the small front label from "HARRYS" to the exact text "HARRYK". Make the new HARRYK lettering substantially larger, bold, high-contrast warm ivory/white, and clearly readable even when the full asset is displayed small. Fit it naturally on the same upper olive-green front face above the display. Spell exactly H-A-R-R-Y-K. Constraints: preserve the radio, antenna, knobs, screen, keypad, casing wear, microphone, cable, lighting, colors, camera angle, composition, proportions, silhouette and pixel dimensions as faithfully as possible. Keep genuine alpha transparency everywhere outside the prop. Do not add a table or any other object in this asset. No background, no glow, no frame, no watermark, no other text. Change only the label.
+
+### Izometrický stolek
+
+> Use case: stylized-concept. Asset type: production transparent PNG prop for an existing isometric 3D classroom scene. Primary request: one compact empty classroom demonstration table / teacher's side table, shown in orthographic isometric three-quarter view from slightly above. The tabletop must be visibly deep and angled in true isometric perspective so a radio can later be composited standing on its right half. Style/medium: premium friendly stylized realistic 3D game render, tactile materials, matching a military classroom: worn olive-green painted metal frame and legs, warm medium-brown laminated wood tabletop with subtly scuffed edges. Composition: entire table fully visible and centered, generous transparent padding, tabletop broad and unobstructed, no chair. Lighting/mood: soft warm studio lighting from upper left, understated contact shadow only directly beneath the feet. Constraints: genuine alpha-transparent background; no objects on the table; no radio; no characters; no text; no labels; no wall or room; no floor plane; no frame; no watermark. Crisp readable silhouette at small game-prop size.
+
 ## Krizová scéna: průhledné výřezy a vrstvený PM
 
 Aktuální vykreslení vojáků používá `assets/soldiers-cutout.png` (971 × 1620, RGBA) a tělo PM používá vyčištěnou variantu `assets/pm-cutout-clean.png` (1536 × 1024, RGBA). Zdrojové atlasy vytvořil vestavěný `image_gen.imagegen`; původní soubory zůstávají zachované.

@@ -43,11 +43,14 @@
 
 .stage.room .floor-label{left:54%;bottom:7%;z-index:3;color:#8d8d70;font-size:13px;letter-spacing:1.35px;transform:rotate(-14deg) skewX(18deg);transform-origin:left center}
 
-/* Generated isometric classroom props. Both PNGs have real transparency, so
-   they stay crisp without the flat CSS-built silhouette of the old objects. */
+/* Generated isometric classroom props use real transparency. The board sits
+   behind the cast like a classroom focal point; the radio remains a separate
+   layer so it can stand naturally on the right half of the table. */
 .stage.room .classroom-prop{position:absolute;z-index:2;display:block;height:auto;pointer-events:none;filter:drop-shadow(3px 6px 4px #353a252b)}
-.stage.room .tactical-board{right:2%;top:3%;width:clamp(190px,14vw,250px)}
-.stage.room .harrys-radio{right:3%;bottom:4%;width:clamp(96px,7.2vw,132px);transform:rotate(1.5deg)}
+.stage.room .tactical-board{left:54%;right:auto;top:1%;width:clamp(210px,17vw,290px);transform:translateX(-50%)}
+.stage.room .radio-station{right:1%;bottom:1%;z-index:3;width:clamp(210px,16vw,280px);aspect-ratio:1.25;filter:none}
+.stage.room .classroom-table{position:absolute;z-index:1;right:0;bottom:0;width:100%;height:auto;filter:drop-shadow(3px 7px 4px #353a252b)}
+.stage.room .harryk-radio{position:absolute;z-index:2;right:3%;bottom:45%;width:52%;height:auto;transform:rotate(1deg);filter:drop-shadow(2px 4px 3px #282d2145)}
 .stage.room .plant{display:none}
 
 /* Keep the PM centered while the three soldiers form the same center-to-center
@@ -91,14 +94,14 @@
   .stage.room .char-technician .speech{left:auto;right:8px;transform:rotate(2deg)}
 }
 @media(min-width:721px) and (max-width:1400px){
-  .stage.room .tactical-board{width:155px}
-  .stage.room .harrys-radio{width:78px}
+  .stage.room .tactical-board{width:200px}
+  .stage.room .radio-station{width:195px}
 }
 @media(max-width:720px){
   .stage.room{min-height:340px;height:340px}
   .stage.room{--rescue-soldier-width:174px;--rescue-soldier-half:87px;--rescue-soldier-height:154px;--rescue-cast-gap:clamp(65px,16.67vw,120px);--rescue-dispatcher-gap:calc(var(--rescue-cast-gap) + 8px);--rescue-dispatcher-origin-top:111px;--rescue-presenter-width:220px;--rescue-presenter-half:110px;--rescue-presenter-height:222px}
   .stage.room .floor-label{display:none}
   .stage.room .char-manager{left:calc(50% - var(--rescue-soldier-half) - var(--rescue-cast-gap) - var(--rescue-cast-gap) - 8px);top:67px}.stage.room .char-technician{top:100px}
-  .stage.room .harrys-radio,.stage.room .tactical-board{display:none}
+  .stage.room .radio-station,.stage.room .tactical-board{display:none}
   .stage.room .speech{max-width:128px}
 }
