@@ -34,7 +34,7 @@
     c.lineWidth=1;c.strokeStyle='#697f5d24';for(let x=0;x<=1500;x+=150){path([[x,0],[x,1000]]);c.stroke();}for(let y=0;y<=1000;y+=125){path([[0,y],[1500,y]]);c.stroke();}
     for(let i=1;i<10;i++)label(String(40+i),i*150+8,28,12,'#879071');
     label('C V I Č N Ý   P R O S T O R   B U G O V I C E',735,910,22,'#889273');
-    label('BOROVÝ HŘBET',285,125,19);label('LOUKA U RESETU',730,610,18);label('LES ZÁLOH',1310,845,17);label('ŠNAJDÁRKOV',1195,270,17);label('potok Chybka',1040,890,14,'#699b93');
+    label('BOROVÝ HÁJ',285,125,19);label('LOUKA U RESETU',730,610,18);label('ÚSTŘEDNÍ HŘBITOV',1310,845,17);label('ŠNAJDÁRKOV',1195,270,17);label('potok Chybka',1040,890,14,'#699b93');
     [[435,288,'▲ 512'],[1115,812,'▲ 486'],[1210,130,'▲ 438']].forEach(([x,y,text])=>label(text,x,y,14,'#8b805f'));
     c.strokeStyle='#657959';c.lineWidth=3;path([[160,580],[185,550],[210,580],[160,580]]);c.stroke();label('VELITELSKÉ STANOVIŠTĚ',220,615,13);
     c.fillStyle='#748267';c.font='bold 22px Segoe UI';c.textAlign='center';c.fillText('N',1430,78);path([[1430,95],[1430,160],[1420,115],[1430,95],[1440,115]]);c.stroke();

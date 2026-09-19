@@ -31,7 +31,7 @@
     {id:'drift',title:'Mapa si vzala home office.',hint:'Vrať ji zaměřovačem na levé straně.',solution:'center',duration:8,penalty:18},
     {id:'memory',title:'Sledování snědlo všechnu RAM.',hint:'Vyber sledovanou jednotku a zastav sledování.',solution:'stop',duration:9,penalty:21},
     {id:'update',title:'Kritická oprava nekritické opravy.',hint:'Odmítni aktualizaci. Opravdu. Teď není ta chvíle.',solution:'dismiss',duration:9,penalty:23},
-    {id:'traffic',title:'Dopravní vrstva začala halucinovat.',hint:'Vypni dopravu tlačítkem vrstev vlevo.',solution:'layers',duration:7,penalty:20}
+    {id:'traffic',title:'Mapová vrstva začala halucinovat.',hint:'Vypni vrstvu tlačítkem vrstev vlevo.',solution:'layers',duration:7,penalty:20}
   ];
   const QUESTIONS = [
     {who:'manager',role:'René Švanda · VELITEL AČR',text:'„A ten restart je taky v ceně, nebo má vlastní licenci?“',answers:[
@@ -51,7 +51,7 @@
       {text:'„Potřebuji pár sekund na obnovení. Projdeme zatím priority nasazení.“',good:true,reply:'Priorita jedna: aby to fungovalo. Dvojku si napište sám.'},
       {text:'„Schůzka nemusí skončit. Objednám pizzu na neurčito.“',good:false,reply:'Pizzu si dám. Smlouvu ne.'}]},
     {who:'technician',role:'Emil Podržkabel · SPOJAŘ AČR',text:'„Proč ta aplikace měří trasu v banánech?“',answers:[
-      {text:'„Chyba formátování jednotek. Vrátím metry. Jakou přesnost potřebujete?“',good:true,reply:'Na metry. Překvapivě. A chci export bez ovoce.'},
+      {text:'„Chyba formátování jednotek. Vrátím metry. Jakou přesnost potřebujete?“',good:true,reply:'Na metry. Překvapivě. A chci export do LSD.'},
       {text:'„Je to ekologická stopa převedená na svačinu.“',good:false,reply:'Na tomhle projektu bude ekologický hlavně papír po výpovědi.'},
       {text:'„Banán je metr, který se rozhodl nebýt rovný.“',good:false,reply:'Metrologický ústav vám právě zablokoval číslo.'}]},
     {who:'dispatcher',role:'Jana Rýdlová · OPERÁTORKA C2',text:'„Já chci prostě vědět, kde mám četu. Žádné delfíny.“',answers:[
