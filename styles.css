@@ -1,0 +1,174 @@
+:root {
+  font-family: Arial, Helvetica, sans-serif;
+  color: #25211d;
+  font-synthesis: none;
+  -webkit-font-smoothing: antialiased;
+}
+* { box-sizing: border-box; }
+html, body { margin: 0; min-height: 100%; background: transparent; }
+body { overflow-x: hidden; padding: clamp(16px, 3vw, 42px); }
+button { font: inherit; }
+.sr-only {
+  position: absolute; width: 1px; height: 1px; padding: 0; margin: -1px;
+  overflow: hidden; clip: rect(0, 0, 0, 0); white-space: nowrap; border: 0;
+}
+.world { width: min(1180px, 100%); margin: 0 auto; position: relative; }
+.scene-shell { position: relative; width: 100%; height: clamp(665px, 69vw, 770px); isolation: isolate; }
+.torn-mat, .photograph {
+  position: absolute; left: 3.5%; right: 3.5%; top: 10%; bottom: 9%;
+  clip-path: polygon(0 5%,5% 3%,9% 4.5%,15% 1.4%,22% 3%,29% 0,36% 2.8%,42% .7%,49% 3%,56% 0,63% 2.8%,70% .6%,78% 4%,86% 2.1%,91% 5%,97% 3%,100% 10%,98% 18%,100% 25%,98% 33%,100% 42%,98% 50%,100% 61%,97% 71%,99% 79%,97% 87%,100% 94%,94% 96%,87% 94%,79% 100%,72% 96%,64% 98%,55% 95%,47% 99%,39% 96%,30% 99%,21% 95%,14% 98%,7% 95%,1% 97%,3% 89%,0 79%,2% 69%,0 60%,2% 48%,0 38%,3% 27%,0 16%);
+}
+.torn-mat {
+  background: #f1dec0; transform: rotate(-1.4deg) scale(1.025);
+  filter: drop-shadow(0 15px 5px #2b1d1430); z-index: 0;
+}
+.photograph { z-index: 1; overflow: hidden; background: #342720; box-shadow: inset 0 0 55px #0008; }
+.photo-image {
+  position: absolute; inset: -4%;
+  background: url('assets/street-photo.png') center center / cover no-repeat;
+  transform: scale(1.04) translate(var(--pan-x, 0px), var(--pan-y, 0px));
+  transition: transform .35s ease-out; filter: saturate(.86) contrast(1.06);
+}
+.photo-shade {
+  position: absolute; inset: 0;
+  background: linear-gradient(90deg, #120f0bd9 0%, #21160da6 33%, #2d21124b 56%, #13100b33 100%),
+              linear-gradient(0deg, #17120dd4 0%, transparent 48%);
+}
+.film-grain {
+  position: absolute; inset: 0; opacity: .23; pointer-events: none;
+  background-image: url("data:image/svg+xml,%3Csvg viewBox='0 0 150 150' xmlns='http://www.w3.org/2000/svg'%3E%3Cfilter id='n'%3E%3CfeTurbulence type='fractalNoise' baseFrequency='.8' numOctaves='3' stitchTiles='stitch'/%3E%3C/filter%3E%3Crect width='100%25' height='100%25' filter='url(%23n)' opacity='.52'/%3E%3C/svg%3E");
+  mix-blend-mode: screen; animation: grain .3s steps(2) infinite;
+}
+.blast-layer {
+  position: absolute; z-index: 2; width: 60%; height: auto; left: 35%; top: -8%;
+  opacity: .45; mix-blend-mode: screen; transform-origin: center;
+  animation: smoke 5s ease-in-out infinite; pointer-events: none;
+}
+.headline {
+  position: absolute; z-index: 4; left: 8%; top: 35%; color: #fff5dc;
+  text-shadow: 0 3px 16px #0008; pointer-events: none;
+}
+.scene-kicker {
+  display: block; font-size: 10px; font-weight: 900; letter-spacing: .24em;
+  color: #ffcb86; margin-bottom: 24px;
+}
+h1 {
+  font-family: Georgia, 'Times New Roman', serif; font-size: clamp(52px, 5.8vw, 83px);
+  letter-spacing: -.065em; line-height: .96; margin: 0; font-weight: 700;
+}
+h1 em { font-weight: 400; color: #ffc782; }
+.whisper {
+  font-size: 12px; letter-spacing: .16em; margin: 30px 0 0;
+  text-transform: uppercase; color: #f2e1cc;
+}
+.leslie {
+  position: absolute; z-index: 5; right: 2%; top: -13%; height: 116%; width: 49%;
+  pointer-events: none; transform-origin: 70% 95%;
+  animation: leslie-breath 4.2s ease-in-out infinite;
+  filter: drop-shadow(-14px 18px 13px #130f0bc9);
+}
+.leslie img {
+  display: block; width: 100%; height: 100%; object-fit: contain; object-position: center bottom;
+  mask-image: linear-gradient(#000 0%, #000 76%, transparent 100%);
+}
+.scene-object {
+  position: absolute; z-index: 7; border: 0; background: none; padding: 0; color: inherit;
+  cursor: pointer; touch-action: manipulation;
+}
+.cursor-ready .scene-object { cursor: none; }
+.scene-cursor {
+  position: fixed; z-index: 100; left: 0; top: 0; width: 48px; height: 48px;
+  object-fit: contain; pointer-events: none; user-select: none;
+  opacity: 0; transform: translate(-8px, -6px); visibility: hidden;
+}
+.scene-cursor.is-visible { opacity: 1; visibility: visible; }
+.scene-object:focus-visible { outline: 3px solid #ffcc80; outline-offset: 4px; border-radius: 8px; }
+.lamp {
+  left: 10%; top: 18%; width: 8%; height: 18%; display: grid; place-items: start center;
+  color: #ffdda5; font-size: 30px; text-shadow: 0 0 17px #ffc76c; opacity: .55;
+}
+.lamp span { margin-top: 12%; }
+.lamp:hover { opacity: 1; }
+.blast { left: 43%; top: 11%; width: 29%; height: 30%; border-radius: 50%; }
+.flash-beam {
+  position: absolute; z-index: 3; left: 10%; top: 17%; width: 48%; height: 62%;
+  background: conic-gradient(from 130deg at 8% 1%, #ffe5a180, transparent 28%, transparent 79%, #ffe5a180);
+  clip-path: polygon(0 0, 100% 100%, 0 87%); opacity: 0; transition: opacity .4s;
+  pointer-events: none;
+}
+.scene-shell.lit .flash-beam { opacity: .9; }
+.shadow-trigger { right: 3%; top: 48%; width: 14%; height: 30%; }
+.runaway-shadow {
+  position: absolute; z-index: 2; right: -2%; top: -21%; width: 48%; height: 140%;
+  opacity: .28; pointer-events: none; transform: translateX(-18px) rotate(-4deg);
+  transform-origin: 60% 95%;
+}
+.runaway-shadow img {
+  display: block; width: 100%; height: 100%; object-fit: contain; object-position: center bottom;
+  filter: brightness(0) blur(5px); mask-image: linear-gradient(#000 0%, #000 73%, transparent 98%);
+}
+.scene-shell.shadow-leaving .runaway-shadow { animation: shadow-walk 4s ease-in forwards; }
+.egg-face {
+  position: absolute; z-index: 8; opacity: 0; pointer-events: none;
+  transform: scale(.25) rotate(-24deg);
+  transition: opacity .2s, transform .65s cubic-bezier(.15, 1.6, .3, 1);
+  filter: drop-shadow(6px 12px 8px #0009);
+}
+.egg-face img { display: block; width: 100%; height: auto; }
+.egg-face-shock { width: 24%; left: 1%; top: 2%; }
+.egg-face.show { opacity: 1; transform: scale(1) rotate(-9deg); }
+.scene-shell.blasted .blast-layer { animation: blast-pop 1.4s ease-out; }
+.scene-shell.blasted .photograph { animation: quake .8s steps(3); }
+@keyframes grain { 50% { transform: translate(1%, -1%); } }
+@keyframes smoke { 50% { transform: translateY(-14px) scale(1.06); opacity: .63; } }
+@keyframes leslie-breath { 50% { transform: translateY(-6px) rotate(.6deg); } }
+@keyframes blast-pop {
+  25% { transform: scale(1.27); opacity: .95; filter: brightness(2); }
+  65% { transform: scale(1.12); opacity: .7; }
+  100% { transform: scale(1); opacity: .45; }
+}
+@keyframes quake {
+  25% { transform: translate(-8px, 5px); }
+  50% { transform: translate(8px, -4px); }
+  75% { transform: translate(-5px, 3px); }
+}
+@keyframes shadow-walk {
+  0% { opacity: .28; transform: translateX(-18px) rotate(-4deg); }
+  15% { opacity: .7; transform: translateX(-36px) rotate(-8deg); }
+  50% { opacity: .7; transform: translateX(-180px) rotate(2deg); }
+  75% { opacity: .5; transform: translateX(-360px) rotate(-5deg); }
+  100% { opacity: 0; transform: translateX(-580px) rotate(5deg); }
+}
+@media (max-width: 850px) {
+  .scene-shell { height: 720px; }
+  .headline { left: 8%; top: 33%; }
+  h1 { font-size: clamp(48px, 7vw, 67px); }
+  .leslie { right: -3%; width: 60%; top: -10%; height: 112%; }
+  .egg-face-shock { top: 3%; }
+}
+@media (max-width: 620px) {
+  body { padding: 8px; }
+  .scene-shell { height: 780px; }
+  .torn-mat, .photograph { left: 2%; right: 2%; top: 12%; bottom: 8%; }
+  .photo-image { background-position: 48% center; }
+  .photo-shade { background: linear-gradient(180deg, #150f0abe 0%, #18110a83 34%, #17110b48 55%, #130d09a6 100%); }
+  .headline { top: 18%; left: 8%; right: 8%; text-align: center; }
+  .scene-kicker { font-size: 9px; margin-bottom: 13px; }
+  h1 { font-size: clamp(42px, 11vw, 64px); }
+  .whisper { margin-top: 17px; font-size: 10px; }
+  .leslie { height: 58%; width: 75%; top: 44%; right: 0; }
+  .lamp { top: 18%; left: 5%; }
+  .blast { top: 13%; left: 48%; }
+  .shadow-trigger { right: 0; top: 64%; width: 20%; height: 21%; }
+  .runaway-shadow { right: -13%; top: 26%; width: 85%; height: 92%; }
+  .egg-face-shock { width: 45%; left: 0; top: 43%; }
+}
+@media (max-width: 390px) {
+  h1 { font-size: 40px; }
+  .scene-shell { height: 700px; }
+  .headline { top: 19%; }
+  .leslie { top: 46%; }
+}
+@media (prefers-reduced-motion: reduce) {
+  *, *:before, *:after { animation-duration: .01ms !important; animation-iteration-count: 1 !important; transition-duration: .01ms !important; }
+}
