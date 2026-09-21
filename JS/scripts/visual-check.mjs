@@ -1,0 +1,14 @@
+const {chromium}=await import(process.env.PLAYWRIGHT_MODULE||'playwright');
+import {pathToFileURL} from 'node:url';
+import path from 'node:path';
+const browser=await chromium.launch({channel:'chrome',headless:true});
+const page=await browser.newPage({viewport:{width:1600,height:1000},deviceScaleFactor:1});
+const errors=[];page.on('pageerror',e=>errors.push(e.message));page.on('console',msg=>{if(msg.type()==='error')errors.push(msg.text());});
+await page.goto(pathToFileURL(path.resolve('index.html')).href+'?test');
+await page.waitForFunction(()=>window.__VANGUARD__?.state.ready,{timeout:30000});
+await page.waitForTimeout(1300);await page.screenshot({path:'tmp/menu.png'});
+await page.click('#play');await page.waitForTimeout(700);await page.screenshot({path:'tmp/play.png'});
+console.log(JSON.stringify(await page.evaluate(()=>({diagnostics:__VANGUARD__.diagnostics,mode:__VANGUARD__.state.mode,position:__VANGUARD__.state.position.toArray(),bones:Object.fromEntries(['Hips','Head','RightHand','LeftHand','LeftFoot','RightFoot'].map(n=>{const b=__VANGUARD__.character.bones[n];return[n,[b.matrixWorld.elements[12],b.matrixWorld.elements[13],b.matrixWorld.elements[14]]]}))})),null,2));
+await page.keyboard.press('KeyC');await page.waitForTimeout(700);await page.screenshot({path:'tmp/crouch.png'});
+await page.keyboard.press('Tab');await page.waitForTimeout(400);await page.screenshot({path:'tmp/c2.png'});
+console.log('ERRORS',JSON.stringify(errors));await browser.close();
