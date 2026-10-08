@@ -1,0 +1,526 @@
+<!doctype html>
+<html lang="cs">
+<head>
+  <meta charset="utf-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1, viewport-fit=cover">
+  <meta name="theme-color" content="#c5f364">
+  <meta name="description" content="¡Vámonos! Jízda z Brna do Lipníku nad Bečvou. Dva řidiči, dvě vojenská auta a hotovost v pesos.">
+  <title>¡Vámonos! — Z Brna. S grácií. Za pesos.</title>
+  <link rel="icon" href="data:image/svg+xml,%3Csvg%20xmlns%3D%22http%3A%2F%2Fwww.w3.org%2F2000%2Fsvg%22%20viewBox%3D%220%200%2064%2064%22%3E%3Crect%20width%3D%2264%22%20height%3D%2264%22%20rx%3D%2218%22%20fill%3D%22%23c5f364%22%2F%3E%3Cpath%20d%3D%22m13%2018%2012%2029h12l14-29H39l-8%2020-7-20Z%22%20fill%3D%22%23243f31%22%2F%3E%3Ccircle%20cx%3D%2248%22%20cy%3D%2247%22%20r%3D%225%22%20fill%3D%22%23243f31%22%2F%3E%3C%2Fsvg%3E%0A" type="image/svg+xml">
+  <style>:root{--ink:#223a2c;--muted:#7c8377;--lime:#c5f364;--green:#426f44;--line:#e7e9e0;--paper:#fff;--soft:#f7f8f3;--radius:22px;--shadow:0 14px 45px #243a2610;font-family:Arial,Helvetica,sans-serif;color:var(--ink);background:#f7f8f4;font-synthesis:none}
+*{box-sizing:border-box}body{margin:0}button,input,textarea{font:inherit}button{cursor:pointer;color:inherit}button,input{ -webkit-tap-highlight-color:transparent}button{border:0;background:none}button:focus-visible,input:focus-visible,textarea:focus-visible{outline:3px solid #648c35;outline-offset:4px}button:disabled{cursor:wait;opacity:.65}button:disabled:focus-visible{outline:none}button,svg{touch-action:manipulation}svg{display:block}a{color:inherit}button:hover{transition:background .16s,transform .16s}button:active:not(:disabled){transform:translateY(1px)}[hidden]{display:none!important}.svg-library{position:absolute;width:0;height:0;overflow:hidden}.icon{width:22px;height:22px;fill:none;stroke:currentColor;stroke-width:1.7;stroke-linecap:round;stroke-linejoin:round;flex-shrink:0}.icon-button{width:42px;height:42px;display:grid;place-items:center;border-radius:50%;flex-shrink:0}.icon-button:hover{background:#edf0e8}.header{height:88px;padding:0 40px;display:flex;align-items:center;justify-content:space-between;background:#fff;border-bottom:1px solid var(--line);gap:30px}.brand{padding:0;position:relative;font-weight:900;font-size:35px;letter-spacing:-2.2px;white-space:nowrap}.brand>span:first-child{color:#699145}.brand-dot{display:inline-block;width:9px;height:9px;background:var(--lime);border-radius:50%;margin:0 0 1px 4px}.desktop-nav{align-self:stretch;display:flex;align-items:stretch;gap:31px;margin-left:20px}.nav-link{position:relative;color:#7c8277;font-size:13px;font-weight:600;padding:0 2px;white-space:nowrap}.nav-link.active{color:var(--ink)}.nav-link.active:after{content:'';position:absolute;bottom:0;left:0;right:0;height:3px;border-radius:3px 3px 0 0;background:var(--ink)}.nav-link:hover{color:var(--ink)}.nav-count{display:inline-grid;place-items:center;background:#f0f2ea;width:18px;height:18px;font-size:10px;border-radius:6px;margin-left:3px}.header-end{display:flex;align-items:center;gap:24px}.region{font-size:12px;color:#6c7567;white-space:nowrap}.flag{margin-right:7px;font-size:19px;vertical-align:middle}.profile-button{width:40px;height:40px;background:#f0f2e9;border:1px solid #e1e6d9;border-radius:50%;position:relative;font-size:14px;font-weight:700}.online-dot{position:absolute;bottom:-1px;right:0;width:10px;height:10px;border:2px solid #fff;border-radius:50%;background:#83b85a}.mobile-menu{display:none}.app-shell{max-width:1680px;margin:auto;display:grid;grid-template-columns:388px minmax(0,1fr);gap:24px;padding:24px 28px;min-height:calc(100dvh - 88px)}.booking-panel{border:1px solid #e9ebe2;border-radius:var(--radius);background:var(--paper);display:flex;flex-direction:column;box-shadow:0 6px 24px #1b332b03;min-width:0}.booking-content{padding:26px 25px 18px;flex:1}.eyebrow{display:flex;align-items:center;gap:7px;font-size:9px;font-weight:700;letter-spacing:1.35px}.live-dot{width:6px;height:6px;border-radius:50%;background:#6d9553;box-shadow:0 0 0 3px #70965310;display:inline-block;flex-shrink:0;animation:live 3s infinite}.intro{position:relative}.intro h1{font-size:43px;letter-spacing:-2px;line-height:1.07;margin:20px 0 12px;font-weight:750}.intro h1>span:first-child{color:#729150}.heading-arrow{font-weight:400;font-size:57px;position:absolute;right:3px;top:33px;transform:rotate(6deg);color:#a6b697}.intro p{font-size:12px;color:#7b8375;margin:0 0 25px}.route-inputs{border:1px solid #e4e8dc;background:#fbfcf8;border-radius:14px;padding:1px 13px;position:relative}.location-input{display:flex;align-items:center;gap:13px;width:100%;text-align:left;padding:14px 0;position:relative}.location-input>span:nth-child(2){display:grid;gap:6px;flex:1;min-width:0}.location-input small{font-size:8px;letter-spacing:1px;color:#878d81;font-weight:700}.location-input strong{font-size:13px;font-weight:600;overflow:hidden;text-overflow:ellipsis;white-space:nowrap}.location-input>.icon{width:14px;height:14px;color:#a2a995}.location-dot{width:10px;height:10px;flex-shrink:0;background:#fff;border:2px solid #405d38;z-index:1}.origin-dot{border-radius:50%}.destination-dot{border-radius:2px;background:#314d35}.route-line{height:46px;border-left:1px dashed #a5b698;position:absolute;top:37px;left:17.5px}.input-divider{height:1px;background:#e5e8df;margin-left:23px}.trip-summary{display:flex;align-items:center;gap:10px;font-size:10px;color:#7b8377;padding:14px 2px 21px}.trip-summary>span:first-child{display:flex;align-items:center;gap:5px}.trip-summary .icon{width:13px;height:13px}.summary-dot{color:#b7bdaf}.now-button{margin-left:auto;border:1px solid #e4e8dc;border-radius:7px;padding:5px 8px;font-size:10px;color:var(--ink);background:#fff}.now-button span{margin-left:7px}.section-title{display:flex;align-items:center;justify-content:space-between;margin-bottom:12px}.section-title h2{font-size:13px;font-weight:700;margin:0}.section-title>span{font-size:9px;color:#8a9183}.vehicle-options{display:grid;gap:10px}.vehicle-card{width:100%;border:1.5px solid #e8ebe1;border-radius:14px;padding:14px 11px 13px 5px;display:flex;align-items:center;gap:8px;text-align:left;min-height:104px;position:relative;background:#fff;transition:border-color .2s,background .2s,box-shadow .2s}.vehicle-card:hover{border-color:#a1b88a;background:#fbfcf7}.vehicle-card.selected{border-color:#768f5e;background:#f4f8ec;box-shadow:0 0 0 1px #8aa36a10}.vehicle-art{width:92px;flex-shrink:0;transition:transform .25s}.vehicle-art svg{width:100%;height:auto}.vehicle-card:hover .vehicle-art{transform:translateY(-3px) rotate(-2deg)}.vehicle-detail{display:flex;flex-direction:column;gap:8px;min-width:0;flex:1}.vehicle-name{font-size:13px;font-weight:700;white-space:nowrap;display:flex;align-items:center;gap:5px;letter-spacing:-.3px}.seat-count{display:inline-flex;align-items:center;gap:2px;font-size:9px;font-weight:400;color:#929985}.seat-count .icon{width:10px;height:10px}.vehicle-subtitle{font-size:9px;color:#7c8574;white-space:nowrap}.vehicle-arrival{font-size:9px;display:flex;align-items:center;gap:3px;white-space:nowrap;color:#516c47}.vehicle-arrival>span:last-child{color:#919883;font-size:8px}.mini-dot{width:4px;height:4px;border-radius:50%;background:#6e995a;display:inline-block}.vehicle-price{text-align:right;align-self:flex-start;display:flex;flex-direction:column;align-items:flex-end;flex-shrink:0;gap:5px;margin-top:3px}.vehicle-price strong{font-size:14px;font-weight:700;letter-spacing:-.5px}.vehicle-price small{font-size:8px;color:#838c77;letter-spacing:.5px}.selection-mark{height:16px;width:16px;border-radius:50%;border:1px solid #d4dbc8;margin-top:7px;display:grid;place-items:center}.selection-mark .icon{width:10px;height:10px;opacity:0}.selected .selection-mark{background:#3b5f37;border-color:#3b5f37;color:#fff}.selected .selection-mark .icon{opacity:1}.payment-row{display:flex;align-items:center;gap:11px;text-align:left;width:100%;padding:19px 1px 15px;margin-top:4px}.payment-icon{background:#f2f5eb;color:#657d52;width:37px;height:37px;display:grid;place-items:center;border-radius:10px}.payment-icon .icon{width:20px;height:20px}.payment-row>span:nth-child(2){display:grid;gap:5px;flex:1}.payment-row strong{font-size:11px;font-weight:600}.payment-row small{font-size:9px;color:#8c9285}.end-chevron{width:15px;height:15px;color:#a1aa91}.promo-link{display:flex;align-items:center;gap:7px;width:100%;font-size:10px;color:#6f7d61;padding:8px 2px 16px}.promo-link .icon{width:14px;height:14px}.promo-link>span:last-child{margin-left:auto;font-size:16px;color:#6a7f53}.primary-button{width:100%;display:flex;align-items:center;justify-content:space-between;background:var(--lime);color:#27382b;border-radius:12px;padding:19px 20px;font-size:13px;font-weight:700;transition:background .18s,box-shadow .18s;min-height:54px}.primary-button:hover{background:#b8e758;box-shadow:0 5px 18px #a8d95530}.primary-button .icon{width:19px;height:19px}.booking-note{text-align:center;font-size:8px;color:#9ba18f;margin:12px 0 0;line-height:1.6}.panel-footer{display:flex;align-items:center;justify-content:center;gap:9px;color:#919986;font-size:9px;border-top:1px solid #edf0e6;padding:14px 25px;margin-top:8px}.footer-mark{font-size:19px;font-weight:900;font-style:italic;color:#8ea478}.panel-footer>button{margin-left:auto;border:1px solid #dfe5d5;border-radius:50%;width:21px;height:21px;font-size:11px;color:#7c8b68}.panel-footer>button:hover{background:#edf3e4}.map-panel{position:relative;overflow:hidden;border-radius:var(--radius);background:#eeeee5;border:1px solid #e2e6d9;min-height:630px;isolation:isolate}.map-top{position:absolute;inset:24px 24px auto;display:flex;align-items:center;justify-content:space-between;gap:12px;z-index:2;pointer-events:none}.map-status{padding:11px 14px;background:#ffffffec;border:1px solid #fff;border-radius:24px;display:flex;align-items:center;gap:8px;font-size:10px;box-shadow:0 3px 12px #28433006;max-width:80%}.map-route-badge{font-size:8px;letter-spacing:1.2px;font-weight:700;background:#ffffff90;border:1px solid #ffffff80;padding:7px 9px;border-radius:6px;color:#8b9680}.map-viewport{position:absolute;inset:0;transform-origin:center;transition:transform .45s cubic-bezier(.2,.8,.2,1)}.map{width:100%;height:100%;display:block}.map-labels{font-family:Arial,sans-serif;font-weight:500;letter-spacing:2.5px;fill:#929985;font-size:11px}.map-labels .major-label{font-size:14px;fill:#7a8670;font-weight:600;letter-spacing:3px}.map-labels .minor-label{font-size:10px;letter-spacing:.2px;fill:#a2a893}.map-labels .nature-label{font-size:9px;letter-spacing:2px;fill:#9bad8c}.map-labels .river-label{font-size:10px;letter-spacing:1px;fill:#88aeb9;font-style:italic}.road-badges rect{fill:#c4c7ae;stroke:#fff;stroke-width:1.2}.road-badges text{fill:#fff;font-family:Arial,sans-serif;font-weight:600;font-size:9px;text-anchor:middle}.route-shadow{fill:none;stroke:#fff;stroke-width:12;stroke-linecap:round;stroke-linejoin:round;opacity:.75}.route-path{fill:none;stroke:#55794b;stroke-width:6;stroke-linecap:round;stroke-linejoin:round;stroke-dasharray:1300;stroke-dashoffset:1300;animation:draw-route 2s .2s forwards ease-out}.route-progress{fill:none;stroke:#bdf367;stroke-width:4;stroke-linecap:round;stroke-linejoin:round;opacity:0}.pin-eyebrow{fill:#8a967c;font-size:9px;letter-spacing:1.3px;font-weight:600;font-family:Arial,sans-serif}.pin-title{fill:#2d4731;font-size:20px;font-family:Arial,sans-serif;font-weight:700;letter-spacing:-.5px}.pin-eyebrow.light{fill:#b1c3a8}.pin-title.light{fill:#fff;font-size:17px}.driver-marker{transition:opacity .3s}.second-marker{opacity:.9;animation:idle-car 5s infinite ease-in-out}.map-pulse{transform-origin:234px 680px;animation:pulse 3s infinite}.map-journey-pill{position:absolute;bottom:60px;left:26px;display:flex;align-items:center;gap:13px;border:1px solid #ffffffd0;background:#fffffff2;backdrop-filter:blur(12px);padding:14px 17px;border-radius:15px;box-shadow:var(--shadow);max-width:calc(100% - 106px)}.journey-icon{width:38px;height:38px;display:grid;place-items:center;border-radius:11px;background:#eff4e7;color:#5f7b4d;flex-shrink:0}.journey-icon .icon{transform:rotate(-35deg)}.map-journey-pill>span:nth-child(2){display:grid;gap:7px}.map-journey-pill strong{font-size:12px;font-weight:600}.map-journey-pill small{font-size:9px;color:#8f9880;white-space:nowrap}.map-journey-pill small>span{margin:0 6px}.journey-distance{border-left:1px solid #e5eada;padding-left:17px;margin-left:17px;font-size:18px;font-weight:600;white-space:nowrap}.journey-distance small{font-weight:400}.map-tools{position:absolute;right:23px;bottom:59px;border-radius:12px;background:#fffffff0;box-shadow:var(--shadow);padding:5px;display:grid}.map-tools .icon-button{border-radius:8px;width:35px;height:35px;font-size:23px;line-height:1;font-weight:400;color:#697d5a}.map-tools .icon{width:18px;height:18px}.map-tools>span{height:1px;background:#e8ede0;margin:4px}.map-caption{position:absolute;bottom:20px;left:26px;right:24px;display:flex;align-items:center;justify-content:space-between;font-size:8px;color:#9ba28d;gap:12px}.map-caption-brand{font-size:7px;letter-spacing:1.3px;font-weight:600;white-space:nowrap}.map-secret{position:absolute;right:105px;bottom:217px;color:#8da476;width:40px;height:47px;opacity:.8;transition:transform .2s}.map-secret:hover{transform:rotate(9deg);color:#588053}.map-secret svg{height:100%;width:100%}.toast{position:fixed;bottom:28px;left:50%;transform:translate(-50%,20px);padding:16px 21px;display:flex;gap:11px;align-items:center;color:#f5f9ed;background:#253d2cee;backdrop-filter:blur(12px);border:1px solid #4c6546;box-shadow:0 10px 50px #162a2025;border-radius:14px;z-index:20;font-size:12px;opacity:0;pointer-events:none;transition:transform .3s,opacity .3s;max-width:calc(100% - 32px);line-height:1.5;min-width:240px}.toast.show{opacity:1;transform:translate(-50%,0)}.toast-icon{color:var(--lime);font-size:20px}.modal{width:460px;max-width:calc(100% - 30px);max-height:calc(100dvh - 40px);border:1px solid #edf0e5;border-radius:24px;color:var(--ink);padding:25px;background:#fff;box-shadow:0 30px 100px #1d332b30;overscroll-behavior:contain}.modal::backdrop{background:#162c2555;backdrop-filter:blur(5px)}.modal[open]{animation:modal-in .24s ease-out}.modal-top{display:flex;align-items:center;justify-content:space-between;margin-bottom:20px}.modal-brand{font-size:26px;font-weight:900;letter-spacing:-2px;color:#69854f}.close-modal{width:34px;height:34px;background:#f3f5ec}.close-modal .icon{width:17px;height:17px}.modal h2{font-size:28px;line-height:1.15;letter-spacing:-1px;margin:0 0 12px}.modal-lead{font-size:13px;color:#86907c;line-height:1.7;margin:0 0 24px}.modal .primary-button{margin-top:20px}.modal .eyebrow{color:#869777;margin-bottom:12px}.modal-list{display:grid;gap:10px}.modal-option{display:flex;width:100%;gap:12px;align-items:center;padding:15px;border:1px solid #e4e9dc;border-radius:13px;text-align:left}.modal-option:hover{background:#f5f8ef}.modal-option>.icon{width:21px;height:21px;color:#759258}.modal-option>span{flex:1;font-size:13px}.modal-option small{display:block;font-size:10px;margin-top:5px;color:#8c9581}.modal-option.selected{border-color:#819b63;background:#f2f7e8}.cash-banner{background:#f1f6e6;border-radius:16px;padding:22px;display:flex;gap:17px;align-items:center;margin:20px 0}.cash-banner>.icon{width:35px;height:35px;color:#668549}.cash-banner strong{font-size:15px}.cash-banner small{font-size:11px;color:#8c997e;display:block;margin-top:6px}.info-note{background:#f8f9f5;border-left:3px solid #bedb90;padding:14px 16px;font-size:12px;line-height:1.7;color:#727d68;margin:15px 0}.promo-form label{display:block;font-size:11px;margin:22px 0 9px;color:#6f7f60}.text-input{width:100%;border:1px solid #dbe3cf;border-radius:11px;padding:15px;background:#fafbf7;color:#354a2f;outline:none}.text-input:focus{border-color:#819c63}.input-error{font-size:11px;color:#a86c37;min-height:15px;margin:8px 0 0}.profile-card{display:flex;align-items:center;gap:13px;margin-bottom:18px}.avatar{width:53px;height:53px;border-radius:50%;flex-shrink:0;overflow:hidden}.avatar svg{height:100%;width:100%}.profile-card h3{font-size:16px;margin:0 0 6px}.profile-card small{font-size:11px;color:#869178}.driver-profile{background:#f8faf4;border:1px solid #e6ebdd;border-radius:16px;padding:18px;margin:12px 0}.driver-profile .profile-card{margin-bottom:13px}.driver-quote{font-size:12px;color:#7e8a72;line-height:1.7;font-style:italic;margin:12px 0}.driver-facts{display:flex;gap:7px;flex-wrap:wrap}.tag{background:#eaf0df;border-radius:6px;font-size:9px;padding:5px 7px;color:#788b61}.profile-letter{width:54px;height:54px;display:grid;place-items:center;border-radius:50%;background:var(--lime);font-size:24px;font-weight:700}.help-list{padding:0;list-style:none;font-size:12px;line-height:1.8;color:#738169}.help-list li{padding:12px 0;border-bottom:1px solid #eaf0df;display:flex;gap:12px}.help-list li>span:first-child{background:#edf4e3;color:#6b8755;width:23px;height:23px;display:grid;place-items:center;border-radius:6px;flex-shrink:0;font-size:10px;font-weight:700}.ride-content{padding:30px 25px 20px;flex:1}.ride-content h1{font-size:35px;letter-spacing:-1.5px;line-height:1.14;margin:20px 0 12px}.ride-lead{font-size:12px;color:#859179;line-height:1.7;margin-bottom:24px}.search-animation{height:130px;position:relative;display:grid;place-items:center}.search-circle{position:absolute;width:78px;height:78px;border:1px solid #b6cf93;border-radius:50%;animation:search-pulse 2.5s infinite}.search-circle:nth-child(2){animation-delay:.8s}.search-circle:nth-child(3){animation-delay:1.6s}.search-center{width:56px;height:56px;display:grid;place-items:center;background:var(--lime);border-radius:50%;position:relative}.ride-driver{background:#f7faf1;border:1px solid #e2e9d6;border-radius:17px;padding:17px;margin-bottom:19px}.ride-driver .profile-card{margin-bottom:15px}.ride-driver .profile-card h3{font-size:14px}.ride-driver-vehicle{border-top:1px solid #e4ead8;display:flex;align-items:center;justify-content:space-between;padding-top:14px}.ride-driver-vehicle svg{width:125px;height:auto}.ride-driver-vehicle strong{display:block;font-size:12px;margin-bottom:8px}.plate{display:inline-block;font-size:10px;letter-spacing:2px;font-weight:600;padding:5px 7px;border-radius:4px;background:#fff;border:1px solid #d2d8c9}.driver-actions{display:flex;gap:10px;margin:14px 0}.secondary-button{border:1px solid #dce4d0;border-radius:10px;padding:13px 15px;font-size:11px;display:flex;justify-content:center;align-items:center;gap:7px;background:#fff}.secondary-button:hover{background:#f0f5e7}.secondary-button .icon{width:17px;height:17px}.driver-actions .secondary-button{flex:1}.ride-progress-heading{display:flex;align-items:center;justify-content:space-between;font-size:11px;margin:24px 0 10px}.ride-progress-heading strong{font-size:22px;letter-spacing:-1px}.progress-track{height:5px;background:#e8eedc;border-radius:4px;overflow:hidden}.progress-fill{height:100%;background:#85b45a;width:0;transition:width .2s linear}.ride-locations{display:flex;justify-content:space-between;font-size:9px;color:#8d9780;margin:10px 0 24px}.cancel-button{display:block;margin:15px auto 0;padding:11px;font-size:10px;color:#96a087;text-decoration:underline;text-underline-offset:3px}.ride-small-note{text-align:center;font-size:9px;line-height:1.7;color:#a1a894;margin-top:15px}.arrived-symbol{width:66px;height:66px;display:grid;place-items:center;background:#f0f7e4;border-radius:20px;color:#6a9450;margin-bottom:24px}.arrived-symbol .icon{width:30px;height:30px}.fare-receipt{padding:20px;border:1px dashed #cddbc0;border-radius:14px;background:#fafcf6;margin:22px 0}.receipt-line{display:flex;align-items:center;justify-content:space-between;gap:15px;font-size:11px;color:#8b987c;padding:7px 0}.receipt-total{border-top:1px solid #dde5d3;margin-top:10px;padding-top:15px;color:var(--ink);font-size:13px}.receipt-total strong{font-size:22px;letter-spacing:-.8px}.rating{display:flex;align-items:center;justify-content:center;gap:7px;margin:15px 0}.rating button{padding:5px;color:#dbe1d1;border-radius:7px}.rating .icon{width:30px;height:30px;stroke-width:1.3;fill:currentColor}.rating button.rated,.rating button:hover{color:#afce5a}.rating-label{font-size:11px;text-align:center;color:#929f83;margin:0}.chat-log{display:grid;gap:12px;max-height:260px;overflow:auto;padding:5px 0 12px}.chat-bubble{font-size:12px;line-height:1.6;padding:12px 15px;border-radius:13px;background:#f0f5e6;max-width:90%;justify-self:start}.chat-bubble.user{background:#e7f6cd;justify-self:end}.chat-form{display:flex;gap:8px;margin-top:15px}.chat-form .text-input{font-size:12px;padding:12px;flex:1;min-width:0}.chat-form button{width:43px;display:grid;place-items:center;background:var(--lime);border-radius:10px}.history-item{padding:15px 0;border-bottom:1px solid #e7ecdf}.history-item strong{font-size:13px}.history-item p{font-size:10px;color:#8a957c;line-height:1.6;margin:8px 0}.history-item span{font-size:12px;font-weight:600}.empty-state{text-align:center;padding:25px 10px;background:#f8faf3;border-radius:15px}.empty-state>.icon{margin:0 auto 18px;width:32px;height:32px;color:#91a97a}.empty-state p{font-size:12px;line-height:1.8;color:#8a967e}.confetti-layer{position:fixed;inset:0;pointer-events:none;z-index:30;overflow:hidden}.confetti{position:absolute;top:-30px;width:9px;height:15px;animation:confetti-fall 3s ease-in forwards}.fiesta .map-panel{animation:fiesta-glow 1s 4}.fiesta .brand{animation:brand-wiggle .7s 5}.convoy-car{fill:#5d7948;animation:convoy 5s forwards}.help-hint{font-size:10px;color:#96a285;line-height:1.8;margin-top:22px}.sr-only{position:absolute;width:1px;height:1px;padding:0;margin:-1px;overflow:hidden;clip:rect(0,0,0,0);white-space:nowrap;border:0}
+@keyframes live{50%{box-shadow:0 0 0 4px #70965318}}@keyframes draw-route{to{stroke-dashoffset:0}}@keyframes pulse{0%,100%{transform:scale(.8);opacity:.25}50%{transform:scale(1.3);opacity:.15}}@keyframes idle-car{50%{transform:translate(438px,581px)}}@keyframes modal-in{from{opacity:0;transform:translateY(10px)}to{opacity:1;transform:translateY(0)}}@keyframes search-pulse{from{transform:scale(.5);opacity:.9}to{transform:scale(1.8);opacity:0}}@keyframes confetti-fall{to{transform:translate(var(--drift),110vh) rotate(var(--spin));opacity:.4}}@keyframes fiesta-glow{50%{box-shadow:inset 0 0 80px #c5f36466}}@keyframes brand-wiggle{25%{transform:rotate(-4deg)}75%{transform:rotate(4deg)}}
+@media(min-width:1550px){.app-shell{grid-template-columns:410px minmax(0,1fr);padding:30px 40px;gap:30px}.booking-content{padding:30px}.intro h1{font-size:48px}.vehicle-card{min-height:112px}.vehicle-art{width:98px}.vehicle-name{font-size:14px}.vehicle-subtitle{font-size:10px}.vehicle-arrival{font-size:10px}.vehicle-arrival>span:last-child{font-size:9px}.section-title h2{font-size:14px}}
+@media(min-width:900px) and (max-height:850px){.header{height:74px}.app-shell{min-height:calc(100dvh - 74px);padding:18px 24px;gap:20px}.booking-content{padding:20px 23px 12px}.intro h1{font-size:38px;margin:15px 0 9px}.heading-arrow{top:22px;font-size:51px}.intro p{margin-bottom:19px}.location-input{padding:12px 0}.trip-summary{padding:11px 2px 15px}.vehicle-card{min-height:94px;padding-top:11px;padding-bottom:10px}.payment-row{padding-top:14px;padding-bottom:10px}.promo-link{padding-bottom:13px}.primary-button{padding-top:17px;padding-bottom:17px}.panel-footer{padding-top:10px;padding-bottom:10px}.map-panel{min-height:600px}}
+@media(max-width:1150px){.header{padding:0 28px;gap:15px}.desktop-nav{gap:20px;margin-left:0}.header-end{gap:14px}.region{font-size:10px}.app-shell{grid-template-columns:365px minmax(0,1fr);padding:20px;gap:20px}.booking-content{padding-left:20px;padding-right:20px}.vehicle-art{width:86px}.vehicle-name{font-size:12px}.vehicle-arrival>span:last-child{font-size:7.5px}.vehicle-price strong{font-size:13px}.journey-distance{display:none}.map-journey-pill{left:20px;bottom:57px;padding:12px}.map-caption{left:20px;right:18px}.map-caption-brand{display:none}.map-top{inset:20px 18px auto}.map-status{font-size:9px;padding:10px 12px}.map-route-badge{font-size:7px;padding:6px}.map-tools{right:18px}.map-secret{right:70px;bottom:191px}.map{width:110%;margin-left:-5%}}
+@media(max-width:899px){.header{height:72px;padding:0 24px}.brand{font-size:30px}.desktop-nav{gap:19px}.nav-link{font-size:11px}.region{display:none}.app-shell{grid-template-columns:340px minmax(0,1fr);gap:16px;padding:16px;min-height:calc(100dvh - 72px)}.booking-content{padding:23px 18px 16px}.intro h1{font-size:39px}.vehicle-art{width:77px}.vehicle-card{gap:6px;padding-right:9px}.vehicle-name{font-size:11px}.vehicle-subtitle{font-size:8.5px}.vehicle-arrival{font-size:8px}.vehicle-arrival>span:last-child{font-size:7px}.vehicle-price strong{font-size:12px}.map-panel{min-height:600px}.map-route-badge{display:none}.map-status{max-width:100%;font-size:8.5px}.map{width:125%;margin-left:-15%}.map-journey-pill{gap:9px;padding:10px;left:14px;max-width:calc(100% - 68px)}.map-journey-pill strong{font-size:10px}.map-journey-pill small{font-size:7.5px}.journey-icon{width:29px;height:29px}.journey-icon .icon{width:17px;height:17px}.map-tools{right:12px;bottom:57px}.map-tools .icon-button{width:30px;height:32px}.map-caption{font-size:6.5px;left:14px}.map-top{inset:18px 14px auto}.panel-footer{padding-left:18px;padding-right:18px}}
+@media(max-width:699px){.header{height:66px;padding:0 19px;position:relative;z-index:3}.brand{font-size:29px}.brand-dot{width:7px;height:7px;margin-left:3px}.desktop-nav{display:none}.header-end{gap:9px}.profile-button{width:34px;height:34px;font-size:12px}.mobile-menu{display:grid;width:36px;height:36px}.mobile-menu .icon{width:22px;height:22px}.app-shell{display:flex;flex-direction:column;gap:0;padding:0;min-height:0}.map-panel{order:-1;border:0;border-radius:0;min-height:0;height:310px;flex-shrink:0}.map-viewport{inset:-175px 0 -80px}.map{width:100%;margin-left:0}.map-top{inset:16px 18px auto}.map-route-badge{display:block;font-size:6px}.map-status{font-size:9px;padding:9px 12px;max-width:85%}.map-journey-pill{left:19px;bottom:23px;max-width:calc(100% - 93px);padding:11px 12px;gap:10px;border-radius:12px}.map-journey-pill strong{font-size:11px}.map-journey-pill small{font-size:8px}.journey-icon{height:31px;width:31px}.map-tools{bottom:23px;right:18px;padding:4px;display:flex;border-radius:10px}.map-tools .icon-button{width:30px;height:31px;font-size:20px}.map-tools #zoom-in,.map-tools #zoom-out,.map-tools>span{display:none}.map-caption{bottom:5px;font-size:6px;left:20px;right:18px}.map-secret{height:29px;width:24px;right:44px;bottom:93px;opacity:.55}.booking-panel{border:none;border-radius:24px 24px 0 0;position:relative;margin-top:-16px;z-index:2;box-shadow:0 -7px 25px #2b3a2207}.booking-panel:before{content:'';width:35px;height:4px;border-radius:4px;background:#e2e8d8;position:absolute;left:calc(50% - 17.5px);top:9px}.booking-content{padding:25px 23px 20px}.intro .eyebrow{font-size:8px;letter-spacing:1px}.intro h1{font-size:36px;line-height:1.08;margin:14px 0 9px}.intro h1 br{display:none}.intro h1>span:first-child{margin-left:4px}.heading-arrow{font-size:41px;right:0;top:20px}.intro p{font-size:11px;margin-bottom:20px}.route-inputs{border-radius:12px}.location-input{padding:12px 0}.location-input strong{font-size:13px}.location-input small{font-size:8px}.trip-summary{padding:13px 2px 20px;font-size:10px}.section-title h2{font-size:13px}.section-title>span{font-size:9px}.vehicle-card{min-height:105px;padding:12px 14px 12px 5px;gap:10px}.vehicle-art{width:100px}.vehicle-name{font-size:14px;gap:7px}.seat-count{font-size:9px}.vehicle-subtitle{font-size:10px}.vehicle-arrival{font-size:9px}.vehicle-arrival>span:last-child{font-size:8px}.vehicle-price strong{font-size:15px}.vehicle-price small{font-size:8px}.payment-row{padding:17px 1px 12px}.payment-row strong{font-size:12px}.payment-row small{font-size:10px}.promo-link{font-size:11px;padding:10px 2px 18px}.primary-button{padding:19px 20px;font-size:14px;border-radius:13px}.booking-note{font-size:9px;margin-top:12px}.panel-footer{margin:0;padding:16px 23px calc(16px + env(safe-area-inset-bottom));font-size:9px}.ride-content{padding:33px 23px 24px}.ride-content h1{font-size:34px}.ride-driver-vehicle svg{width:130px}.toast{bottom:19px;width:max-content;font-size:11px}.modal{padding:23px;border-radius:21px}.modal h2{font-size:27px}.modal-lead{font-size:12px}.map-caption-brand{display:none}}
+@media(max-width:380px){.booking-content{padding:25px 18px 18px}.intro h1{font-size:31px}.heading-arrow{font-size:35px}.vehicle-art{width:82px}.vehicle-card{gap:7px;padding-right:10px}.vehicle-name{font-size:12px}.vehicle-subtitle{font-size:9px}.vehicle-arrival{font-size:8px}.vehicle-arrival>span:last-child{font-size:7px}.vehicle-price strong{font-size:14px}.map-panel{height:285px}.modal{padding:20px}.header{padding:0 18px}}
+@media(prefers-reduced-motion:reduce){*,*:before,*:after{animation:none!important;transition:none!important;scroll-behavior:auto!important}.route-path{stroke-dashoffset:0}.confetti{display:none}}
+
+/* Keep the booking action within reach on desktop and handheld screens. */
+.booking-action{padding:12px 25px 8px;background:#fff;border-top:1px solid #f1f3ec;flex-shrink:0}
+.booking-content{scrollbar-width:thin;scrollbar-color:#dde5d1 transparent}
+@media(min-width:700px){.app-shell{height:calc(100dvh - 88px);min-height:0}.booking-panel{overflow:hidden;min-height:0}.booking-content,.ride-content{overflow-y:auto;min-height:0}.map-panel{min-height:0}.panel-footer{flex-shrink:0;margin-top:0}.booking-action .primary-button{padding-top:17px;padding-bottom:17px}}
+@media(min-width:900px) and (max-height:850px){.app-shell{height:calc(100dvh - 74px)}.booking-content{padding-top:19px;padding-bottom:8px}.intro h1{font-size:35px;margin-top:13px;margin-bottom:8px}.intro p{margin-bottom:17px}.heading-arrow{font-size:47px;top:21px}.location-input{padding-top:10px;padding-bottom:10px}.location-input>span:nth-child(2){gap:4px}.trip-summary{padding-top:10px;padding-bottom:13px}.vehicle-card{min-height:88px}.vehicle-options{gap:8px}.booking-action{padding-top:10px;padding-bottom:7px}.booking-note{font-size:8px;margin-top:8px}.panel-footer{padding-top:8px;padding-bottom:8px}}
+@media(min-width:700px) and (max-width:899px){.app-shell{height:calc(100dvh - 72px)}}
+@media(max-width:699px){.booking-content{padding-bottom:16px}.booking-action{position:sticky;bottom:0;z-index:5;padding:12px 23px calc(12px + env(safe-area-inset-bottom));box-shadow:0 -9px 22px #253c2608;border-top:1px solid #eaf0df}.booking-note{font-size:8px;margin-top:8px}.intro h1{font-size:35px}.intro h1 br{display:block}.intro h1>span:first-child{margin-left:0}.heading-arrow{right:8px;top:28px;font-size:45px}.panel-footer{padding-bottom:16px}.map-viewport{inset:-150px 0 -95px}}
+@media(max-width:380px){.booking-action{padding-left:18px;padding-right:18px}.intro h1{font-size:33px}}
+
+.vehicle-subtitle{font-size:10px}.vehicle-arrival{font-size:10px}.vehicle-arrival>span:last-child{font-size:9px}.booking-note{font-size:9px}.map-caption{font-size:9px}
+@media(max-width:1150px) and (min-width:700px){.vehicle-name{font-size:12px}.vehicle-art{width:76px}.vehicle-subtitle{font-size:9px}.vehicle-arrival{font-size:9px}.vehicle-arrival>span:last-child{font-size:8px}.map-caption{font-size:8px}}
+@media(max-width:699px){.map-viewport{inset:-90px 0 -90px}.map-caption{font-size:7px}.vehicle-subtitle{font-size:10px}.vehicle-arrival{font-size:10px}.vehicle-arrival>span:last-child{font-size:9px}}
+@media(max-width:380px){.vehicle-arrival{font-size:9px}.vehicle-arrival>span:last-child{font-size:8px}.vehicle-subtitle{font-size:9px}}
+</style>
+</head>
+<body>
+  <svg class="svg-library" xmlns="http://www.w3.org/2000/svg" aria-hidden="true">
+    <defs>
+      <symbol id="i-arrow" viewBox="0 0 24 24"><path d="M5 12h14m-6-6 6 6-6 6"/></symbol>
+      <symbol id="i-pin" viewBox="0 0 24 24"><path d="M20 10c0 6-8 11-8 11S4 16 4 10a8 8 0 1 1 16 0Z"/><circle cx="12" cy="10" r="2.5"/></symbol>
+      <symbol id="i-clock" viewBox="0 0 24 24"><circle cx="12" cy="12" r="9"/><path d="M12 7v5l3 2"/></symbol>
+      <symbol id="i-cash" viewBox="0 0 24 24"><rect x="2" y="5" width="20" height="14" rx="3"/><circle cx="12" cy="12" r="3"/><path d="M6 9v6m12-6v6"/></symbol>
+      <symbol id="i-chevron" viewBox="0 0 24 24"><path d="m9 5 7 7-7 7"/></symbol>
+      <symbol id="i-user" viewBox="0 0 24 24"><circle cx="12" cy="8" r="4"/><path d="M4 21v-2a8 8 0 0 1 16 0v2"/></symbol>
+      <symbol id="i-shield" viewBox="0 0 24 24"><path d="m12 2 8 3v6c0 5-8 11-8 11S4 16 4 11V5Z"/><path d="m8 11 3 3 5-5"/></symbol>
+      <symbol id="i-chat" viewBox="0 0 24 24"><path d="M21 11.5a9 9 0 0 1-9 9c-1.8 0-3.5-.5-5-1.5l-5 2 2-5a9 9 0 1 1 17-4.5Z"/><path d="M8 11h8m-8 4h5"/></symbol>
+      <symbol id="i-close" viewBox="0 0 24 24"><path d="m6 6 12 12M18 6 6 18"/></symbol>
+      <symbol id="i-target" viewBox="0 0 24 24"><circle cx="12" cy="12" r="7"/><circle cx="12" cy="12" r="2"/><path d="M12 2v3m0 14v3M2 12h3m14 0h3"/></symbol>
+      <symbol id="i-volume" viewBox="0 0 24 24"><path d="m11 4-6 5H2v6h3l6 5Zm4 4a6 6 0 0 1 0 8m3-11a10 10 0 0 1 0 14"/></symbol>
+      <symbol id="i-check" viewBox="0 0 24 24"><path d="m5 12 4 4L19 6"/></symbol>
+      <symbol id="i-star" viewBox="0 0 24 24"><path d="m12 2 3.1 6.3 6.9 1-5 4.9 1.2 6.8-6.2-3.2L5.8 21 7 14.2 2 9.3l6.9-1Z"/></symbol>
+      <symbol id="i-ticket" viewBox="0 0 24 24"><path d="M3 5h18v5a2 2 0 0 0 0 4v5H3v-5a2 2 0 0 0 0-4Z"/><path d="M15 5v3m0 3v2m0 3v3"/></symbol>
+      <symbol id="i-menu" viewBox="0 0 24 24"><path d="M4 7h16M4 12h16M4 17h16"/></symbol>
+      <symbol id="car-rover" viewBox="0 0 240 130">
+        <ellipse cx="122" cy="107" rx="100" ry="12" fill="#203126" opacity=".12"/>
+        <path d="m30 51 58-27 90 8 38 31-63 30L30 80Z" fill="#4b6144"/>
+        <path d="m30 51 119 12 4 30L30 80Z" fill="#6a7c54"/>
+        <path d="m149 63 67-26v45l-63 28Z" fill="#354b36"/>
+        <path d="m59 48 26-34 82 7 30 22-48 20Z" fill="#748563"/>
+        <path d="m88 21 69 6 22 16-45 15-62-8Z" fill="#91a282"/>
+        <path d="m63 47 23-24 25 3 1 26Z" fill="#263d37"/><path d="m118 27 37 4 24 14-60 10Z" fill="#3c5751"/>
+        <path d="m159 61 42-17v20l-42 18Z" fill="#182c29"/>
+        <path d="m166 61 28-11v7l-28 12Z" fill="#50645c"/>
+        <path d="m53 54 72 8v29l-72-8Z" fill="#7c8d62"/><path d="m92 58 1 27m31-23v29" stroke="#3d503a" stroke-width="2"/>
+        <path d="m81 61 10 1m14 1 10 1" stroke="#253a2d" stroke-width="3"/>
+        <ellipse cx="64" cy="89" rx="16" ry="22" fill="#1d2825"/><ellipse cx="65" cy="89" rx="8" ry="13" fill="#8a9385"/><ellipse cx="65" cy="89" rx="4" ry="7" fill="#354139"/>
+        <ellipse cx="171" cy="97" rx="16" ry="22" fill="#17251f"/><ellipse cx="174" cy="97" rx="8" ry="13" fill="#7b8976"/><ellipse cx="174" cy="97" rx="4" ry="7" fill="#354139"/>
+        <path d="m30 69 11 1v9l-11-1Z" fill="#e9dd9f"/><path d="m154 89 9-4v8l-9 4Zm45-20 10-4v8l-10 4Z" fill="#e9dd9f"/>
+        <path d="m153 103 63-27v8l-63 27Z" fill="#1b2d22"/><path d="m35 47 110 11m-58-38 73 7" stroke="#a6b58f" stroke-width="2"/>
+        <path d="m133 46 6-3v16m-3-4 10 1" stroke="#263c2e" stroke-width="3"/>
+        <rect x="100" y="65" width="12" height="8" rx="1" fill="#d4dcc0"/><path d="m100 67 12 1" stroke="#596d4b"/>
+      </symbol>
+      <symbol id="car-cbrn" viewBox="0 0 240 130">
+        <ellipse cx="122" cy="108" rx="105" ry="12" fill="#203126" opacity=".12"/>
+        <path d="m22 51 49-25 104 5 47 28-70 32L22 79Z" fill="#435c42"/>
+        <path d="m22 51 130 12v28L22 79Z" fill="#6d8053"/><path d="m152 63 70-30v49l-70 30Z" fill="#2f4934"/>
+        <path d="m39 50 24-34 99 8 40 20-50 19Z" fill="#7b8c62"/><path d="m63 16 47-18 89 10 3 36-40-20Z" fill="#879770"/>
+        <path d="m66 25 30 4 1 23-44-4Z" fill="#243b33"/><path d="m103 30 35 3 6 24-40-4Z" fill="#304b42"/>
+        <path d="m158 63 50-22v25l-50 22Z" fill="#172f25"/><path d="m164 62 36-15v8l-36 15Z" fill="#52685a"/>
+        <path d="m34 56 15 1 9 14 21-5 9 18-54-5Z" fill="#506641"/><path d="m100 59 30 3 5 17-23-4-9 13-15-7Z" fill="#3f553d"/>
+        <path d="m172 24 26 9-21 10-23-14Z" fill="#596b4c"/><path d="m81 1 38 4v12L81 13Z" fill="#4d664b"/><path d="m118 5 19-8v12l-19 8Z" fill="#344e37"/>
+        <path d="m194 37 15-8v-19" fill="none" stroke="#263d2c" stroke-width="2"/>
+        <ellipse cx="58" cy="90" rx="18" ry="24" fill="#1c2a22"/><ellipse cx="60" cy="90" rx="9" ry="14" fill="#849076"/><ellipse cx="60" cy="90" rx="4" ry="7" fill="#344530"/>
+        <ellipse cx="177" cy="98" rx="18" ry="24" fill="#16251b"/><ellipse cx="180" cy="98" rx="9" ry="14" fill="#76876d"/><ellipse cx="180" cy="98" rx="4" ry="7" fill="#344530"/>
+        <path d="m152 104 70-29v9l-70 30Z" fill="#203321"/><path d="m24 66 12 1v9l-12-1Z" fill="#f2dda0"/>
+        <path d="m156 89 11-5v9l-11 5Zm48-20 11-5v9l-11 5Z" fill="#e4d99e"/>
+        <path d="m95 67 6-5 6 6-6 6Z" fill="#dcdfbe"/><path d="m44 43 9 1m97-12-1 25" stroke="#bac4a1" stroke-width="2"/>
+      </symbol>
+      <symbol id="avatar-michal" viewBox="0 0 80 80">
+        <rect width="80" height="80" rx="40" fill="#e4e9d0"/><path d="M10 80c1-23 20-30 30-30s29 7 30 30" fill="#466b49"/>
+        <path d="m31 49 1 14 8 5 9-6-1-15" fill="#c88d61"/><ellipse cx="40" cy="35" rx="16" ry="21" fill="#dda572"/>
+        <path d="M24 31c-5-22 34-27 33 1l-7-12c-10 7-18 3-26 11" fill="#34332c"/><path d="M27 44c4 20 22 19 27-1l-5 7-5-2-4 3-6-3Z" fill="#3d3a2e"/>
+        <circle cx="33" cy="35" r="2" fill="#2c3127"/><circle cx="47" cy="35" r="2" fill="#2c3127"/><path d="m37 42 6 1" stroke="#ae7652" stroke-width="2"/><path d="m36 49 8 1" stroke="#f6d7b8" stroke-width="2"/>
+        <path d="m17 66 9 3m28 0 9-3" stroke="#b6c391" stroke-width="3"/>
+      </symbol>
+      <symbol id="avatar-cudos" viewBox="0 0 80 80">
+        <rect width="80" height="80" rx="40" fill="#f1e3cb"/><path d="M8 80c3-25 22-29 32-29s29 4 32 29" fill="#635e44"/>
+        <path d="m31 49 1 13 8 5 9-5-1-14" fill="#b97953"/><ellipse cx="40" cy="35" rx="17" ry="22" fill="#ce9569"/>
+        <path d="M22 27c-1-21 37-23 37 1l-12-9-20 11Z" fill="#31312a"/>
+        <path d="M24 31h33v9H44l-3-6-4 6H24Z" fill="#202f2b"/><path d="m27 33 7 1m12-1 6 1" stroke="#668075" stroke-width="2"/>
+        <path d="M28 47c3-9 8-7 12-4 5-4 9-5 13 4l-12-1-1 3-2-3Z" fill="#30312a"/><path d="m35 52 10 0" stroke="#f3ccaa" stroke-width="2"/>
+        <path d="m19 67 9 3m24 0 10-3" stroke="#b4b78f" stroke-width="3"/>
+      </symbol>
+    </defs>
+  </svg>
+
+  <header class="header">
+    <button class="brand" id="brand" aria-label="¡Vámonos! Logo">¡vámonos<span>!</span><span class="brand-dot"></span></button>
+    <nav class="desktop-nav" aria-label="Hlavní navigace">
+      <button class="nav-link active" id="nav-ride">Objednat jízdu</button>
+      <button class="nav-link" data-dialog="drivers">Naši řidiči <span class="nav-count">2</span></button>
+      <button class="nav-link" data-dialog="history">Moje jízdy</button>
+    </nav>
+    <div class="header-end"><span class="region"><span class="flag">🇲🇽</span> Morava. Po mexicku.</span><button class="profile-button" data-dialog="profile" aria-label="Otevřít profil cestujícího">A<span class="online-dot"></span></button><button class="mobile-menu icon-button" data-dialog="menu" aria-label="Otevřít menu"><svg class="icon"><use href="#i-menu"/></svg></button></div>
+  </header>
+
+  <main class="app-shell">
+    <section class="booking-panel" aria-label="Objednávka jízdy">
+      <div class="booking-content" id="booking-content">
+        <div class="intro"><div class="eyebrow"><span class="live-dot"></span> TVOJE JÍZDA, TVOJE TEMPO</div><h1>Kam to bude,<br><span>amigo?</span><span class="heading-arrow">↗</span></h1><p>Moravské cesty. Mexický přístup.</p></div>
+
+        <div class="route-inputs">
+          <div class="route-line"></div>
+          <button class="location-input" data-dialog="pickup"><span class="location-dot origin-dot"></span><span><small>VYZVEDNUTÍ</small><strong id="pickup-text">Brno, hlavní nádraží</strong></span><svg class="icon"><use href="#i-chevron"/></svg></button>
+          <div class="input-divider"></div>
+          <button class="location-input" id="destination-button"><span class="location-dot destination-dot"></span><span><small>KAM JEDEME</small><strong>Lipník nad Bečvou</strong></span><svg class="icon"><use href="#i-chevron"/></svg></button>
+        </div>
+        <div class="trip-summary"><span><svg class="icon"><use href="#i-clock"/></svg> cca 1 h 15 min</span><span class="summary-dot">·</span><span>112 km</span><button class="now-button" data-dialog="schedule">Teď <span>⌄</span></button></div>
+
+        <div class="section-title"><h2>Vyber si svou jízdu</h2><span>2 auta poblíž</span></div>
+        <div class="vehicle-options" role="radiogroup" aria-label="Vyberte vozidlo a řidiče">
+          <button class="vehicle-card selected" data-vehicle="rover" role="radio" aria-checked="true">
+            <span class="vehicle-art"><svg viewBox="0 0 240 130" aria-hidden="true"><use href="#car-rover"/></svg></span>
+            <span class="vehicle-detail"><span class="vehicle-name">Land Rover <span class="seat-count"><svg class="icon"><use href="#i-user"/></svg>4</span></span><span class="vehicle-subtitle">Vojenský. Ale gentleman.</span><span class="vehicle-arrival"><span class="mini-dot"></span> 4 min <span>· Michal Tomkos</span></span></span>
+            <span class="vehicle-price"><strong id="rover-price">1 490</strong><small>MXN</small><span class="selection-mark"><svg class="icon"><use href="#i-check"/></svg></span></span>
+          </button>
+          <button class="vehicle-card" data-vehicle="cbrn" role="radio" aria-checked="false" tabindex="-1">
+            <span class="vehicle-art"><svg viewBox="0 0 240 130" aria-hidden="true"><use href="#car-cbrn"/></svg></span>
+            <span class="vehicle-detail"><span class="vehicle-name">S-LOV CBRN <span class="seat-count"><svg class="icon"><use href="#i-user"/></svg>3</span></span><span class="vehicle-subtitle">Pro extra klid v duši.</span><span class="vehicle-arrival"><span class="mini-dot"></span> 7 min <span>· Čudos Grande</span></span></span>
+            <span class="vehicle-price"><strong id="cbrn-price">1 890</strong><small>MXN</small><span class="selection-mark"><svg class="icon"><use href="#i-check"/></svg></span></span>
+          </button>
+        </div>
+
+        <button class="payment-row" data-dialog="payment"><span class="payment-icon"><svg class="icon"><use href="#i-cash"/></svg></span><span><strong>Hotově v pesos</strong><small>Karta má dnes dovolenou.</small></span><svg class="icon end-chevron"><use href="#i-chevron"/></svg></button>
+        <button class="promo-link" data-dialog="promo"><svg class="icon"><use href="#i-ticket"/></svg><span id="promo-label">Máš tajný kód?</span><span>+</span></button>
+      </div>
+      <div id="ride-content" class="ride-content" hidden aria-live="polite"></div>
+      <div class="booking-action"><button class="primary-button" id="book-button"><span>Objednat Land Rover</span><svg class="icon"><use href="#i-arrow"/></svg></button><p class="booking-note">Vojenský odvoz. Civilní pohodlí.</p></div>
+      <div class="panel-footer"><span class="footer-mark">v.</span><span>Z Brna. S grácií. Za pesos.</span><button data-dialog="help" aria-label="Nápověda">?</button></div>
+    </section>
+
+    <section class="map-panel" aria-label="Interaktivní mapa trasy z Brna do Lipníku nad Bečvou">
+      <div class="map-top"><span class="map-status"><span class="live-dot"></span><span id="map-status-text">Jsme blíž, než si myslíš.</span></span><span class="map-route-badge">D1 EXPRESS</span></div>
+      <div class="map-viewport" id="map-viewport">
+        <svg class="map" id="map" viewBox="0 0 1000 850" xmlns="http://www.w3.org/2000/svg" role="img" aria-label="Trasa Brno, Vyškov, Prostějov, Olomouc a Lipník nad Bečvou">
+          <defs><pattern id="field-lines" width="30" height="30" patternUnits="userSpaceOnUse" patternTransform="rotate(-25)"><path d="M0 0v30" stroke="#b8c7a6" stroke-width="1" opacity=".22"/></pattern><filter id="pin-shadow" x="-60%" y="-60%" width="220%" height="220%"><feDropShadow dx="0" dy="5" stdDeviation="7" flood-color="#243a26" flood-opacity=".17"/></filter></defs>
+          <rect x="-1000" y="-1000" width="3000" height="3000" fill="#eeeee5"/>
+          <g class="terrain"><path d="M-30 0H340L293 127 330 182 231 259 173 402 52 415-30 369Z" fill="#dce4cd"/><path d="m53 0 146 81 63 122-91 57-28 96-105 3Z" fill="#cfdcbd"/><path d="m302 70 138 24 41 105-53 47-69-37 9-87Z" fill="#e1e7d4"/><path d="m766-25 128 60 143 8v300l-88-61-56-81-112-57Z" fill="#d5dfc5"/><path d="m796 37 145 91 62 47-83 59-37-83-77-21Z" fill="#cbdab9"/><path d="m582 490 107 17 46 114-20 113-126 47-113-32-8-125Z" fill="#dbe3ce"/><path d="m665 591 14 104-65 39-59-13-24-60 63-77Z" fill="#cdddbd"/><path d="m880 480 153 50v351H740l-42-56 138-88-6-125Z" fill="#d6e0c8"/><path d="m35 693 71-88 121 48 54 96-78 140H0Z" fill="#dee5d3"/><path d="m362 0 76 138 121-67 146 15 37-96Z" fill="#e6e8d9"/><path d="m-30 0H340L293 127 330 182 231 259 173 402 52 415-30 369Z" fill="url(#field-lines)"/></g>
+          <g class="contours" fill="none" stroke="#c7d2b9" stroke-width="1.1" opacity=".55"><path d="M-20 112c120-60 65 143 191 115s-4-152 151-156M-20 147c109-58 66 146 196 115S173 110 320 108M-20 181c94-47 77 142 160 116s97-159 192-147M773 10c-48 76 144 37 105 133s76 56 142 88M799 1c-50 73 146 46 106 144s68 50 120 72M559 535c-72 25-92 130-27 168s107-17 128-75M551 564c-47 20-63 104-20 123s101-11 100-56M809 758c68-121 95 3 202-149M791 781c102-144 92 2 240-153"/></g>
+          <g id="map-city-blocks" fill="#dedfd5"/>
+          <g class="rivers" fill="none" stroke="#afcbd1" stroke-width="5" opacity=".8"><path d="M581-40c-15 103 64 125 28 207s69 83 56 187 65 138 46 215 82 121 65 202 46 109 86 134"/><path d="M1040 159c-64 83-115 29-146 81s-113 19-162 68-39 18-69 42"/><path d="M168 389c-24 84 71 132 20 212s63 163 49 295"/></g>
+          <g id="map-local-roads" fill="none" stroke="#fafaf5" stroke-width="3" stroke-linecap="round"/>
+          <g class="highways" fill="none" stroke-linejoin="round" stroke-linecap="round"><path d="M-30 772 125 747 234 680 350 638 439 543 514 506 551 441 618 414 668 342 767 315 823 240 980 205 1040 194M232 680 237 571 285 497 298 414 386 366 451 274 519 200 522-20M439 543 437 676 537 794 550 910M668 342 589 255 610 193 719 162 753 60 844-20M350 638 358 762 318 846M767 315 817 384 951 413 1050 474" stroke="#dddbc9" stroke-width="12"/><path d="M-30 772 125 747 234 680 350 638 439 543 514 506 551 441 618 414 668 342 767 315 823 240 980 205 1040 194M232 680 237 571 285 497 298 414 386 366 451 274 519 200 522-20M439 543 437 676 537 794 550 910M668 342 589 255 610 193 719 162 753 60 844-20M350 638 358 762 318 846M767 315 817 384 951 413 1050 474" stroke="#fffdf6" stroke-width="7"/></g>
+          <g class="map-labels"><text x="84" y="236" class="nature-label" transform="rotate(-24 84 236)">MORAVSKÝ KRAS</text><text x="861" y="80" class="nature-label" transform="rotate(18 861 80)">ODERSKÉ VRCHY</text><text x="575" y="661" class="nature-label" transform="rotate(-24 575 661)">CHŘIBY</text><text x="397" y="391">VYŠKOV</text><text x="548" y="397">PROSTĚJOV</text><text x="667" y="304" class="major-label">OLOMOUC</text><text x="336" y="505" class="minor-label">Slavkov u Brna</text><text x="865" y="442">PŘEROV</text><text x="439" y="160" class="minor-label">Boskovice</text><text x="93" y="523" class="minor-label">Tišnov</text><text x="340" y="796" class="minor-label">Hustopeče</text><text x="844" y="690" class="minor-label">Kroměříž</text><text x="621" y="181" class="minor-label">Litovel</text><text x="840" y="372" class="river-label" transform="rotate(-18 840 372)">Bečva</text></g>
+          <g class="road-badges"><rect x="357" y="587" width="29" height="21" rx="5"/><text x="371.5" y="602">D1</text><rect x="600" y="355" width="33" height="21" rx="5"/><text x="616.5" y="370">D46</text><rect x="781" y="257" width="29" height="21" rx="5"/><text x="795.5" y="272">D1</text></g>
+          <path class="route-shadow" d="M234 680 350 638 439 543 514 506 551 441 618 414 668 342 767 315 823 240 902 220"/>
+          <path id="route-path" class="route-path" d="M234 680 350 638 439 543 514 506 551 441 618 414 668 342 767 315 823 240 902 220"/>
+          <path id="route-progress" class="route-progress" d="M234 680 350 638 439 543 514 506 551 441 618 414 668 342 767 315 823 240 902 220"/>
+          <g class="origin-pin"><circle cx="234" cy="680" r="30" fill="#9edb8b" opacity=".24" class="map-pulse"/><circle cx="234" cy="680" r="11" fill="#fff" stroke="#24583c" stroke-width="5"/><circle cx="234" cy="680" r="3.5" fill="#24583c"/></g>
+          <g filter="url(#pin-shadow)"><rect x="90" y="585" width="156" height="72" rx="16" fill="#fff"/><text x="107" y="612" class="pin-eyebrow">VYZVEDNUTÍ</text><text x="107" y="639" class="pin-title">Brno</text><circle cx="221" cy="622" r="13" fill="#edf5e5"/><path d="m216 622 3 3 6-7" fill="none" stroke="#466745" stroke-width="2"/></g>
+          <g class="destination-pin" filter="url(#pin-shadow)"><path d="M885 205c0-23 34-23 34 0 0 14-17 28-17 28s-17-14-17-28Z" fill="#243f31"/><circle cx="902" cy="202" r="5" fill="#c5f364"/><rect x="750" y="115" width="231" height="68" rx="16" fill="#243f31"/><text x="768" y="139" class="pin-eyebrow light">CÍL TVOJÍ JÍZDY</text><text x="768" y="164" class="pin-title light">Lipník nad Bečvou</text></g>
+          <g id="driver-marker" transform="translate(293 706)" class="driver-marker" filter="url(#pin-shadow)"><circle r="26" fill="#fff"/><circle r="21" fill="#c5f364"/><g id="driver-car-rotation"><path d="M-8-15h16l4 9v17l-4 4H-8l-4-4V-6Z" fill="#304c36"/><path d="M-7-7H7v7H-7ZM-7 7H7v5H-7Z" fill="#a3bf9b"/><path d="M-12-4h-3v7h3m24-7h3v7h-3" fill="#1d3024"/></g></g>
+          <g id="second-marker" transform="translate(438 587)" class="second-marker"><circle r="22" fill="#fff"/><path d="M-8-12H8l4 6v15H-12V-6Z" fill="#738666"/><path d="M-7-6H7v6H-7Z" fill="#cad7bf"/></g>
+        </svg>
+      </div>
+      <div class="map-journey-pill"><span class="journey-icon"><svg class="icon"><use href="#i-arrow"/></svg></span><span><strong>Morava, trochu jinak.</strong><small>Brno <span>→</span> Lipník nad Bečvou</small></span><span class="journey-distance">112 <small>km</small></span></div>
+      <div class="map-tools"><button class="icon-button" id="zoom-in" aria-label="Přiblížit mapu">+</button><button class="icon-button" id="zoom-out" aria-label="Oddálit mapu">−</button><span></span><button class="icon-button" id="recenter" aria-label="Zobrazit celou trasu"><svg class="icon"><use href="#i-target"/></svg></button></div>
+      <button class="map-secret" id="map-secret" aria-label="Malý kaktus na Moravě" title="Tenhle tu asi není místní."><svg viewBox="0 0 36 44" aria-hidden="true"><path d="M18 36V9a5 5 0 0 1 10 0v27M19 26h-7a5 5 0 0 1-5-5v-8m19 7h3a5 5 0 0 0 5-5v-4" fill="none" stroke="currentColor" stroke-width="5" stroke-linecap="round"/><path d="M13 40h20" stroke="currentColor" stroke-width="3" stroke-linecap="round"/></svg></button>
+      <div class="map-caption"><span>Dálnice D1 · dobrodružství v ceně</span><span class="map-caption-brand">VÁMONOS MAPS</span></div>
+    </section>
+  </main>
+
+  <dialog class="modal" id="modal" aria-labelledby="modal-title"><div class="modal-top"><span class="modal-brand">¡v!</span><button class="icon-button close-modal" aria-label="Zavřít dialog"><svg class="icon"><use href="#i-close"/></svg></button></div><div id="modal-body"></div></dialog>
+  <div class="toast" id="toast" role="status" aria-live="polite"><span class="toast-icon">✦</span><span id="toast-text"></span></div>
+  <div class="confetti-layer" id="confetti-layer" aria-hidden="true"></div>
+<script>'use strict';
+
+(() => {
+  const $ = (selector, root = document) => root.querySelector(selector);
+  const $$ = (selector, root = document) => [...root.querySelectorAll(selector)];
+  const icon = (name, extra = '') => `<svg class="icon ${extra}" aria-hidden="true"><use href="#i-${name}"/></svg>`;
+  const avatar = (id) => `<span class="avatar"><svg viewBox="0 0 80 80" aria-hidden="true"><use href="#avatar-${id}"/></svg></span>`;
+  const money = (amount) => new Intl.NumberFormat('cs-CZ').format(amount);
+  const escape = (text) => String(text).replace(/[&<>"']/g, (char) => ({'&':'&amp;','<':'&lt;','>':'&gt;','"':'&quot;',"'":'&#39;'}[char]));
+  const vehicles = {
+    rover: {name:'Land Rover', driver:'Michal Tomkos', avatar:'michal', price:1490, eta:4, plate:'MX  BRNO', initial:{x:293,y:706}, quote:'„Klimatizace? Dvě okénka a víra. Ale do Lipníku dojedeme s noblesou.“', greeting:'Hola, amigo! Jsem Michal. Land Rover je zelený. Jako všechny ostatní. Poznáš mě podle toho, že mávám.', arrival:'Jsem tu. Auto má trochu vojenský postoj, ale dveře se otevírají civilně.', journey:'Dálnice D1: jediný terén, na který se Land Rover psychicky připravuje.', rating:'4,98', trips:'1 284', facts:['Mexičan','Land Rover','Expert na D1']},
+    cbrn: {name:'S-LOV CBRN', driver:'Čudos Grande', avatar:'cudos', price:1890, eta:7, plate:'MX  CUDOS', initial:{x:438,y:587}, quote:'„Filtrujeme všechno. Prach, pyl, negativní energii. Špatný playlist bohužel projde.“', greeting:'Hola! Čudos Grande na příjmu. Auto má ochranu CBRN. Na běžnou cestu do Lipníku je to možná trochu sebevědomé.', arrival:'Vozidlo připraveno. Nastupuj normálně. Dekontaminaci bot necháme na příště.', journey:'Palubní hlášení: radiační úroveň normální. Úroveň pohodlí strategická.', rating:'4,99', trips:'963', facts:['Mexičan','S-LOV CBRN','Extra ochrana']}
+  };
+  const state = {vehicle:'rover', phase:'idle', discount:0, pickup:'Brno, hlavní nádraží', schedule:'Teď', elapsed:0, rating:0, paid:false, rideId:null, history:[], dialog:null, zoom:1};
+  try {
+    const saved = JSON.parse(localStorage.getItem('vamonos-rides') || '[]');
+    if (Array.isArray(saved)) state.history = saved.filter((ride) => ride && typeof ride.id === 'string' && typeof ride.date === 'string' && typeof ride.price === 'number' && ['rover','cbrn'].includes(ride.vehicle)).slice(0,20);
+  } catch { /* Rides also work when browser storage is unavailable. */ }
+  let timer = null;
+  let frame = null;
+  let lastFrame = 0;
+  let toastTimer = null;
+  let brandClicks = 0;
+  let brandReset = null;
+  let konamiIndex = 0;
+  let chatTimer = null;
+  let audioContext = null;
+  const route = $('#route-path');
+  const routeLength = route.getTotalLength();
+  const arrivalDuration = 9000;
+  const tripDuration = 24000;
+  const modal = $('#modal');
+  const currentVehicle = () => vehicles[state.vehicle];
+  const fare = () => currentVehicle().price - state.discount;
+  const persistHistory = () => { try { localStorage.setItem('vamonos-rides', JSON.stringify(state.history)); } catch { /* Optional persistence. */ } };
+
+  function notify(message, duration = 4300) {
+    clearTimeout(toastTimer);
+    $('#toast-text').textContent = message;
+    $('#toast').classList.add('show');
+    toastTimer = setTimeout(() => $('#toast').classList.remove('show'), duration);
+  }
+
+  function createMapDetails() {
+    const ns = 'http://www.w3.org/2000/svg';
+    let seed = 42;
+    const random = () => {seed = (seed * 16807) % 2147483647; return (seed - 1) / 2147483646;};
+    const cityBlocks = $('#map-city-blocks');
+    const roads = $('#map-local-roads');
+    const cities = [{x:231,y:676,n:80,spread:78},{x:408,y:392,n:25,spread:36},{x:567,y:413,n:26,spread:36},{x:685,y:332,n:45,spread:46},{x:904,y:229,n:17,spread:28},{x:866,y:446,n:26,spread:37}];
+    cities.forEach((city) => {
+      for (let i = 0; i < city.n; i++) {
+        const rect = document.createElementNS(ns, 'rect');
+        const x = city.x + (random() - .5) * city.spread * 1.5;
+        const y = city.y + (random() - .5) * city.spread;
+        rect.setAttribute('x', String(x)); rect.setAttribute('y', String(y));
+        rect.setAttribute('width', String(4 + random() * 13)); rect.setAttribute('height', String(3 + random() * 8));
+        rect.setAttribute('rx', '1'); rect.setAttribute('transform', `rotate(-22 ${x} ${y})`);
+        cityBlocks.append(rect);
+      }
+      for (let i = -2; i < 3; i++) {
+        const path = document.createElementNS(ns, 'path');
+        path.setAttribute('d', `M${city.x-city.spread} ${city.y+i*12+25}l${city.spread*2} -35M${city.x+i*14-20} ${city.y-city.spread*.7}l30 ${city.spread*1.5}`);
+        roads.append(path);
+      }
+    });
+    for (let i = 0; i < 28; i++) {
+      const x = random()*1000, y = random()*850;
+      const path = document.createElementNS(ns, 'path');
+      path.setAttribute('d', `M${x} ${y}l${20+random()*100} ${-20+random()*55} ${20+random()*90} ${-20+random()*50}`);
+      path.setAttribute('stroke-width', '2'); roads.append(path);
+    }
+    $('#route-progress').style.strokeDasharray = String(routeLength);
+    $('#route-progress').style.strokeDashoffset = String(routeLength);
+  }
+
+  function moveCar(point, angle = 0) {
+    $('#driver-marker').setAttribute('transform', `translate(${point.x} ${point.y})`);
+    $('#driver-car-rotation').setAttribute('transform', `rotate(${angle})`);
+  }
+
+  function selectVehicle(id, focus = false) {
+    if (state.phase !== 'idle') { notify('Řidič už je na cestě. Auto můžeš vybrat u další jízdy.'); return; }
+    state.vehicle = id;
+    $$('.vehicle-card').forEach((card) => {
+      const selected = card.dataset.vehicle === id;
+      card.classList.toggle('selected', selected); card.setAttribute('aria-checked', String(selected)); card.tabIndex = selected ? 0 : -1;
+      if (selected && focus) card.focus();
+    });
+    $('#book-button span').textContent = `Objednat ${currentVehicle().name}`;
+    moveCar(currentVehicle().initial, id === 'rover' ? -40 : -115);
+    $('#second-marker').style.display = id === 'rover' ? '' : 'none';
+    $('#map-status-text').textContent = id === 'rover' ? 'Jsme blíž, než si myslíš.' : 'Čudos má situaci pod kontrolou.';
+  }
+
+  function refreshPrices() {
+    $('#rover-price').textContent = money(vehicles.rover.price - state.discount);
+    $('#cbrn-price').textContent = money(vehicles.cbrn.price - state.discount);
+    $('#promo-label').textContent = state.discount ? 'TACO aktivní · −100 MXN' : 'Máš tajný kód?';
+  }
+
+  function driverCard() {
+    const vehicle = currentVehicle();
+    return `<div class="ride-driver"><div class="profile-card">${avatar(vehicle.avatar)}<div><h3>${vehicle.driver}</h3><small>★ ${vehicle.rating} &nbsp;·&nbsp; Mexičan &nbsp;·&nbsp; Ověřený řidič</small></div></div><div class="ride-driver-vehicle"><div><strong>Vojenský ${vehicle.name}</strong><span class="plate">${vehicle.plate}</span></div><svg viewBox="0 0 240 130" aria-hidden="true"><use href="#car-${state.vehicle}"/></svg></div></div>`;
+  }
+
+  function renderRide() {
+    const vehicle = currentVehicle();
+    $('#booking-content').hidden = state.phase !== 'idle';
+    $('.booking-action').hidden = state.phase !== 'idle';
+    const content = $('#ride-content');
+    content.hidden = state.phase === 'idle';
+    if (state.phase === 'idle') return;
+    if (state.phase === 'searching') {
+      content.innerHTML = `<div class="eyebrow"><span class="live-dot"></span> HLEDÁME TVÉHO ŘIDIČE</div><h1>Momentito,<br>amigo.</h1><p class="ride-lead">Oslovujeme řidiče. Je jich přesně dva, takže porada bude krátká.</p><div class="search-animation"><span class="search-circle"></span><span class="search-circle"></span><span class="search-circle"></span><span class="search-center">${icon('target')}</span></div><div class="info-note">${vehicle.name}<br>${escape(state.pickup)} → Lipník nad Bečvou<br><strong>${money(fare())} MXN · hotově</strong></div><button class="cancel-button" data-action="cancel">Zrušit hledání</button>`;
+    } else if (state.phase === 'approaching') {
+      content.innerHTML = `<div class="eyebrow"><span class="live-dot"></span> ŘIDIČ JE NA CESTĚ</div><h1>Tvůj odvoz<br>má zelenou.</h1><p class="ride-lead">${vehicle.driver} přijal jízdu. Připrav si pesos a svůj nejlepší nástup.</p>${driverCard()}<div class="driver-actions"><button class="secondary-button" data-dialog="chat">${icon('chat')}Zpráva</button><button class="secondary-button" data-action="horn">${icon('volume')}Klakson</button></div><div class="ride-progress-heading"><span>Příjezd za</span><strong id="remaining-time">9 s</strong></div><div class="progress-track"><div class="progress-fill" id="ride-progress-fill"></div></div><div class="ride-locations"><span>Řidič na cestě</span><span>${escape(state.pickup.replace('Brno, ',''))}</span></div><div class="info-note" id="driver-thought">${vehicle.quote}</div><button class="cancel-button" data-action="cancel">Zrušit jízdu</button><p class="ride-small-note">Řidič už zahřívá motor. Klimatizaci zatím zastupuje dobrá nálada.</p>`;
+    } else if (state.phase === 'arrived') {
+      content.innerHTML = `<div class="eyebrow"><span class="live-dot"></span> ŘIDIČ DORAZIL</div><h1>Hola.<br>Jdeme na to?</h1><p class="ride-lead">${vehicle.arrival}</p>${driverCard()}<div class="driver-actions"><button class="secondary-button" data-dialog="chat">${icon('chat')}Zpráva řidiči</button><button class="secondary-button" data-action="horn">${icon('volume')}Najít auto</button></div><button class="primary-button" data-action="start"><span>Nastoupit a vyrazit</span>${icon('arrow')}</button><p class="ride-small-note">Cíl: Lipník nad Bečvou · ${money(fare())} MXN hotově<br>Zapni si pás. Vojenský je vůz, ne styl nástupu.</p><button class="cancel-button" data-action="cancel">Zrušit jízdu</button>`;
+    } else if (state.phase === 'riding') {
+      content.innerHTML = `<div class="eyebrow"><span class="live-dot"></span> NA CESTĚ DO LIPNÍKU</div><h1>Užij si<br>el výhled.</h1><p class="ride-lead">${vehicle.journey}</p>${driverCard()}<div class="ride-progress-heading"><span>Do cíle zbývá</span><strong id="remaining-time">24 s</strong></div><div class="progress-track"><div class="progress-fill" id="ride-progress-fill"></div></div><div class="ride-locations"><span>Brno</span><span>Lipník nad Bečvou</span></div><div class="info-note" id="driver-thought">${state.vehicle === 'rover' ? '„Neboj, navigace říká doprava. Moje srdce taky.“' : '„CBRN znamená chemická, biologická, radiační a nukleární ochrana. Cestou Bez Reptání Nahlas je naše interní verze.“'}</div><div class="driver-actions"><button class="secondary-button" data-dialog="chat">${icon('chat')}Pokecat</button><button class="secondary-button" data-action="horn">${icon('volume')}Klakson</button></div><button class="cancel-button" data-action="cancel">Ukončit jízdu</button><p class="ride-small-note">D1 prověří podvozek. Řidič prověří svůj playlist.</p>`;
+    } else if (state.phase === 'finished') {
+      content.innerHTML = `<div class="arrived-symbol">${icon('check')}</div><div class="eyebrow">DESTINACE DOSAŽENA</div><h1>Bienvenido<br>do Lipníku.</h1><p class="ride-lead">Morava projetá. Dobrodružství doručeno.<br>${vehicle.driver} děkuje za společnost.</p><div class="fare-receipt"><div class="receipt-line"><span>Brno → Lipník nad Bečvou</span><span>112 km</span></div><div class="receipt-line"><span>${vehicle.name}</span><span>${money(vehicle.price)} MXN</span></div>${state.discount ? '<div class="receipt-line"><span>Tajný kód TACO</span><span>−100 MXN</span></div>' : ''}<div class="receipt-line receipt-total"><span>${state.paid ? 'Zaplaceno hotově' : 'K úhradě hotově'}</span><strong>${money(fare())} MXN</strong></div></div><p class="rating-label">Jaká byla jízda s ${state.vehicle === 'rover' ? 'Michalem' : 'Čudosem'}?</p><div class="rating" role="group" aria-label="Ohodnotit jízdu od jedné do pěti hvězdiček">${[1,2,3,4,5].map((n) => `<button data-rating="${n}" aria-label="${n} ${n===1?'hvězdička':n<5?'hvězdičky':'hvězdiček'}" aria-pressed="${n===state.rating}" class="${n<=state.rating?'rated':''}">${icon('star')}</button>`).join('')}</div><button class="primary-button" data-action="${state.paid ? 'reset' : 'pay'}"><span>${state.paid ? 'Další dobrodružství' : 'Předat ' + money(fare()) + ' pesos'}</span>${icon(state.paid ? 'arrow' : 'cash')}</button><p class="ride-small-note">${state.paid ? 'Účtenku najdeš v Moje jízdy. Účetní posílá gracias.' : 'Drobné potěší. Bankovka potěší řidiče ještě víc.'}</p>`;
+    }
+  }
+
+  function stopTimers() {
+    clearTimeout(timer); timer = null;
+    if (frame !== null) cancelAnimationFrame(frame);
+    frame = null; lastFrame = 0;
+  }
+
+  function beginAnimation(duration, step, complete) {
+    state.elapsed = 0;
+    lastFrame = performance.now();
+    function tick(now) {
+      const delta = document.hidden ? 0 : Math.min(now - lastFrame, 100);
+      lastFrame = now;
+      state.elapsed = Math.min(state.elapsed + delta, duration);
+      const fraction = state.elapsed / duration;
+      step(fraction);
+      if ($('#remaining-time')) $('#remaining-time').textContent = `${Math.ceil((duration-state.elapsed)/1000)} s`;
+      if ($('#ride-progress-fill')) $('#ride-progress-fill').style.width = `${fraction*100}%`;
+      if (fraction < 1) frame = requestAnimationFrame(tick);
+      else { frame = null; complete(); }
+    }
+    frame = requestAnimationFrame(tick);
+  }
+
+  function bookRide() {
+    if (state.phase !== 'idle') return;
+    stopTimers(); state.phase = 'searching'; state.rating = 0; state.paid = false;
+    state.rideId = typeof crypto.randomUUID === 'function' ? crypto.randomUUID() : `ride-${Date.now()}`;
+    $('#map-status-text').textContent = 'Oslovujeme řidiče…';
+    $('#second-marker').style.display = 'none';
+    renderRide();
+    if (matchMedia('(max-width:699px)').matches) $('.booking-panel').scrollIntoView({behavior:matchMedia('(prefers-reduced-motion:reduce)').matches ? 'instant' : 'smooth',block:'start'});
+    timer = setTimeout(() => {
+      if (state.phase !== 'searching') return;
+      state.phase = 'approaching'; renderRide();
+      $('#map-status-text').textContent = `${currentVehicle().driver} jede pro tebe.`;
+      notify(`${currentVehicle().driver} přijal jízdu. ¡Vámonos!`);
+      const initial = currentVehicle().initial;
+      beginAnimation(arrivalDuration, (fraction) => {
+        const eased = fraction*fraction*(3-2*fraction);
+        moveCar({x:initial.x+(234-initial.x)*eased, y:initial.y+(680-initial.y)*eased}, Math.atan2(680-initial.y,234-initial.x)*180/Math.PI+90);
+      }, () => {
+        state.phase = 'arrived'; moveCar({x:234,y:680},-45); renderRide();
+        $('#map-status-text').textContent = 'Řidič čeká na tvůj nástup.';
+        notify('Řidič dorazil. Tvůj vojenský kočár čeká.');
+      });
+    }, 1800);
+  }
+
+  function startRide() {
+    if (state.phase !== 'arrived') return;
+    closeDialog(); state.phase = 'riding'; renderRide();
+    $('#map-status-text').textContent = 'Směr Lipník. Pohodlně se usaď.';
+    $('#route-progress').style.opacity = '1';
+    state.zoom = 1; applyZoom();
+    beginAnimation(tripDuration, (fraction) => {
+      const point = route.getPointAtLength(routeLength*fraction);
+      const next = route.getPointAtLength(Math.min(routeLength,routeLength*fraction+3));
+      moveCar(point,Math.atan2(next.y-point.y,next.x-point.x)*180/Math.PI+90);
+      $('#route-progress').style.strokeDashoffset = String(routeLength*(1-fraction));
+      if (fraction > .4 && fraction < .7) $('#map-status-text').textContent = 'Pozdravujeme Prostějov. ¡Hola!';
+      if (fraction >= .7) $('#map-status-text').textContent = 'Lipník už je za pár zatáček. Sombrero drží směr.';
+    }, () => {
+      state.phase = 'finished'; renderRide();
+      $('#map-status-text').textContent = 'Dorazili jsme. Gracias, amigo.';
+      notify('Lipník nad Bečvou. Ani jednou jsme nezabloudili do Cancúnu.');
+      celebrate(24);
+    });
+  }
+
+  function resetRide() {
+    stopTimers(); closeDialog(); state.phase = 'idle'; state.elapsed = 0; state.rating = 0; state.paid = false; state.rideId = null;
+    $('#route-progress').style.opacity = '0'; $('#route-progress').style.strokeDashoffset = String(routeLength);
+    renderRide(); selectVehicle(state.vehicle); state.zoom = 1; applyZoom();
+  }
+
+  function payRide() {
+    if (state.phase !== 'finished' || state.paid) return;
+    state.paid = true;
+    state.history.unshift({id:state.rideId,date:new Date().toISOString(),vehicle:state.vehicle,pickup:state.pickup,price:fare(),rating:state.rating});
+    state.history = state.history.slice(0,20); persistHistory(); renderRide(); celebrate(30);
+    notify('Pesos předána. Řidič hlásí: „Terminál? Ten máme jen vojenský.“',5500);
+  }
+
+  function closeDialog() {
+    clearTimeout(chatTimer); chatTimer = null;
+    if (modal.open) modal.close();
+    state.dialog = null;
+  }
+
+  function openDialog(name) {
+    state.dialog = name;
+    const vehicle = currentVehicle();
+    let html = '';
+    const heading = (title,lead) => `<h2 id="modal-title">${title}</h2><p class="modal-lead">${lead}</p>`;
+    if (name === 'drivers') {
+      html = heading('Dva řidiči.<br>Grande rozdíl.','Oba Mexičané. Oba znají D1. A oba se na Moravě cítí jako doma.') + Object.entries(vehicles).map(([id,v]) => `<div class="driver-profile"><div class="profile-card">${avatar(v.avatar)}<div><h3>${v.driver}</h3><small>★ ${v.rating} · ${v.trips} jízd</small></div></div><div class="driver-facts">${v.facts.map(f=>`<span class="tag">${f}</span>`).join('')}</div><p class="driver-quote">${v.quote}</p><button class="secondary-button" data-select="${id}">Vybrat ${v.name}${icon('arrow')}</button></div>`).join('');
+    } else if (name === 'payment') {
+      html = heading('Cash is king.<br>Pesos jsou král.','Naši řidiči přijímají jedinou platební metodu. A stojí si za ní.') + `<div class="cash-banner">${icon('cash')}<span><strong>Mexická pesos · MXN</strong><small>Hotově přímo řidiči na konci jízdy</small></span>${icon('check')}</div><p class="info-note">Karty nebereme. Apple Pay nebereme. Brněnské šalinkarty jsme zkusili, ale účetní se rozplakala.</p><p class="modal-lead">Terminál máme. Jenže ten vojenský nebere Visa ani Mastercard. Připrav si pesos.</p><button class="primary-button" data-action="close"><span>Pesos připravena</span>${icon('check')}</button>`;
+    } else if (name === 'promo') {
+      html = heading('Tajný kód.<br>Veřejná radost.','Někdy stačí čtyři písmena a cesta chutná líp.') + `<form class="promo-form" id="promo-form"><label for="promo-input">Slevový kód</label><input class="text-input" id="promo-input" name="promo" autocomplete="off" placeholder="Například oblíbené mexické jídlo" maxlength="40" aria-describedby="promo-error"><p class="input-error" id="promo-error" role="status"></p><button type="submit" class="primary-button"><span>Použít kód</span>${icon('arrow')}</button></form><p class="help-hint">Nápověda: začíná na T a končí na ACO. Naše šifrovací oddělení má dovolenou.</p>`;
+    } else if (name === 'pickup') {
+      html = heading('Kde tě nabereme?','Brno má víc než jeden dobrý výchozí bod.') + `<div class="modal-list">${['Brno, hlavní nádraží','Brno, náměstí Svobody','Brno, pod Špilberkem'].map((place) => `<button class="modal-option ${state.pickup===place?'selected':''}" data-pickup="${place}">${icon('pin')}<span>${place.replace('Brno, ','')}<small>Brno · stejné jízdné, jiná kulisa</small></span>${state.pickup===place?icon('check'):icon('chevron')}</button>`).join('')}</div>`;
+    } else if (name === 'schedule') {
+      html = heading('Kdy vyrazíme?','Řidič má čas. Ty máš plán.') + `<div class="modal-list">${['Teď','Za 15 min','Za 30 min'].map((time) => `<button class="modal-option ${state.schedule===time?'selected':''}" data-schedule="${time}">${icon('clock')}<span>${time}<small>${time==='Teď'?'Dobrodružství nepočká.':'Řidič stihne kávu. Ty stihneš najít pesos.'}</small></span>${state.schedule===time?icon('check'):icon('chevron')}</button>`).join('')}</div><p class="help-hint">Dochvilnost je naše taktika. Hledání klíčů je řidičova soukromá mise.</p>`;
+    } else if (name === 'profile') {
+      html = heading('Hola, amigo.','Tvůj profil je připraven na velké malé dobrodružství.') + `<div class="profile-card"><span class="profile-letter">A</span><div><h3>Amigo z Moravy</h3><small>Čestný člen klubu amigo</small></div></div><div class="cash-banner">${icon('cash')}<span><strong>Hotově v mexických pesos</strong><small>Karta doma. Hotovost s sebou.</small></span></div><button class="modal-option" data-dialog="history">${icon('clock')}<span>Moje jízdy</span>${icon('chevron')}</button><p class="help-hint">Historie zůstává pouze v tomto prohlížeči. Přihlášení není potřeba.</p>`;
+    } else if (name === 'history') {
+      html = heading('Tvoje dobrodružství.','Malá kronika velkých moravsko-mexických přesunů.') + (state.history.length ? state.history.map((ride) => { const v = vehicles[ride.vehicle]; const date = new Date(ride.date); return `<div class="history-item"><strong>Brno → Lipník nad Bečvou</strong><p>${escape(Number.isNaN(date.getTime())?'Dříve':date.toLocaleString('cs-CZ',{day:'numeric',month:'long',hour:'2-digit',minute:'2-digit'}))}<br>${v.driver} · ${v.name}${ride.rating?` · ${Number(ride.rating)}★`:''}</p><span>${money(ride.price)} MXN · zaplaceno hotově</span></div>`; }).join('') + '<button class="cancel-button" data-action="clear-history">Smazat historii v prohlížeči</button>' : `<div class="empty-state">${icon('clock')}<p>Zatím žádná jízda.<br>To není problém. To je volná silnice.</p><button class="secondary-button" data-action="close">Objednat první jízdu ${icon('arrow')}</button></div>`);
+    } else if (name === 'help') {
+      html = heading('Jednoduše.<br>Jako uno, dos, tres.','Z Brna do Lipníku. Vojenským vozem, s civilními manýry.') + `<ol class="help-list"><li><span>1</span><span>Vyber místo vyzvednutí v Brně a jedno ze dvou vozidel.</span></li><li><span>2</span><span>Objednej jízdu, počkej na příjezd a nastup. Cestu uvidíš přímo na mapě.</span></li><li><span>3</span><span>V Lipníku předej pesos a ohodnoť řidiče.</span></li></ol><p class="info-note">Do výbavy patří pásy, dobrá nálada a místo pro tvoje zavazadlo. Do peněženky patří pesos. Šalinkartu si nech na zpáteční tramvaj.</p><p class="help-hint">A pokud tě to baví: zkus kaktus, kód TACO nebo pětkrát kliknout na logo. Retro hráči znají i jiný kód.</p>`;
+    } else if (name === 'menu') {
+      html = heading('Kam dál, amigo?','Všechno důležité na jednom místě.') + `<div class="modal-list"><button class="modal-option" data-action="close">${icon('pin')}<span>Objednat jízdu</span>${icon('chevron')}</button><button class="modal-option" data-dialog="drivers">${icon('user')}<span>Naši řidiči<small>Michal Tomkos a Čudos Grande</small></span>${icon('chevron')}</button><button class="modal-option" data-dialog="history">${icon('clock')}<span>Moje jízdy</span>${icon('chevron')}</button><button class="modal-option" data-dialog="help">${icon('shield')}<span>Jak to funguje</span>${icon('chevron')}</button></div>`;
+    } else if (name === 'cancel') {
+      html = heading('Změna plánu?','Řidič to pochopí. Morava se zatím nikam neposune.') + `<p class="info-note">Zrušení je zdarma. Pesos zůstávají v peněžence. Řidič jen přepíše rozkaz z „vyzvednout“ na „dát si kávu“.</p><button class="primary-button" data-action="confirm-cancel"><span>${state.phase==='riding'?'Ukončit jízdu':'Zrušit jízdu'}</span>${icon('close')}</button><button class="cancel-button" data-action="close">Pokračovat v dobrodružství</button>`;
+    } else if (name === 'chat') {
+      html = heading(vehicle.driver,'Přímá linka do kabiny. Vysílačku dnes nahrazuje chat.') + `<div class="chat-log" id="chat-log"><div class="chat-bubble">${escape(vehicle.greeting)}</div></div><form class="chat-form" id="chat-form"><label class="sr-only" for="chat-input">Zpráva řidiči</label><input class="text-input" id="chat-input" maxlength="250" autocomplete="off" placeholder="Napiš řidiči…" required><button type="submit" aria-label="Poslat zprávu">${icon('arrow')}</button></form>`;
+    } else return;
+    $('#modal-body').innerHTML = html;
+    if (!modal.open) modal.showModal();
+  }
+
+  function submitPromo(event) {
+    event.preventDefault();
+    const code = $('#promo-input').value.trim().toUpperCase();
+    if (state.phase !== 'idle') { $('#promo-error').textContent = 'Slevu můžeš použít před objednáním další jízdy.'; return; }
+    if (code === 'TACO') { state.discount = 100; refreshPrices(); closeDialog(); notify('TACO! −100 MXN. Tohle je sleva, která má náplň.'); celebrate(20); }
+    else if (code === 'PESOS') { $('#promo-error').textContent = 'Správná měna, špatné heslo. Účetní ale oceňuje snahu.'; }
+    else if (['UBER','BOLT'].includes(code)) { $('#promo-error').textContent = 'Tady jsi u ¡Vámonos! Zkus něco jedlejšího.'; }
+    else if (code === 'GRANDE') { closeDialog(); notify('Grande není sleva. Je to životní postoj. Čudos souhlasně kývá.'); }
+    else { $('#promo-error').textContent = code ? 'Kód neznáme. Zkus TACO. Tento trezor nemá vysokou ostrahu.' : 'Nejdřív napiš kód, amigo.'; }
+  }
+
+  function submitChat(event) {
+    event.preventDefault();
+    const input = $('#chat-input');
+    const text = input.value.trim();
+    if (!text) return;
+    const log = $('#chat-log');
+    const bubble = document.createElement('div'); bubble.className = 'chat-bubble user'; bubble.textContent = text; log.append(bubble); input.value = ''; log.scrollTop = log.scrollHeight;
+    clearTimeout(chatTimer);
+    chatTimer = setTimeout(() => {
+      if (state.dialog !== 'chat' || !modal.open) return;
+      const answer = document.createElement('div'); answer.className = 'chat-bubble';
+      const lower = text.toLocaleLowerCase('cs-CZ');
+      answer.textContent = /kart|pay|korun|eur/.test(lower) ? 'Pouze pesos, amigo. Terminál máme. Ale je to vojenský terminál.' : /taco|hlad|jíd|jid/.test(lower) ? 'Zastávka na tacos není v ceně. Debata o tacos je v ceně neomezeně.' : /ček|cek|minut|pozd/.test(lower) ? 'V klidu. Čekám. Auto nikam neuteče, má příliš těžkou výbavu.' : /ahoj|hola|čau|cau/.test(lower) ? 'Hola, amigo! Vítej v nejmenším mezinárodním vozovém parku na Moravě.' : /cbrn|ochran|radi/.test(lower) ? 'CBRN výbava je připravená. Proti cenám benzínu bohužel nefunguje.' : (state.vehicle==='rover' ? 'Rozumím, amigo. Zapsal jsem si to do hlavy. Palubní počítač je totiž moje hlava.' : 'Potvrzuji příjem. Čudos Grande rozumí. Vojenský Land Rover by řekl totéž, ale tišeji.');
+      log.append(answer); log.scrollTop = log.scrollHeight;
+    },900);
+  }
+
+  function celebrate(count = 45) {
+    const layer = $('#confetti-layer');
+    if (matchMedia('(prefers-reduced-motion:reduce)').matches) return;
+    const colors = ['#c5f364','#6f9c5c','#f3c97b','#f0eee0','#234b36'];
+    for (let i=0;i<count;i++) { const piece = document.createElement('span'); piece.className='confetti'; piece.style.left=`${Math.random()*100}%`; piece.style.background=colors[i%colors.length]; piece.style.animationDelay=`${Math.random()*.6}s`; piece.style.setProperty('--drift',`${(Math.random()-.5)*220}px`); piece.style.setProperty('--spin',`${Math.random()*900}deg`); layer.append(piece); setTimeout(()=>piece.remove(),4000); }
+  }
+
+  function fiesta() {
+    document.body.classList.remove('fiesta');
+    void document.body.offsetWidth;
+    document.body.classList.add('fiesta'); celebrate(70);
+    notify('¡FIESTA MODE! Mexické velvyslanectví v Brně právě schválilo tvou dobrou náladu.',6500);
+    setTimeout(()=>document.body.classList.remove('fiesta'),4500);
+  }
+
+  function horn() {
+    notify(state.vehicle==='rover' ? 'Land Rover: „Píp píp.“ V překladu: „Hola, amigo.“' : 'Čudosův klakson zní jako velmi zdvořilá mobilizace.');
+    try {
+      const Audio = window.AudioContext || window.webkitAudioContext;
+      if (!Audio) return;
+      audioContext ||= new Audio(); audioContext.resume().catch(()=>{});
+      const now = audioContext.currentTime;
+      [0,.2].forEach((offset) => { const oscillator=audioContext.createOscillator(), gain=audioContext.createGain(); oscillator.type='sine'; oscillator.frequency.value=state.vehicle==='rover'?440:330; gain.gain.setValueAtTime(0,now+offset); gain.gain.linearRampToValueAtTime(.09,now+offset+.02); gain.gain.exponentialRampToValueAtTime(.001,now+offset+.13); oscillator.connect(gain); gain.connect(audioContext.destination); oscillator.start(now+offset); oscillator.stop(now+offset+.15); });
+    } catch { /* A blocked audio device does not affect the ride. */ }
+  }
+
+  function applyZoom() { $('#map-viewport').style.transform=`scale(${state.zoom})`; $('#zoom-in').disabled=state.zoom>=1.6; $('#zoom-out').disabled=state.zoom<=1; }
+
+  document.addEventListener('click',(event) => {
+    const button = event.target.closest('button'); if (!button) return;
+    if (button.dataset.dialog) openDialog(button.dataset.dialog);
+    if (button.dataset.vehicle) selectVehicle(button.dataset.vehicle);
+    if (button.dataset.select) { const id=button.dataset.select; closeDialog(); selectVehicle(id); }
+    if (button.dataset.pickup) { if (state.phase!=='idle') {notify('Vyzvednutí lze změnit u další jízdy.');closeDialog();return;} state.pickup=button.dataset.pickup; $('#pickup-text').textContent=state.pickup; closeDialog(); notify('Vyzvednutí upraveno. Řidič přesouvá bod setkání, nikoli celou Moravu.'); }
+    if (button.dataset.schedule) { if(state.phase!=='idle'){closeDialog();return;} state.schedule=button.dataset.schedule; $('.now-button').innerHTML=`${state.schedule} <span>⌄</span>`; closeDialog(); if(state.schedule!=='Teď')notify('Čas vybrán. Řidič synchronizuje hodinky a zásoby kávy.'); }
+    if (button.dataset.rating) { state.rating=Number(button.dataset.rating); const record=state.history.find(ride=>ride.id===state.rideId); if(record){record.rating=state.rating;persistHistory();} renderRide(); const star=$(`[data-rating="${state.rating}"]`); if(star)star.focus(); notify(state.rating===5?'Pět hvězd. Řidič je teď oficiálně Grande.':'Hodnocení uloženo. Gracias za upřímnost.'); }
+    const action = button.dataset.action;
+    if(action==='close')closeDialog();
+    if(action==='cancel') { if(state.phase==='searching'){resetRide();notify('Hledání zrušeno. Pesos v bezpečí.');}else openDialog('cancel'); }
+    if(action==='confirm-cancel'){resetRide();notify('Jízda zrušena zdarma. Řidič vyhlásil taktickou přestávku na kávu.');}
+    if(action==='start')startRide();
+    if(action==='reset')resetRide();
+    if(action==='pay')payRide();
+    if(action==='horn')horn();
+    if(action==='clear-history'){state.history=[];persistHistory();openDialog('history');notify('Historie v tomto prohlížeči smazána.');}
+  });
+  document.addEventListener('submit',(event)=>{if(event.target.id==='promo-form')submitPromo(event);if(event.target.id==='chat-form')submitChat(event);});
+  $('#book-button').addEventListener('click',bookRide);
+  $('#destination-button').addEventListener('click',()=>notify('Dnes jedeme do Lipníku. Cancún až po aktualizaci vozového parku.'));
+  $('#nav-ride').addEventListener('click',()=>{closeDialog(); if(state.phase==='idle')$('.booking-panel').scrollIntoView({behavior:'smooth',block:'start'});else notify('Tvoje aktuální jízda je právě tady.');});
+  $('.close-modal').addEventListener('click',closeDialog);
+  modal.addEventListener('click',(event)=>{ if(event.target!==modal)return; const box=modal.getBoundingClientRect();if(event.clientX<box.left||event.clientX>box.right||event.clientY<box.top||event.clientY>box.bottom)closeDialog(); });
+  modal.addEventListener('close',()=>{state.dialog=null;clearTimeout(chatTimer);});
+  $('#zoom-in').addEventListener('click',()=>{state.zoom=Math.min(1.6,Math.round((state.zoom+.2)*10)/10);applyZoom();});
+  $('#zoom-out').addEventListener('click',()=>{state.zoom=Math.max(1,Math.round((state.zoom-.2)*10)/10);applyZoom();});
+  $('#recenter').addEventListener('click',()=>{state.zoom=1;applyZoom();notify('Celá trasa v záběru. Svět je zase v pořádku.');});
+  $('#map-secret').addEventListener('click',()=>{celebrate(12);notify('Kaktus je náš dispečer. Na dotazy reaguje pichlavě. Na Moravě je na Erasmu.',6500);});
+  $('#brand').addEventListener('click',()=>{brandClicks++;clearTimeout(brandReset);brandReset=setTimeout(()=>brandClicks=0,2200);if(brandClicks>=5){brandClicks=0;fiesta();}});
+  $$('.vehicle-card').forEach((card)=>card.addEventListener('keydown',(event)=>{if(['ArrowDown','ArrowUp','ArrowLeft','ArrowRight','Home','End'].includes(event.key)){event.preventDefault();selectVehicle(event.key==='Home'?'rover':event.key==='End'?'cbrn':state.vehicle==='rover'?'cbrn':'rover',true);}}));
+  const konami=['ArrowUp','ArrowUp','ArrowDown','ArrowDown','ArrowLeft','ArrowRight','ArrowLeft','ArrowRight','b','a'];
+  document.addEventListener('keydown',(event)=>{if(event.target.matches('input,textarea'))return;const key=event.key.length===1?event.key.toLowerCase():event.key;konamiIndex=key===konami[konamiIndex]?konamiIndex+1:key===konami[0]?1:0;if(konamiIndex===konami.length){konamiIndex=0;fiesta();notify('KONVOJ ODEMČEN! Posily se omluvily. Máme pořád jen dva řidiče.',6500);}});
+  createMapDetails(); selectVehicle('rover'); refreshPrices(); applyZoom();
+})();
+</script>
+</body>
+</html>

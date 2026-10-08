@@ -1,0 +1,23 @@
+// Verify that both deliverables are complete and contain compilable JavaScript.
+const assert = require('node:assert/strict');
+const fs = require('node:fs');
+const path = require('node:path');
+const vm = require('node:vm');
+const root = __dirname;
+const source = fs.readFileSync(path.join(root,'dist','index.html'),'utf8');
+const portable = fs.readFileSync(path.join(root,'vamonos.html'),'utf8');
+const js = fs.readFileSync(path.join(root,'dist','app.js'),'utf8');
+new vm.Script(js,{filename:'app.js'});
+const bundledJs = portable.match(/<script>([\s\S]*?)<\/script>/)[1];
+new vm.Script(bundledJs,{filename:'vamonos.html:script'});
+assert.equal(bundledJs,js);
+assert(portable.includes(fs.readFileSync(path.join(root,'dist','styles.css'),'utf8')));
+assert(!/<script[^>]+src=|<link[^>]+rel="stylesheet"/.test(portable));
+assert(!/(?:src|href)="https?:\/\//.test(source));
+assert(!/@import/.test(fs.readFileSync(path.join(root,'dist','styles.css'),'utf8')));
+const markup = source.replace(/<script[\s\S]*?<\/script>/g,'');
+const ids = [...markup.matchAll(/\bid="([^"]+)"/g)].map(match=>match[1]);
+assert.equal(ids.length,new Set(ids).size,'Duplicate HTML IDs');
+for(const match of markup.matchAll(/href="#([^"]+)"/g)) assert(ids.includes(match[1]),`Missing SVG definition: ${match[1]}`);
+for(const file of ['styles.css','app.js','favicon.svg']) assert(fs.existsSync(path.join(root,'dist',file)));
+console.log('PASS: source scripts, standalone script equality and syntax, embedded CSS, HTML IDs, SVG references, local assets, no external dependencies.');
