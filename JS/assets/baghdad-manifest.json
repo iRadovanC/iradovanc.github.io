@@ -1,0 +1,127 @@
+[
+  {
+    "license": "CC0-1.0",
+    "authors": {
+      "Prabhjinder Singh": "All"
+    },
+    "page": "https://polyhaven.com/a/wooden_military_crate",
+    "source": {
+      "url": "https://dl.polyhaven.org/file/ph-assets/Models/gltf/1k/wooden_military_crate/wooden_military_crate_1k.gltf",
+      "md5": "a6dc6b8e8519a115e8481d9a1c9525cf",
+      "size": 6002,
+      "include": {
+        "textures/wooden_military_crate_nor_gl_1k.jpg": {
+          "url": "https://dl.polyhaven.org/file/ph-assets/Models/jpg/1k/wooden_military_crate/wooden_military_crate_nor_gl_1k.jpg",
+          "md5": "768fcbb54910fbad95abfb6bd90901d3",
+          "size": 745490
+        },
+        "textures/wooden_military_crate_diff_1k.jpg": {
+          "url": "https://dl.polyhaven.org/file/ph-assets/Models/jpg/1k/wooden_military_crate/wooden_military_crate_diff_1k.jpg",
+          "md5": "042ee9d280238702cde679ea00bb37ec",
+          "size": 824093
+        },
+        "textures/wooden_military_crate_arm_1k.jpg": {
+          "url": "https://dl.polyhaven.org/file/ph-assets/Models/jpg/1k/wooden_military_crate/wooden_military_crate_arm_1k.jpg",
+          "md5": "b8f165142d290078ffb08b608cec9d48",
+          "size": 782386
+        },
+        "wooden_military_crate.bin": {
+          "url": "https://dl.polyhaven.org/file/ph-assets/Models/gltf/4k/wooden_military_crate/wooden_military_crate.bin",
+          "md5": "fb5dbf4aed842eb45f2e18e62683d34a",
+          "size": 687548
+        }
+      }
+    },
+    "id": "wooden_military_crate",
+    "downloaded": "2026-09-21"
+  },
+  {
+    "license": "CC0-1.0",
+    "authors": {
+      "Rico Cilliers": "Modeling & Texturing",
+      "Yann Kervran": "Rigging"
+    },
+    "page": "https://polyhaven.com/a/power_box_01",
+    "source": {
+      "include": {
+        "textures/power_box_01_arm_1k.jpg": {
+          "size": 801803,
+          "url": "https://dl.polyhaven.org/file/ph-assets/Models/jpg/1k/power_box_01/power_box_01_arm_1k.jpg",
+          "md5": "2173121335747b6b20b747363d530006"
+        },
+        "textures/power_box_01_nor_gl_1k.jpg": {
+          "size": 646545,
+          "url": "https://dl.polyhaven.org/file/ph-assets/Models/jpg/1k/power_box_01/power_box_01_nor_gl_1k.jpg",
+          "md5": "92c88449b0ce7dad3cd1d7e055870af5"
+        },
+        "power_box_01.bin": {
+          "size": 782096,
+          "url": "https://dl.polyhaven.org/file/ph-assets/Models/gltf/8k/power_box_01/power_box_01.bin",
+          "md5": "e76df413e15ce8a76eb50971266d2450"
+        },
+        "textures/power_box_01_diff_1k.jpg": {
+          "size": 490782,
+          "url": "https://dl.polyhaven.org/file/ph-assets/Models/jpg/1k/power_box_01/power_box_01_diff_1k.jpg",
+          "md5": "c5d43a1a9cf48a616852a05401ad8f20"
+        }
+      },
+      "size": 4417,
+      "url": "https://dl.polyhaven.org/file/ph-assets/Models/gltf/1k/power_box_01/power_box_01_1k.gltf",
+      "md5": "9fbd7f7049a13eb25213f5038c1ef42c"
+    },
+    "id": "power_box_01",
+    "downloaded": "2026-09-21"
+  },
+  {
+    "license": "CC0-1.0",
+    "authors": {
+      "Charlotte Baglioni": "All"
+    },
+    "page": "https://polyhaven.com/a/plastered_wall_05",
+    "source": {
+      "Diffuse": {
+        "url": "https://dl.polyhaven.org/file/ph-assets/Textures/jpg/1k/plastered_wall_05/plastered_wall_05_diff_1k.jpg",
+        "md5": "b3802ea845531b87adaa61ae23a0ed27",
+        "size": 557082
+      },
+      "Rough": {
+        "url": "https://dl.polyhaven.org/file/ph-assets/Textures/jpg/1k/plastered_wall_05/plastered_wall_05_rough_1k.jpg",
+        "md5": "af53d26402047d4235ac9adeaed0dc8b",
+        "size": 149189
+      },
+      "nor_gl": {
+        "url": "https://dl.polyhaven.org/file/ph-assets/Textures/jpg/1k/plastered_wall_05/plastered_wall_05_nor_gl_1k.jpg",
+        "md5": "0aa2e198b82e3b0d5705f39a510f1041",
+        "size": 1051165
+      }
+    },
+    "id": "plastered_wall_05",
+    "downloaded": "2026-09-21"
+  },
+  {
+    "license": "CC0-1.0",
+    "authors": {
+      "Rob Tuytel": "All"
+    },
+    "page": "https://polyhaven.com/a/sandstone_blocks_05",
+    "source": {
+      "Diffuse": {
+        "size": 635678,
+        "md5": "2c3651fdf1071d7b60d82f0e86953968",
+        "url": "https://dl.polyhaven.org/file/ph-assets/Textures/jpg/1k/sandstone_blocks_05/sandstone_blocks_05_diff_1k.jpg"
+      },
+      "Rough": {
+        "size": 210439,
+        "md5": "a03b0c00935fb50ebe141a4356abc03b",
+        "url": "https://dl.polyhaven.org/file/ph-assets/Textures/jpg/1k/sandstone_blocks_05/sandstone_blocks_05_rough_1k.jpg"
+      },
+      "nor_gl": {
+        "size": 1224895,
+        "md5": "cb9d5f4e66155a34236d6e2420ce276b",
+        "url": "https://dl.polyhaven.org/file/ph-assets/Textures/jpg/1k/sandstone_blocks_05/sandstone_blocks_05_nor_gl_1k.jpg"
+      }
+    },
+    "id": "sandstone_blocks_05",
+    "downloaded": "2026-09-21"
+  }
+]

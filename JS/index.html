@@ -1,0 +1,77 @@
+<!doctype html>
+<html lang="cs">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <meta name="theme-color" content="#111914">
+  <meta name="description" content="Vanguard — offline taktický výcvik z pohledu třetí osoby.">
+  <title>VANGUARD · Tichý proud</title>
+  <link rel="icon" href="data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' viewBox='0 0 32 32'%3E%3Crect width='32' height='32' rx='6' fill='%23141c18'/%3E%3Cpath d='m7 8 9 18L25 8h-6l-3 7-3-7Z' fill='%23eeb767'/%3E%3C/svg%3E">
+  <link rel="stylesheet" href="style.css">
+  <link rel="stylesheet" href="city.css">
+</head>
+<body>
+  <canvas id="world" aria-label="3D výcvikový polygon"></canvas>
+  <div class="vignette"></div>
+  <div id="hud">
+    <section class="minimap-panel glass">
+      <div class="panel-heading"><span><b class="tiny-mark">⌖</b> C2 / LOKÁLNÍ SITUACE</span><span class="online">●</span></div>
+      <canvas id="minimap" width="440" height="400" aria-label="Taktická minimapa"></canvas>
+      <div class="map-footer"><span id="grid-location">GRID 044 · 068</span><button id="open-map" aria-label="Otevřít C2 mapu"><kbd>TAB</kbd> ROZVINOUT</button></div>
+    </section>
+    <div id="compass"><div class="compass-pointer"></div><div id="compass-tape"></div><span id="bearing">000°</span></div>
+    <section class="mission-panel">
+      <div class="eyebrow">VANGUARD <span class="slash">/</span> <span id="mission-module">VÝCVIKOVÝ MODUL 01</span></div>
+      <div id="mission-title" class="mission-name">POLYGON <span>04</span></div>
+      <div class="mission-detail"><span class="orange-dot"></span> <span id="mission-subtitle">VOLNÝ STŘELECKÝ VÝCVIK</span></div>
+      <div class="session-stats"><span>ZÁSAHY <b id="hits">00</b></span><span>PŘESNOST <b id="accuracy">—</b></span><span><span id="completion-label">CÍLE</span> <b id="targets-count">0/10</b></span></div>
+    </section>
+    <section id="objective-panel" class="hidden"><div class="objective-top"><span>AKTIVNÍ ÚKOL</span><b id="objective-number">01 / 04</b></div><h2 id="objective-title"></h2><p id="objective-detail"></p><div class="objective-foot"><span>◇ <span id="objective-distance"></span></span><span>TAB · TAKTICKÁ MAPA</span></div><div id="transmit-track" class="hidden"><span id="transmit-progress"></span></div></section>
+    <div id="objective-marker" class="hidden"></div>
+    <div id="crosshair" aria-hidden="true"><i></i><i></i><i></i><i></i><b></b></div>
+    <div id="hitmarker" aria-hidden="true">×</div>
+    <div id="hit-info" class="hidden"></div>
+    <div id="target-label"></div>
+    <div id="notification" role="status"></div>
+    <div id="interaction" class="hidden"><kbd>E</kbd> <span id="interaction-text">DOPLNIT MUNICI</span><div id="interaction-progress"></div></div>
+    <section class="operator-panel">
+      <div class="operator-heading"><span class="operator-symbol">⌁</span><div><span class="eyebrow">OPERÁTOR / ALFA 1–1</span><strong id="stance">PŘIPRAVEN</strong></div></div>
+      <div id="health-panel" class="hidden"><div><span>+ ZDRAVÍ</span><b><span id="health-value">100</span><small> / 100</small></b></div><div class="health-track"><span id="health-fill"></span></div></div><div class="stamina-track"><span id="stamina"></span></div>
+      <div class="controls"><span><kbd>W A S D</kbd> POHYB</span><span><kbd>C</kbd> KLEK</span><span><kbd>SHIFT</kbd> BĚH</span><span><kbd>R</kbd> PŘEBÍT</span></div>
+      <div class="controls secondary"><span><kbd>LMB</kbd> STŘELBA</span><span><kbd>RMB</kbd> MÍŘENÍ</span><span><kbd>ESC</kbd> PAUZA</span></div>
+    </section>
+    <section class="weapon-panel">
+      <div class="weapon-title"><span class="fire-mode">AUTO</span><span>MK18 <small>5.56 × 45</small></span></div>
+      <svg class="weapon-outline" viewBox="0 0 240 56" aria-hidden="true"><path d="M5 20h37l6-6h61v-4h20v4h37v6h42v3h27v5h-28v4h-48l-8 5h-19l8 16h-17l-13-16H84L70 53H59l7-25H45L8 37Z"/><path d="M77 11h26M150 18v11M159 18v11M169 20v8M178 20v8M187 20v8"/></svg>
+      <div class="ammo"><span id="ammo">30</span><span class="ammo-divider">/</span><span id="reserve">180</span></div>
+      <div class="weapon-bottom"><span id="weapon-state">ZBRAŇ PŘIPRAVENA</span><span id="range">DOSAH 300 M</span></div>
+      <div class="reload-track"><span id="reload-progress"></span></div>
+    </section>
+    <div class="bottom-center"><span id="area-label">CVIČNÁ OBLAST</span> <i></i> <span id="elapsed">00:00</span> <i></i> <span id="fps">60</span> FPS</div>
+  </div>
+  <div id="menu" class="menu-layer">
+    <div class="menu-card">
+      <div class="menu-kicker"><span class="brand-mark">V</span> TAKTICKÉ OPERACE <span class="version">BUILD 02</span></div>
+      <h1 id="menu-title">VANGUARD<span>FIELD TRAINING</span></h1>
+      <div class="level-selector" role="group" aria-label="Výběr mise"><button data-level="training" class="selected" aria-pressed="true" disabled><span>01 / VÝCVIK</span><b>Polygon 04</b><small>Pohyb &amp; střelba</small></button><button data-level="baghdad" aria-pressed="false" disabled><span>02 / BAGDÁD</span><b>Tichý proud</b><small>Operace v městské zástavbě</small></button></div>
+      <p id="menu-description">Vstupte do polygonu. Ověřte si pohyb, práci se zbraní a přehled o bojišti.</p>
+      <div class="briefing"><div><span>LOKACE</span><b id="briefing-location">Lesní polygon · Sektor 04</b></div><div><span>ÚKOL</span><b id="briefing-task">Zasáhnout všech 10 cvičných cílů</b></div></div>
+      <div id="difficulty-row" class="hidden"><label for="difficulty">OBTÍŽNOST</label><select id="difficulty"><option value="recruit">Rekrut</option><option value="regular" selected>Voják</option><option value="veteran">Veterán</option></select><p id="difficulty-description"></p><small>Změna obtížnosti zahájí novou misi.</small></div>
+      <button id="play" class="primary-button" disabled><span id="play-label">NAČÍTÁNÍ VYBAVENÍ…</span><span>↗</span></button>
+      <div class="menu-options"><label>KVALITA <select id="quality"><option value="high">Vysoká</option><option value="ultra">Ultra</option><option value="medium">Úsporná</option></select></label><button id="settings-toggle">NASTAVENÍ <span>+</span></button></div>
+      <div id="settings" class="hidden"><label>CITLIVOST MYŠI <input id="sensitivity" type="range" min="0.4" max="2" step="0.1" value="1"></label><label>HLASITOST <input id="volume" type="range" min="0" max="1" step="0.05" value="0.5"></label><button id="fullscreen">CELÁ OBRAZOVKA</button><button id="reset-training">NOVÝ VÝCVIK</button></div>
+      <div class="offline-note"><span>●</span> 100% OFFLINE <span class="offline-separator">/</span> KLÁVESNICE + MYŠ</div>
+      <p id="load-error" class="hidden" role="alert"></p>
+    </div>
+    <div class="menu-location"><span id="location-number">01</span><div><span id="location-name">VÝCVIKOVÝ POLYGON</span><b id="location-coordinate">49° 41′ N · 17° 31′ E · SIMULACE</b></div></div>
+  </div>
+  <div id="damage-overlay"><div id="damage-direction">⌃</div></div>
+  <section id="result" class="hidden" role="dialog" aria-modal="true" aria-labelledby="result-title"><div><p id="result-kicker"></p><h2 id="result-title"></h2><p id="result-description"></p><div id="result-stats"></div><button id="retry-mission" class="primary-button">ZKUSIT MISI ZNOVU <span>↗</span></button><button id="result-menu">HLAVNÍ MENU / VÝBĚR MISE</button></div></section>
+  <section id="c2" class="hidden" aria-label="C2 systém vojáka" role="dialog" aria-modal="true">
+    <header class="c2-header"><div class="c2-brand"><span class="brand-mark">V</span><div><h2>C2 <span>TAKTICKÝ PŘEHLED</span></h2><p>VANGUARD / COMMAND & CONTROL</p></div></div><div class="c2-connection">LOKÁLNÍ SIMULACE <b>POZASTAVENO</b></div><button id="close-map"><kbd>TAB</kbd> ZPĚT DO TERÉNU <span>×</span></button></header>
+    <div class="c2-body"><aside class="c2-sidebar"><div class="eyebrow">SITUAČNÍ PŘEHLED</div><h3>SEKTOR 04</h3><p class="subtle">Lesní výcvikový polygon</p><div class="c2-operator"><span class="eyebrow">VAŠE JEDNOTKA</span><h4><i></i> ALFA 1–1</h4><p id="c2-position"></p><p id="c2-status"></p></div><div class="c2-section-title">CVIČNÉ CÍLE <span id="c2-target-count">10</span></div><div id="target-list"></div><div class="map-legend"><span><i class="legend-player"></i> Operátor</span><span><i class="legend-target"></i> Aktivní cíl</span><span><i class="legend-down"></i> Zasažený cíl</span><span><i class="legend-supply"></i> Munice</span></div></aside><div class="c2-map-wrap"><canvas id="tactical-map" aria-label="Mapa okolí, kliknutím umístíte navigační bod"></canvas><div class="map-top-label">POLYGON 04 <span>TOPOGRAFICKÁ VRSTVA</span></div><div class="map-north">N<span>↑</span></div><div class="map-tools"><button id="zoom-in" aria-label="Přiblížit mapu">+</button><button id="zoom-out" aria-label="Oddálit mapu">−</button><button id="center-map" aria-label="Vycentrovat mapu">⌖</button></div><div class="map-instructions">KLIKNUTÍ <span>NAVIGAČNÍ BOD</span> <i>·</i> KOLEČKO <span>PŘIBLÍŽENÍ</span></div><div id="map-scale">20 METRŮ</div></div><aside class="c2-details"><div class="eyebrow">VÝCVIKOVÁ TELEMETRIE</div><h3 id="c2-score">0000</h3><span class="subtle">CELKOVÉ SKÓRE</span><div class="telemetry-row"><span>Výstřely</span><b id="c2-shots">0</b></div><div class="telemetry-row"><span>Zásahy</span><b id="c2-hits">0</b></div><div class="telemetry-row"><span>Přesnost</span><b id="c2-accuracy">—</b></div><div class="telemetry-row"><span>Zasažené cíle</span><b id="c2-completed">0 / 10</b></div><div class="c2-section-title">NAVIGACE</div><p id="waypoint-info">Kliknutím do mapy označte místo v terénu.</p><button id="clear-waypoint" class="text-button">ZRUŠIT BOD ×</button><div class="c2-section-title">PROTOKOL ZÁSAHŮ</div><div id="event-log"><p class="subtle">Čeká se na první zásah.</p></div></aside></div>
+    <footer class="c2-footer"><span>C2 / ALFA 1–1</span><span>WGS84 · MÍSTNÍ METRICKÁ SÍŤ</span><span>VÝCVIKOVÁ DATA · OFFLINE</span></footer>
+  </section>
+  <script src="game.bundle.js"></script>
+</body>
+</html>
